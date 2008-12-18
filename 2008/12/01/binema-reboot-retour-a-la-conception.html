@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Binema reboot, retour à la case Conception</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<p>Binema.com est mort, après une année d&#8217;uptime et quelques mois de mises à jours: le concept était assez bon, mais la publication de nouvelles fiches de films étaient trop fastidieuse, faisant fuir les potentiels éditeurs&#8230;</p>
+<h2>Qu&#8217;était Binema?</h2>
+<p>Binema.com était un site contenant des fiches de films, avec des liens vers leurs descriptions sur <a href="http:allocine.com">allocine</a> et <a href="http://imdb.com"><span class="caps">IMDB</span></a>, afin de présenter aux visiteurs l&#8217;intérêt de chaque film publié. Et en plus de cela, en se plaçant dans une zone grise de légalité (faire un lien vers un site proposant du contenu copyrighté, de la même façon que Google), Binema proposait des liens vers des sites de torrents (<a href="http://mininova.org">Mininova</a>, <a href="http://thepiratebay.org">The Pirate Bay</a>, &#8230;) afin de proposer aux visiteurs de télécharger le film, et aussi un lien vers les bons sous-titres pour ce films. En effet, il n&#8217;est pas souvent évident de trouver les sous-titres correspondants au film que vous avez téléchargé en VO.</p>
+<p>Binema consistait en une version modifiée de <a href="http://wordpress.org">Wordpress</a> 2.3 avec l&#8217;ajout du plugin Custom Panel pour gérer tous les champs informatifs pour chaque film. Lourde édition, et pas facile de recruter des éditeurs qui doivent se plonger dans une certaine documentation avant de pouvoir publier du contenu.</p>
+<h2>Comment réussir un reboot?</h2>
+<p>Le reboot de binema consiste à seulement garder le minimum des fonctionnalités nécessaires:</p>
+<ul>
+	<li>Avoir une liste de films téléchargeables</li>
+	<li>Les sous-titres sont disponibles pour les films en VO</li>
+	<li>N&#8217;importe quel utilisateur peut participer à l&#8217;expansion de la liste</li>
+</ul>
+<p>En simplifiant le processus de publication, on peut distinguer 4 étapes de la fiche d&#8217;un film:</p>
+<ol>
+	<li>Le lien vers un torrent d&#8217;un film existe, il est ajouté sur binema</li>
+	<li>Un administrateur, ou un robot, valide le torrent: la page est disponible et contient un lien vers fichier .torrent</li>
+	<li>Il manque maintenant les sous-titres associé à ce film
+	<ol>
+		<li>Le film est en français: pas de sous-titres nécessaire, la fiche du film passe au niveau suivant</li>
+		<li>Le film est en VO: sous-titre en attente, affichage du film dans a liste d&#8217;attente afin qu&#8217;un utilisateur trouve les sous-titres</li>
+	</ol></li>
+	<li>Quand le sous-titre est validé, la fiche du film est finie pour une publication minimale</li>
+	<li>Les films respectant une bonne qualité video, audio, des sous-titres, avec les informations nécessaires, la fiche du film passent dans à la catégorie Spécial</li>
+</ol>
+<p>Pour éveiller l&#8217;intérêt des utilisateurs, et les pousser à participer à l&#8217;essor de la base de donnée, le concept peut être rendu interactif. Il peut être simple d&#8217;utiliser twitter pour permettre l&#8217;ajout de torrent, binema ne sera alors qu&#8217;un robot qui reçoit des commandes pour stocker des information dans une base de donnée, qui est ensuite affichée sur une page web.</p>
+</div>
+
+<div id="comments">
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="http://alexgirard.com/atom.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>Alex Girard Feed</title>
+    <link>http://alexgirard.com/</link>
+    <description>Alex Girard</description>
+    <pubDate>2008-12-18T04:27:11+01:00</pubDate>
+    <lastBuildDate>2008-12-18T04:27:11+01:00</lastBuildDate>
+    <webMaster>alx.girard@gmail.com</webMaster>
+	
+	
+ 	<item>
+   		<title>Easy Wordpress upgrade with Git</title>
+   		<link>http://alexgirard.com/2008/12/14/easy-wordpress-update-with-git.html</link>
+   		<guid>http://alexgirard.com/2008/12/14/easy-wordpress-update-with-git</guid>
+   		<description>&lt;p&gt;Wordpress has released its new version 2.7 few days ago, and since all my blogs are now controlled with Git behind, here is the way to do it quickly and easyly.&lt;/p&gt;
+&lt;p&gt;You might take care not to have modified anything in the Wordpress Core files (like &lt;em&gt;wp-includes&lt;/em&gt;) or in &lt;em&gt;/wp-content/themes/default&lt;/em&gt; as these changes will be crushed during the copy.&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://wordpress.org/latest.zip"&gt;Download Wordpress&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;Uncompress the archive on your computer, e.g. ~/Download/wordpress/&lt;/li&gt;
+	&lt;li&gt;Copy the files from the new Wordpress to your local git clone: &lt;em&gt;cp -r ~/Download/wordpress/* ~/my-blog-clone/&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The git part:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Add the new files in your local git clone: &lt;em&gt;git add .&lt;/em&gt;&lt;/li&gt;
+	&lt;li&gt;Commit the upgrade locally: &lt;em&gt;git commit -a -m &#8220;upgrade to new wordpress&#8221;&lt;/em&gt;&lt;/li&gt;
+	&lt;li&gt;Push the changes to your git server: &lt;em&gt;git push&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now, connect to your blog server, by ssh:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;em&gt;ssh username@your-blog-hosting.com&lt;/em&gt;&lt;/li&gt;
+	&lt;li&gt;Move to your blog folder in your server, it should already be a git clone: &lt;em&gt;cd my-blog-clone&lt;/em&gt;&lt;/li&gt;
+	&lt;li&gt;Retrieve the changes from the git server: &lt;em&gt;git pull&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You just have to upgrade your blog database now, going to: &lt;em&gt;http://your-blog.com/wp-admin/upgrade.php&lt;/em&gt;&lt;/p&gt;</description>
+   		<pubDate>2008-12-14T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>One night coding with a bug at the end</title>
+   		<link>http://alexgirard.com/2008/12/09/one-night-coding-with-a-bug-at-the-end.html</link>
+   		<guid>http://alexgirard.com/2008/12/09/one-night-coding-with-a-bug-at-the-end</guid>
+   		<description>&lt;p&gt;We&#8217;ve spend several hurs this afternoon with Seb to see how to refactor his system, and how to use the last ruby technologies, like &lt;a href="http://merbivore.com"&gt;Merb&lt;/a&gt; and a lot of nice little gems available on &lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; to make it even easier to manage.&lt;/p&gt;
+&lt;p&gt;Then, I&#8217;ve spent the night starting to implement the idea, which is nearly working:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;In the &lt;span class="caps"&gt;CMS&lt;/span&gt; part, pages are created&lt;/li&gt;
+	&lt;li&gt;These pages contain dynamic elements, they would call code references in various Merb Slice that would be availble in the app&lt;/li&gt;
+	&lt;li&gt;First Slice is the typical &lt;em&gt;Hello World&lt;/em&gt;: if user place a &lt;strong&gt;@@helloword_show&lt;/strong&gt; element in his page content, it will be replaced automaticly by &lt;em&gt;Hello World&lt;/em&gt; in the generated page content&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To manage this experimentation various steps had been necessary:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Use &lt;a href="http://rspec.info/"&gt;rSpec&lt;/a&gt; to be sure the page model and its elements are solidly built&lt;/li&gt;
+	&lt;li&gt;&lt;a href="http://wiki.merbivore.com/howto/slice"&gt;Create a Slice&lt;/a&gt;: it&#8217;s the long, boring part, we&#8217;ll need to see how to automatize it, because actually there&#8217;s a lot of small edits each time to add a new Slice&lt;/li&gt;
+	&lt;li&gt;Connect from the &lt;span class="caps"&gt;CMS&lt;/span&gt; part to the Slice using &lt;a href="http://rest-client.heroku.com/"&gt;RestClient&lt;/a&gt;: it&#8217;s a ruby gem that allows you to make an http request in the simplest way. For example, the HelloWorld Slice return json object (it could be html or xml) containing the page element content&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Next, it might be useful to have a look at the &lt;a href="http://wiki.merbivore.com/howto/parts"&gt;Merb Parts&lt;/a&gt;, they are small &lt;em&gt;widgets&lt;/em&gt; with their own controller that could be used to generate simple content, we&#8217;ll need to see where to separate the &lt;span class="caps"&gt;CMS&lt;/span&gt; part from the various dynamic slices we&#8217;ll build.&lt;/p&gt;
+&lt;p&gt;And the night finish on this beautiful bug that have just appeared:&lt;/p&gt;
+&lt;script src="http://gist.github.com/33788.js"&gt;&lt;/script&gt;&lt;p&gt;I&#8217;ll have to rollback on the git commit to understand where a conflict has been created, or look for a new version of &lt;a href="http://datamapper.org/"&gt;DataMapper&lt;/a&gt; some reference to this &lt;em&gt;LazyArray::&lt;span class="caps"&gt;RETURN&lt;/span&gt;&lt;/em&gt;SELF_ constant were &lt;a href="http://github.com/dkubb/extlib/commit/471d856f57e66793caca1b9326abc0c66d5f2a14"&gt;recently deleted from some of its forks&lt;/a&gt; in github.&lt;/p&gt;</description>
+   		<pubDate>2008-12-09T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>GitHub discoveries and todo list</title>
+   		<link>http://alexgirard.com/2008/12/08/github-discoveries-and-todo.html</link>
+   		<guid>http://alexgirard.com/2008/12/08/github-discoveries-and-todo</guid>
+   		<description>&lt;p&gt;Quite a productive week with a lot of discoveries on GitHub, a little surf over there bring you to a lot of interesting projects and blogs:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://sunfox.org/"&gt;Sunfox&lt;/a&gt;: A blog by a french guy, refreshing articles and music&lt;/li&gt;
+	&lt;li&gt;&lt;a href="http://kevinmarsh.com/"&gt;Kevin Marsh&lt;/a&gt;: interesting articles about git and rails, with some nice best-pratices&lt;/li&gt;
+	&lt;li&gt;&lt;a href="http://github.com/newbamboo/panda/"&gt;Panda&lt;/a&gt;: Video encoding made easy with &lt;span class="caps"&gt;AWS&lt;/span&gt;, interesting to build a video portal without worrying about server diskspace&lt;/li&gt;
+	&lt;li&gt;&lt;a href="http://github.com/yfactorial/objectiveresource/"&gt;objectiveresource&lt;/a&gt;: A port of Ruby on Rails&#8217; ActiveResource to Objective-C (and specifically the iPhone), I&#8217;ll need to have a look after a week working on iPhone dev&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And the todo list for coming week:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Work with Seb on &lt;a href="http://merbivore.com/"&gt;merb&lt;/a&gt; to refactor his &lt;span class="caps"&gt;CMS&lt;/span&gt;/eCommerce platform, lots of ideas about how to use merb potential and give it a nice kick&lt;/li&gt;
+	&lt;li&gt;Binema reboot: use a &lt;a href="http://twitter.com"&gt;twitter&lt;/a&gt; bot to add/edit movies on a reborn Binema. It could use &lt;a href="http://incubator.apache.org/couchdb/"&gt;CouchDB&lt;/a&gt; to create a many-universe torrent tracker&lt;/li&gt;
+	&lt;li&gt;Jekyll plugin: I really need to find a way to insert dynamic content in &lt;a href="http://github.com/mojombo/jekyll/"&gt;Jekyll&lt;/a&gt; blog generator, like a rss feed block that would be generated at the creation. Bad stuff is that this content would be static until next generation. To follow&lt;/li&gt;
+	&lt;li&gt;Wordpress &lt;span class="caps"&gt;JSON&lt;/span&gt;: it would be nice if I can get wordpress to export its data as json, it shouldn&#8217;t be too hard&lt;/li&gt;
+	&lt;li&gt;&lt;a href="http://douceoffensive.org"&gt;DouceOffensive&lt;/a&gt; iPhone app: just a first demo case to be sure I&#8217;m able to dev some niceties on iPhone for future contracts&lt;/li&gt;
+	&lt;li&gt;&lt;a href="http://barceloneta.fr"&gt;Barceloneta.fr&lt;/a&gt; iPhone app: an eCommerce application that would serve a lot of people, the next big hit in my pocket :)&lt;/li&gt;
+&lt;/ul&gt;</description>
+   		<pubDate>2008-12-08T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>Why Git is Better than X? en français</title>
+   		<link>http://alexgirard.com/2008/12/02/why-git-is-better.html</link>
+   		<guid>http://alexgirard.com/2008/12/02/why-git-is-better</guid>
+   		<description>&lt;p&gt;&lt;a href="http://jointheconversation.org/"&gt;Scott Chacon&lt;/a&gt; nous présente un nouveau site pour la diffusion de Git: &lt;a href="http://whygitisbetterthanx.com/"&gt;http://whygitisbetterthanx.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Scott Chacon est l&#8217;auteur des &lt;a href="http://gitcasts.com/"&gt;Gitcasts&lt;/a&gt; et de &lt;a href="http://jointheconversation.org/2008/06/02/railsconf-git-talk/"&gt;la conférence à la RailsConf&lt;/a&gt; qui aura permis à énormément de développeur de découvrir comment fonctionne vraiment Git.&lt;/p&gt;
+&lt;p&gt;Avec sa communauté sur &lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; et sa facilité d&#8217;utilisation, il faudra maintenant compter sur Git durant les prochaines années, ce qui est une bonne chose. Voici ce que donne une collaboration à plusieurs pour la traduction du document de Scott Chacon:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://github.com/alx/whygitisbetter/network"&gt;&lt;img src="/images/git-network.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Si vous avez besoin de plus d&#8217;informations en français, vous pouvez &lt;a href="http://fr.whygitisbetterthanx.com/"&gt;consultez la traduction française&lt;/a&gt; de &lt;em&gt;Why Git is Better Than X&lt;/em&gt;.&lt;/p&gt;</description>
+   		<pubDate>2008-12-02T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>Binema reboot, retour à la case Conception</title>
+   		<link>http://alexgirard.com/2008/12/01/binema-reboot-retour-a-la-conception.html</link>
+   		<guid>http://alexgirard.com/2008/12/01/binema-reboot-retour-a-la-conception</guid>
+   		<description>&lt;p&gt;Binema.com est mort, après une année d&#8217;uptime et quelques mois de mises à jours: le concept était assez bon, mais la publication de nouvelles fiches de films étaient trop fastidieuse, faisant fuir les potentiels éditeurs&#8230;&lt;/p&gt;
+&lt;h2&gt;Qu&#8217;était Binema?&lt;/h2&gt;
+&lt;p&gt;Binema.com était un site contenant des fiches de films, avec des liens vers leurs descriptions sur &lt;a href="http:allocine.com"&gt;allocine&lt;/a&gt; et &lt;a href="http://imdb.com"&gt;&lt;span class="caps"&gt;IMDB&lt;/span&gt;&lt;/a&gt;, afin de présenter aux visiteurs l&#8217;intérêt de chaque film publié. Et en plus de cela, en se plaçant dans une zone grise de légalité (faire un lien vers un site proposant du contenu copyrighté, de la même façon que Google), Binema proposait des liens vers des sites de torrents (&lt;a href="http://mininova.org"&gt;Mininova&lt;/a&gt;, &lt;a href="http://thepiratebay.org"&gt;The Pirate Bay&lt;/a&gt;, &#8230;) afin de proposer aux visiteurs de télécharger le film, et aussi un lien vers les bons sous-titres pour ce films. En effet, il n&#8217;est pas souvent évident de trouver les sous-titres correspondants au film que vous avez téléchargé en VO.&lt;/p&gt;
+&lt;p&gt;Binema consistait en une version modifiée de &lt;a href="http://wordpress.org"&gt;Wordpress&lt;/a&gt; 2.3 avec l&#8217;ajout du plugin Custom Panel pour gérer tous les champs informatifs pour chaque film. Lourde édition, et pas facile de recruter des éditeurs qui doivent se plonger dans une certaine documentation avant de pouvoir publier du contenu.&lt;/p&gt;
+&lt;h2&gt;Comment réussir un reboot?&lt;/h2&gt;
+&lt;p&gt;Le reboot de binema consiste à seulement garder le minimum des fonctionnalités nécessaires:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Avoir une liste de films téléchargeables&lt;/li&gt;
+	&lt;li&gt;Les sous-titres sont disponibles pour les films en VO&lt;/li&gt;
+	&lt;li&gt;N&#8217;importe quel utilisateur peut participer à l&#8217;expansion de la liste&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;En simplifiant le processus de publication, on peut distinguer 4 étapes de la fiche d&#8217;un film:&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Le lien vers un torrent d&#8217;un film existe, il est ajouté sur binema&lt;/li&gt;
+	&lt;li&gt;Un administrateur, ou un robot, valide le torrent: la page est disponible et contient un lien vers fichier .torrent&lt;/li&gt;
+	&lt;li&gt;Il manque maintenant les sous-titres associé à ce film
+	&lt;ol&gt;
+		&lt;li&gt;Le film est en français: pas de sous-titres nécessaire, la fiche du film passe au niveau suivant&lt;/li&gt;
+		&lt;li&gt;Le film est en VO: sous-titre en attente, affichage du film dans a liste d&#8217;attente afin qu&#8217;un utilisateur trouve les sous-titres&lt;/li&gt;
+	&lt;/ol&gt;&lt;/li&gt;
+	&lt;li&gt;Quand le sous-titre est validé, la fiche du film est finie pour une publication minimale&lt;/li&gt;
+	&lt;li&gt;Les films respectant une bonne qualité video, audio, des sous-titres, avec les informations nécessaires, la fiche du film passent dans à la catégorie Spécial&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour éveiller l&#8217;intérêt des utilisateurs, et les pousser à participer à l&#8217;essor de la base de donnée, le concept peut être rendu interactif. Il peut être simple d&#8217;utiliser twitter pour permettre l&#8217;ajout de torrent, binema ne sera alors qu&#8217;un robot qui reçoit des commandes pour stocker des information dans une base de donnée, qui est ensuite affichée sur une page web.&lt;/p&gt;</description>
+   		<pubDate>2008-12-01T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>Using Merb-Slices to manage your gems</title>
+   		<link>http://alexgirard.com/2008/11/29/using-merb-slices-to-create-gems.html</link>
+   		<guid>http://alexgirard.com/2008/11/29/using-merb-slices-to-create-gems</guid>
+   		<description>&lt;p&gt;This weekend, I wanted to experiement a bit more with &lt;a href="http://github.com/wycats/merb/tree/master/merb-slices"&gt;merb-slices&lt;/a&gt;, and thought it would be a good idea to use it to manage some of the gems I&#8217;ve created. It include few advantages:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;You can add a web interface to test your gem&lt;/li&gt;
+	&lt;li&gt;Rspec is directly include to debug the gem when problems appear&lt;/li&gt;
+	&lt;li&gt;It&#8217;s easy to create, deploy and could be used in any rails/merb app&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&#8217;ve tested the migration with &lt;a href="http://rfeedfinder.rubyforge.org"&gt;rfeedfinder&lt;/a&gt;, a gem to discover feed url from any webpage. In a few easy steps, I migrated the gem into a slice:&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Create a slice: &lt;em&gt;merb-gen slice rfeedfinder-slice&lt;/em&gt;&lt;/li&gt;
+	&lt;li&gt;Copy te class you need from your gem lib in a new file inside &lt;em&gt;lib/rfeedfinder-slice/&lt;/em&gt; directory. Enclose it inside &#8216;&lt;em&gt;module RfeedfinderSlice &#8230; end&lt;/em&gt;&#8217;&lt;/li&gt;
+	&lt;li&gt;In &lt;a href="http://github.com/alx/rfeedfinder-slice/tree/master/lib/rfeedfinder-slice.rb"&gt;&lt;em&gt;lib/rfeedfinder-slice.rb&lt;/em&gt;&lt;/a&gt;, add your gem dependencies at the end of the file&lt;/li&gt;
+	&lt;li&gt;Don&#8217;t forget to include your lib file into the dependencies&lt;/li&gt;
+	&lt;li&gt;To install the gem on your system, nothing easier than: &lt;em&gt;sudo rake install&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I&#8217;ll let you see the web interface, all the routes are already configure, you just need to add a form, and get fancy if you want to use the slice as a proper merb-slice to be included in a complete merb app. Then you can use it in a ruby script, or in other rails/merb applications:&lt;/p&gt;
+&lt;script src="http://gist.github.com/30501.js"&gt;&lt;/script&gt;&lt;p&gt;See the end result on github: &lt;a href="http://github.com/alx/rfeedfinder-slice/"&gt;rfeedfinder-slice&lt;/a&gt;&lt;/p&gt;</description>
+   		<pubDate>2008-11-29T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>Barceloneta.fr nouvelles couleurs</title>
+   		<link>http://alexgirard.com/2008/11/27/barceloneta-contre-attaque.html</link>
+   		<guid>http://alexgirard.com/2008/11/27/barceloneta-contre-attaque</guid>
+   		<description>&lt;p&gt;Grosse mise à jour pour Barceloneta.fr, après 2 ans de loyaux services sur un panier e-commerce fait-maison avec &lt;a href="http://rubyonrails.com"&gt;Ruby On Rails&lt;/a&gt;, voici maintenant venir la dernière version de &lt;a href="http://wordpress.org"&gt;Wordpress&lt;/a&gt; avec le plugin &lt;a href="http://www.instinct.co.nz/e-commerce"&gt;wp-shopping-cart&lt;/a&gt;, la meilleure solution open-source du moment, avec un tas de fonctionnalités permettant de facilement gérer un stock de produits ou de gérer les passerelles de paiements en ligne sans trop de soucies.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://barceloneta.fr"&gt;&lt;img src="http://farm4.static.flickr.com/3219/3061622137_a18d43b561.jpg" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Le design du blog est de Sandra, et comme d&#8217;habitude, il est disponible en téléchargement sur mon espace &lt;a href="http://github.com/alx"&gt;Github&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://github.com/alx/barceloneta"&gt;Télécharger tout le code de barceloneta.fr&lt;/a&gt; poru monter votre propre magasin en ligne&lt;/li&gt;
+	&lt;li&gt;&lt;a href="http://github.com/alx/barceloneta/tree/master/wp-content/themes/barceloneta"&gt;Seulement voir le thème barceloneta.fr&lt;/a&gt; pour l&#8217;appliquer sur votre blog Wordpress&lt;/li&gt;
+&lt;/ul&gt;</description>
+   		<pubDate>2008-11-27T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>Web-app de Blog Backup</title>
+   		<link>http://alexgirard.com/2008/11/25/conception-blog-backup-webapp.html</link>
+   		<guid>http://alexgirard.com/2008/11/25/conception-blog-backup-webapp</guid>
+   		<description>&lt;p&gt;Dans l&#8217;idée de me faire la main sur le framework &lt;a href="http://merbivore.com"&gt;Merb&lt;/a&gt;, il  a des dizaine de concept qui me viennent à l&#8217;esprit.&lt;/p&gt;
+&lt;p&gt;Afin d&#8217;allier l&#8217;utile à l&#8217;agréable, et pour pouvoir me soulager d&#8217;un manque, je pense développer une interface de backup de blog. Beaucoup de mes projets utilisent en effet Wordpress comme gestionnaire de contenu (&lt;span class="caps"&gt;CMS&lt;/span&gt;), mais il me manque la sécurité de ne pas voir disparaître toute les données dans un crash d&#8217;une machine ou une mauvaise manipulation sur les bases de données.&lt;/p&gt;
+&lt;h2&gt;Définition de l&#8217;application&lt;/h2&gt;
+&lt;p&gt;L&#8217;application de backup de blog est une application en ligne qui permet aux utilisateurs enregistrés d&#8217;ajouter un blog et de récupérer une backup de ce blog à n&#8217;importe quel moment.&lt;/p&gt;
+&lt;h2&gt;Fonctionnement de l&#8217;application&lt;/h2&gt;
+&lt;h3&gt;L&#8217;utilisateur sauvegarde son blog&lt;/h3&gt;
+&lt;ul&gt;
+	&lt;li&gt;L&#8217;utilisateur crée un compte et se connecte&lt;/li&gt;
+	&lt;li&gt;L&#8217;utilisateur ajoute l&#8217;adresse de son blog dans son compte&lt;br /&gt;
+	* Si nécessaire, on lui demandera les données de connexion pour xml-rpc&lt;br /&gt;
+	* Si xml-rpc n&#8217;est pas disponible, alors les backup se feront a partir du fil &lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;L&#8217;utilisateur se déconnecte&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;L&#8217;utilisateur récupère une backup&lt;/h3&gt;
+&lt;ul&gt;
+	&lt;li&gt;L&#8217;utilisateur se connecte à son compte&lt;/li&gt;
+	&lt;li&gt;L&#8217;utilisateur télécharge le fichier xml de backup lié a un blog&lt;/li&gt;
+	&lt;li&gt;L&#8217;utilisateur se déconnecte&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Extensions&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Versionning&lt;/strong&gt;: l&#8217;application passer automatiquement sur les blog pour récupérer les dernières mises à jours. Un système de versionning permettra à l&#8217;utilisateur de récupérer des backup de diverses dates.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Migration&lt;/strong&gt;: un bouton de migration servira à l&#8217;utilisateur pour saisir l&#8217;url de son nouveau blog, l&#8217;application se chargera alors de communiquer au nouveau blog les données de l&#8217;ancien, et l&#8217;application se changera de surveiller ce nouveau blog a partir de ce moment.&lt;/p&gt;
+&lt;h2&gt;Limitations&lt;/h2&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;em&gt;Des plugins de backup existent déjà&lt;/em&gt;: le but de l&#8217;application est de fournir une interface simple sans installation de la part de l&#8217;utilisateur.&lt;/li&gt;
+	&lt;li&gt;&lt;em&gt;Seulement compatible avec Wordpress&lt;/em&gt;: l&#8217;application doit Être facilement extensible à d&#8217;autre systèmes de blog, soit par xml-rpc, soit par &lt;span class="caps"&gt;RSS&lt;/span&gt;.&lt;/li&gt;
+	&lt;li&gt;&lt;em&gt;Peu de personnes sont concernés&lt;/em&gt;: très bien pour un démarrage, mon application se limitera à la dizaine de blog que je dois sauvegarder.&lt;/li&gt;
+	&lt;li&gt;&lt;em&gt;Restauration sans fichier&lt;/em&gt;: si disponible dans le blog de l&#8217;utilisateur, l&#8217;utilisateur peut directement saisir une url disponible dans l&#8217;application, liée à sa sauvegarde, et l&#8217;application communiquera la backup en xml-rpc au blog.&lt;/li&gt;
+&lt;/ul&gt;</description>
+   		<pubDate>2008-11-25T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>Itinerant lifestyle</title>
+   		<link>http://alexgirard.com/2008/11/21/itinerant-lifestyle.html</link>
+   		<guid>http://alexgirard.com/2008/11/21/itinerant-lifestyle</guid>
+   		<description>&lt;p&gt;&lt;em&gt;Possessions meant little to Erdős; most of his belongings would fit in a suitcase, as dictated by his itinerant lifestyle. Awards and other earnings were in general donated to people in need and various worthy causes. He spent most of his life as a vagabond, travelling between scientific conferences and the homes of colleagues all over the world. He would typically show up at a colleague&#8217;s doorstep and announce &#8220;my brain is open&#8221;, staying long enough to collaborate on a few papers before moving on a few days later. In many cases, he would ask the current collaborator about whom he (Erdős) should visit next. His working style has been humorously compared to traversing a linked list.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Paul_Erd%C5%91s"&gt;Wikipedia entry on Paul Erdős&lt;/a&gt;&lt;/p&gt;</description>
+   		<pubDate>2008-11-21T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>DouceOffensive.org nouvel espoir</title>
+   		<link>http://alexgirard.com/2008/11/21/douce-offensive.html</link>
+   		<guid>http://alexgirard.com/2008/11/21/douce-offensive</guid>
+   		<description>&lt;h1&gt;DouceOffensive.org nouvel espoir&lt;/h1&gt;
+&lt;p class="meta"&gt;21 Nov 2008 &#8211; Toulouse&lt;/p&gt;
+&lt;p&gt;Après une semaine de travail, la nouvelle version de &lt;a href="http://douceoffensive.org"&gt;Douceoffensive.org&lt;/a&gt; est en ligne!&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://farm4.static.flickr.com/3003/3047257469_2155830e70.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Gérer par Wordpress et le plugin PhotoQ, le site ne consiste qu&#8217;en un thème minimaliste, alimenté par les photos de Guillaume Ajavon.&lt;/p&gt;
+&lt;p&gt;Comme d&#8217;habitude, vous pouvez &lt;a href="http://github.com/alx/douce-offensive/"&gt;télécharger ce blog complet&lt;/a&gt; (inclut thème et plugins) sur github.com si vous voulez vous monter le même système pour votre photoblog.&lt;/p&gt;</description>
+   		<pubDate>2008-11-21T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+  </channel>
+</rss>

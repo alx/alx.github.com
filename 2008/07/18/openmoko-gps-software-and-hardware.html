@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Openmoko GPS Software and Hardware</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<h1>Openmoko <span class="caps">GPS</span> Software and Hardware</h1>
+<p class="meta">18 Jul 2008 &#8211; Madrid</p>
+<p>The great thing about an open-source phone, like <a href="http://openmoko.com">openmoko</a>,  is that when there&#8217;s a problem, all the community can gather to find a solution.</p>
+<p>At the beginning of the week, some people complained that they couldn&#8217;t get their phone <span class="caps">GPS</span> working: <a href="http://en.wikipedia.org/wiki/Time_to_first_fix">Time To First Fix</a> signal (the initial signal that tell the phone where in the world it is) was taking infinite time when a SD card was inserted.</p>
+<p>Then some people joined <a href="http://lists.openmoko.org/pipermail/community/2008-July/021774.html">the thread on the community mailing list</a> to confirm the problem (other people joined just to complain, not helping much), and after a bunch of test, the source of the problem was confined on the SD card reader.<br />
+h2. Software solution</p>
+<p>After 24h, the OpenMoko team released a software solution to the problem, stopping the SD card reader internal clock just the time to get the <span class="caps">TTFF</span> signal, about 40 seconds, then everything would be back to normal.</p>
+<p>The patch has been directly available on the project git repository, allowing the mos furious to recompile and reflash their phone in hours, the others waited for <a href="http://buildhost.openmoko.org/daily/">the daily build</a>. Imagine that, you get <strong>everyday a new build for your phone</strong>, without waiting for the infamous version 2.0 vaporware that might come out one day.</p>
+<p>People have tested it, it works for many, but there&#8217;s still some phones that don&#8217;t have it.</p>
+<h2>Hardware solution</h2>
+<p>This morning, the OpenMoko hardware team published their <a href="http://www.openmoko.org/wiki/Image:Gta02_gps_10pf_rework_sop.pdf">hardware solution</a></p>
+<p><em>Soldering a 10pF capacitor between PIN5 and PIN6 at SD card slot without taking off the case as the below picture showed.</em></p>
+<p><img src="http://blog.alexgirard.com/wp-content/uploads/2008/07/imagen-9-300x191.png" alt="" /></p>
+<p>That might be a bit difficult for anyone to get access to a pico-capacitor and solder it at this tiny place, but at least it&#8217;s accessible for most of the soldering geeks.</p>
+<p>So at the end, you&#8217;ve got a phone that&#8217;s so open that you&#8217;ve got a software and hardware solution of a production problem in a week. Of course, it&#8217;s not a consumer-ready phone, it would have been a complete disaster to recall all the phones, that&#8217;s just a bunch of geeks today that can touch this phone, but someday, you&#8217;ll have it in your hand, and you&#8217;ll just have to imagine all the open-source work that float inside.</p>
+</div>
+
+<div id="comments">
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="http://alexgirard.com/atom.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>

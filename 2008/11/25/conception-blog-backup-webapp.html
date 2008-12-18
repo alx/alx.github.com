@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Web-app de Blog Backup</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<p>Dans l&#8217;idée de me faire la main sur le framework <a href="http://merbivore.com">Merb</a>, il  a des dizaine de concept qui me viennent à l&#8217;esprit.</p>
+<p>Afin d&#8217;allier l&#8217;utile à l&#8217;agréable, et pour pouvoir me soulager d&#8217;un manque, je pense développer une interface de backup de blog. Beaucoup de mes projets utilisent en effet Wordpress comme gestionnaire de contenu (<span class="caps">CMS</span>), mais il me manque la sécurité de ne pas voir disparaître toute les données dans un crash d&#8217;une machine ou une mauvaise manipulation sur les bases de données.</p>
+<h2>Définition de l&#8217;application</h2>
+<p>L&#8217;application de backup de blog est une application en ligne qui permet aux utilisateurs enregistrés d&#8217;ajouter un blog et de récupérer une backup de ce blog à n&#8217;importe quel moment.</p>
+<h2>Fonctionnement de l&#8217;application</h2>
+<h3>L&#8217;utilisateur sauvegarde son blog</h3>
+<ul>
+	<li>L&#8217;utilisateur crée un compte et se connecte</li>
+	<li>L&#8217;utilisateur ajoute l&#8217;adresse de son blog dans son compte<br />
+	* Si nécessaire, on lui demandera les données de connexion pour xml-rpc<br />
+	* Si xml-rpc n&#8217;est pas disponible, alors les backup se feront a partir du fil <span class="caps">RSS</span></li>
+	<li>L&#8217;utilisateur se déconnecte</li>
+</ul>
+<h3>L&#8217;utilisateur récupère une backup</h3>
+<ul>
+	<li>L&#8217;utilisateur se connecte à son compte</li>
+	<li>L&#8217;utilisateur télécharge le fichier xml de backup lié a un blog</li>
+	<li>L&#8217;utilisateur se déconnecte</li>
+</ul>
+<h2>Extensions</h2>
+<p><strong>Versionning</strong>: l&#8217;application passer automatiquement sur les blog pour récupérer les dernières mises à jours. Un système de versionning permettra à l&#8217;utilisateur de récupérer des backup de diverses dates.</p>
+<p><strong>Migration</strong>: un bouton de migration servira à l&#8217;utilisateur pour saisir l&#8217;url de son nouveau blog, l&#8217;application se chargera alors de communiquer au nouveau blog les données de l&#8217;ancien, et l&#8217;application se changera de surveiller ce nouveau blog a partir de ce moment.</p>
+<h2>Limitations</h2>
+<ul>
+	<li><em>Des plugins de backup existent déjà</em>: le but de l&#8217;application est de fournir une interface simple sans installation de la part de l&#8217;utilisateur.</li>
+	<li><em>Seulement compatible avec Wordpress</em>: l&#8217;application doit Être facilement extensible à d&#8217;autre systèmes de blog, soit par xml-rpc, soit par <span class="caps">RSS</span>.</li>
+	<li><em>Peu de personnes sont concernés</em>: très bien pour un démarrage, mon application se limitera à la dizaine de blog que je dois sauvegarder.</li>
+	<li><em>Restauration sans fichier</em>: si disponible dans le blog de l&#8217;utilisateur, l&#8217;utilisateur peut directement saisir une url disponible dans l&#8217;application, liée à sa sauvegarde, et l&#8217;application communiquera la backup en xml-rpc au blog.</li>
+</ul>
+</div>
+
+<div id="comments">
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="http://alexgirard.com/atom.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>

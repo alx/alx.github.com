@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>One night coding with a bug at the end</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<p>We&#8217;ve spend several hurs this afternoon with Seb to see how to refactor his system, and how to use the last ruby technologies, like <a href="http://merbivore.com">Merb</a> and a lot of nice little gems available on <a href="http://github.com">GitHub</a> to make it even easier to manage.</p>
+<p>Then, I&#8217;ve spent the night starting to implement the idea, which is nearly working:</p>
+<ul>
+	<li>In the <span class="caps">CMS</span> part, pages are created</li>
+	<li>These pages contain dynamic elements, they would call code references in various Merb Slice that would be availble in the app</li>
+	<li>First Slice is the typical <em>Hello World</em>: if user place a <strong>@@helloword_show</strong> element in his page content, it will be replaced automaticly by <em>Hello World</em> in the generated page content</li>
+</ul>
+<p>To manage this experimentation various steps had been necessary:</p>
+<ul>
+	<li>Use <a href="http://rspec.info/">rSpec</a> to be sure the page model and its elements are solidly built</li>
+	<li><a href="http://wiki.merbivore.com/howto/slice">Create a Slice</a>: it&#8217;s the long, boring part, we&#8217;ll need to see how to automatize it, because actually there&#8217;s a lot of small edits each time to add a new Slice</li>
+	<li>Connect from the <span class="caps">CMS</span> part to the Slice using <a href="http://rest-client.heroku.com/">RestClient</a>: it&#8217;s a ruby gem that allows you to make an http request in the simplest way. For example, the HelloWorld Slice return json object (it could be html or xml) containing the page element content</li>
+</ul>
+<p>Next, it might be useful to have a look at the <a href="http://wiki.merbivore.com/howto/parts">Merb Parts</a>, they are small <em>widgets</em> with their own controller that could be used to generate simple content, we&#8217;ll need to see where to separate the <span class="caps">CMS</span> part from the various dynamic slices we&#8217;ll build.</p>
+<p>And the night finish on this beautiful bug that have just appeared:</p>
+<script src="http://gist.github.com/33788.js"></script><p>I&#8217;ll have to rollback on the git commit to understand where a conflict has been created, or look for a new version of <a href="http://datamapper.org/">DataMapper</a> some reference to this <em>LazyArray::<span class="caps">RETURN</span></em>SELF_ constant were <a href="http://github.com/dkubb/extlib/commit/471d856f57e66793caca1b9326abc0c66d5f2a14">recently deleted from some of its forks</a> in github.</p>
+</div>
+
+<div id="comments">
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="http://alexgirard.com/atom.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>

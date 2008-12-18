@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Using Git To Blog</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<h1>Using Git To Blog</h1>
+<p class="meta">18 Nov 2008 &#8211; Toulouse</p>
+<p>Starting today, I&#8217;ll use git to manage my blog. This is an idea from <a href="http://tom.preston-werner.com/">Tom Preston-Werner</a>, one of the cofounder of <a href="http://github.com">github</a>, you can read about his <a href="http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html">experiment to build the blogging tool</a> in use on my new blog.</p>
+<p>He got the point when telling we don&#8217;t need a major web interface connected to a database to manage simple content like text and links, we just need a way to save it, and distribute it on remote hosts. Without the fear of breaking it all (sql goof, shell mistake, &#8230;) on the server hosting your blog, git allows to distribute content on various servers, and retrieve it from any place, it could bring a new dimension on distributed blogging with small experiments.</p>
+<p><a href="http://github.com/alx/jekyll/">Jekyll</a>, the current tool to transform your git blog into webpages is a young tool, with <a href="http://github.com/alx/jekyll/commit/d189e05d236769c1e5594af9db4d6eacb86fc16e">just a month of existence</a>. Basicly, it creates static files from a git repository, so you don&#8217;t even need <span class="caps">PHP</span> or MySQL to manage your blog, just a command and a ftp connection, back to 90&#8217;s basics. We&#8217;ll see where it goes, but I bet it&#8217;ll surely please of lot of the git community, enjoying the real distributed power of git to expand the tool with new features.</p>
+<p>As a young project, there&#8217;re still a lot of missing features:</p>
+<ul>
+	<li>categories, tags: these 2 can easily be managed inside the text file use to build a post, we just need ot generate a new page on the blog</li>
+	<li>comment, media management: it might be trickier, it sure can use embed from services like <a href="http://flickr.com">flickr</a> (photos), <a href="http://disqus.com/">disqus</a> (comments) or <a href="http://gist.github.com/">gist</a> (code) but at the cost of losing the distributed advantage of git, one of these services close and you lose it all.</li>
+</ul>
+</div>
+
+<div id="comments">
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="http://alexgirard.com/atom.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>

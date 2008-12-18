@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>http://alexgirard.com/</loc>
+		<lastmod>2008-12-18T04:27:11+01:00</lastmod>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+
+	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/12/14/easy-wordpress-update-with-git.html</loc>
+   		<lastmod>2008-12-14T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/12/09/one-night-coding-with-a-bug-at-the-end.html</loc>
+   		<lastmod>2008-12-09T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/12/08/github-discoveries-and-todo.html</loc>
+   		<lastmod>2008-12-08T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/12/02/why-git-is-better.html</loc>
+   		<lastmod>2008-12-02T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/12/01/binema-reboot-retour-a-la-conception.html</loc>
+   		<lastmod>2008-12-01T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/11/29/using-merb-slices-to-create-gems.html</loc>
+   		<lastmod>2008-11-29T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/11/27/barceloneta-contre-attaque.html</loc>
+   		<lastmod>2008-11-27T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/11/25/conception-blog-backup-webapp.html</loc>
+   		<lastmod>2008-11-25T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/11/21/itinerant-lifestyle.html</loc>
+   		<lastmod>2008-11-21T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/11/21/douce-offensive.html</loc>
+   		<lastmod>2008-11-21T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/11/20/initiation-a-merb.html</loc>
+   		<lastmod>2008-11-20T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/11/19/exporting-wordpress-to-textile.html</loc>
+   		<lastmod>2008-11-19T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/11/18/using-git-to-blog.html</loc>
+   		<lastmod>2008-11-18T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/11/14/available-for-hire-plugin.html</loc>
+   		<lastmod>2008-11-14T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/10/20/pressmark-embed-update.html</loc>
+   		<lastmod>2008-10-20T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/09/10/ubuquity-rapid-bookmarking.html</loc>
+   		<lastmod>2008-09-10T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/08/13/comic-books-to-pdf.html</loc>
+   		<lastmod>2008-08-13T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/07/26/new-flat-and-wifi-extension.html</loc>
+   		<lastmod>2008-07-26T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/07/18/openmoko-gps-software-and-hardware.html</loc>
+   		<lastmod>2008-07-18T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/07/17/azureus-and-mininova-bookmarks.html</loc>
+   		<lastmod>2008-07-17T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/06/03/ssh-connect-shortcut.html</loc>
+   		<lastmod>2008-06-03T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/05/22/pressmark-bookmark-with-wordpress.html</loc>
+   		<lastmod>2008-05-22T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/05/20/nginx-fastcgi-configuration-on-centos.html</loc>
+   		<lastmod>2008-05-20T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+ 	<url>
+   		<loc>http://alexgirard.com/2008/04/30/a-la-poursuite-du-vide.html</loc>
+   		<lastmod>2008-04-30T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
+</urlset>
