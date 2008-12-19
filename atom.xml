@@ -3,9 +3,9 @@
  
  <title>Alex Girard Feed</title>
  <link href="http://alx.github.com/atom.xml" rel="self"/>
- <link href="http://alx.github.com/"/>
- <updated>2008-12-18T04:27:11+01:00</updated>
- <id>http://alx.github.com/</id>
+ <link href="http://alx.github.com"/>
+ <updated>2008-12-19T07:12:24+01:00</updated>
+ <id>http://alx.github.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
@@ -322,7 +322,7 @@ end
    <id>http://alx.github.com/2008/11/19/exporting-wordpress-to-textile</id>
    <content type="html">&lt;h1&gt;Exporting Wordpress in Textile&lt;/h1&gt;
 &lt;p class="meta"&gt;19 Nov 2008 &#8211; Toulouse&lt;/p&gt;
-&lt;p&gt;After moving to &lt;a href="http://alx.github.com/2008/11/18/using-git-to-blog.html"&gt;Jekyll and Git blogging&lt;/a&gt; yesterday, I fougt a bit to retrieve my old post from &lt;a href="http://blog.alexgirard.com"&gt;my current Wordpress blog&lt;/a&gt; inside this new blog.&lt;/p&gt;
+&lt;p&gt;After moving to &lt;a href="/2008/11/18/using-git-to-blog.html"&gt;Jekyll and Git blogging&lt;/a&gt; yesterday, I fougt a bit to retrieve my old post from &lt;a href="http://blog.alexgirard.com"&gt;my current Wordpress blog&lt;/a&gt; inside this new blog.&lt;/p&gt;
 &lt;p&gt;A bit of copy/paste and googling later, here is a simple script to read your Wordpress export file, and extract a textile file for each post it contains.&lt;/p&gt;
 &lt;p&gt;You&#8217;ll need to review the files afterward, as many encoding problem appears. And if the script crash, look for special characters encoded in html entities in the last post displayed in the debug log.&lt;/p&gt;
 &lt;script src="http://gist.github.com/26482.js"&gt;&lt;/script&gt;</content>
