@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Git Book - Tag avec Git</title>
+	<meta http-equiv="content-language" content="en">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="icon" href="favicon.png" type="image/png">
+	<link rel="stylesheet" href="assets/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="assets/blueprint/print.css" type="text/css" media="print">
+  <!--[if IE]><link rel="stylesheet" href="assets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/stylesheets/mac_classic.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/stylesheets/style.css" type="text/css" media="screen, projection">
+</head>
+
+<body>
+<div class="container chapter showgrids">
+
+  <div class="span-21 header">
+    <div class="nav"><a href="3_workflows_distribués.html">Prev</a>  <a href="4_ignorer_des_fichiers.html">Next</a></div>
+    <div class="title"><a href='index.html'>Git Community Book</a></div>
+  </div>
+  
+  <div class="span-21">
+    <br/>
+  </div>
+  
+  <div class="span-21">
+    <h2>Tag avec Git </h2>
+
+<h3>Les Tags Légers </h3>
+
+<p>Vous pouvez créer un tag qui référence un commit particulier de git en lançant
+<a href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git tag</a> en spécifiant le nom du tag et le nom SHA1 du commit
+à tagger en options.</p>
+
+<pre><code>$ git tag stable-1 1b2e1d63ff
+</code></pre>
+
+<p>Après ça, nous pouvons utilisé stable-1 pou faire référence au commit 1b2e1d63ff.</p>
+
+<p>Ceci est un "tag léger", car aucune branche n'a été créée durant le processus.
+Si vous voulez aussi rajouter un commentaire à ce tag, et le signer
+avec un méthode cryptographique, alors nous allons plutôt créé un <em>objet tag</em>.</p>
+
+<h3>Les Objets Tags </h3>
+
+<p>Si une de ces options: <strong>-a</strong>, <strong>-s</strong>, ou <strong>-u &lt;key-id></strong> est passé en argument
+de la commande, alors nous créons un objet tag qui nécessite un message tag.
+À moins que l'option -m <msg> ou -F <file> soit fournie, un éditeur se lance
+pour que l'utilisateur saisisse le message du tag.</p>
+
+<p>Quand cela se produit, un nouvelle objet est ajouté à la base de donnée objet
+de Git et la référence tag pointe vers cet <em>objet tag</em>, plutôt que sur le
+commit lui-même. Ce concept est utile car vous pouvez maintenant signer le
+tag, et vérifier plus tard que le commit correspond. Vous pouvez créer un
+objet tag comme ceci:</p>
+
+<pre><code>$ git tag -a stable-1 1b2e1d63ff
+</code></pre>
+
+<p>Il est possible de tagger n'importe quel objet, mais le taggage des objets
+"commit" est la pratique la plus courante. (Dans les sources du kernel Linux,
+le premier objet tag fait référence à un "tree", plutôt qu'un "commit").</p>
+
+<h3>Signature des Tags </h3>
+
+<p>Si vous avez configuré votre clé GPG, vous pouvez facilement créer des tags
+signés. Dans un premier temps, vous devrez configurer l'identifiant de votre
+clé dans votre fichier de configuration <em>.git/config</em> ou <em>~.gitconfig</em>.</p>
+
+<pre><code>[user]
+    signingkey = &lt;gpg-key-id&gt;
+</code></pre>
+
+<p>Vous pouvez aussi le configurer comme ceci:</p>
+
+<pre><code>$ git config (--global) user.signingkey &lt;gpg-key-id&gt;
+</code></pre>
+
+<p>Maintenant vous pouvez créer un tag signé en remplaçant juste le <strong>-a</strong>
+par un <strong>-s</strong>.</p>
+
+<pre><code>$ git tag -s stable-1 1b2e1d63ff
+</code></pre>
+
+<p>Si vous n'avez pas configuré une clé GPG dans votre fichier de configuration,
+vous pouvez faire la même chose de cette façon:</p>
+
+<pre><code>$ git tag -u &lt;gpg-key-id&gt; stable-1 1b2e1d63ff
+</code></pre>
+
+
+  </div>
+  
+  <div class="span-21">
+    <hr/>
+    <div class="center"><a href="3_workflows_distribués.html">Prev</a>  <a href="4_ignorer_des_fichiers.html">Next</a></div>
+    <hr/>
+  </div>
+  
+  <div class="span-17 footer">
+  	<div class="menu">
+  		This book is maintained by Scott Chacon, and hosting is donated by GitHub.
+  		<br>
+  		Please email me at <a href="mailto:schacon@gmail.com">schacon@gmail.com</a>
+  		with patches, suggestions and comments.
+	  </div>
+  </div>
+  <div class="span-4 last center">
+    <a href="http://github.com"><img src="assets/images/github.png" alt="github logo"></a>
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-82337-12");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<script src="http://static.getclicky.com/40584.js" type="text/javascript"></script>
+<noscript><p><img alt="Clicky" src="http://in.getclicky.com/40584-db6.gif" /></p></noscript>
+
+</body>
+</html>

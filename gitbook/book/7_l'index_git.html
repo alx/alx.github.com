@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Git Book - L'Index Git</title>
+	<meta http-equiv="content-language" content="en">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="icon" href="favicon.png" type="image/png">
+	<link rel="stylesheet" href="assets/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="assets/blueprint/print.css" type="text/css" media="print">
+  <!--[if IE]><link rel="stylesheet" href="assets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/stylesheets/mac_classic.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/stylesheets/style.css" type="text/css" media="screen, projection">
+</head>
+
+<body>
+<div class="container chapter showgrids">
+
+  <div class="span-21 header">
+    <div class="nav"><a href="7_les_références_git.html">Prev</a>  <a href="7_le_packfile.html">Next</a></div>
+    <div class="title"><a href='index.html'>Git Community Book</a></div>
+  </div>
+  
+  <div class="span-21">
+    <br/>
+  </div>
+  
+  <div class="span-21">
+    <h2>L'Index Git </h2>
+
+<p>L'index est un fichier binaire (généralement gardé dans .git/index) qui
+contient une liste ordonnées de chemins de fichiers, chacun avec les
+permissions et le SHA1 de l'objet blob; <a href="http://www.kernel.org/pub/software/scm/git/docs/git-ls-files.html">git ls-files</a> peut vous
+montrer le contenu de l'index:</p>
+
+<pre><code>$ git ls-files --stage
+100644 63c918c667fa005ff12ad89437f2fdc80926e21c 0   .gitignore
+100644 5529b198e8d14decbe4ad99db3f7fb632de0439d 0   .mailmap
+100644 6ff87c4664981e4397625791c8ea3bbb5f2279a3 0   COPYING
+100644 a37b2152bd26be2c2289e1f57a292534a51a93c7 0   Documentation/.gitignore
+100644 fbefe9a45b00a54b58d94d06eca48b03d40a50e0 0   Documentation/Makefile
+...
+100644 2511aef8d89ab52be5ec6a5e46236b4b6bcd07ea 0   xdiff/xtypes.h
+100644 2ade97b2574a9f77e7ae4002a4e07a6a38e46d07 0   xdiff/xutils.c
+100644 d5de8292e05e7c36c4b68857c1cf9855e3d2f70a 0   xdiff/xutils.h
+</code></pre>
+
+<p>Dans une documentation plus ancienne, vous pourrez voir l'index appelé
+"cache du répertoire" ou juste "cache". L'index comporte 3 propriétés
+importantes:</p>
+
+<ol>
+<li><p>L'index contient toutes les informations nécessaire pour générer
+ un unique (déterminé uniquement) objet "tree".</p>
+
+<p>Par exemple, le lancement de <a href="http://www.kernel.org/pub/software/scm/git/docs/git-commit.html">git commit</a> génère un objet
+tree depuis l'index, le stocke dans la base de donnée objet, et l'utilise
+comme l'objet tree associé au nouveau commit.</p></li>
+<li><p>L'index permet une comparaison rapide entre les objet tree qu'il définit
+ et le tree de travail.</p>
+
+<p>Il fait ceci en stockant des informations complémentaires pour chaque
+entrée (comme la date de dernière modification). Ces données ne sont pas
+affichées ci-dessus, et ne sont pas stockées dans l'objet tree créé,
+mais elles peuvent être utilisées pour déterminer rapidement quels
+fichiers du répertoire du travail diffèrent de ce que sont stockés dans
+l'index, et donc permet à git de gagner du temps sans avoir besoin de lire
+toutes les données pour ce genre de fichiers pour connaître les changements</p></li>
+<li><p>Il peut être efficacement représenter les information à propos des conflits
+ de merge entre différentes version des objets tree, permettant à chaque chemin
+ de fichier d´être associé avec suffisament d'information à propos des "tree"
+ impliqués dans la création d'un merge three-way.</p>
+
+<p>Nous avons vu dans &lt;&lt;conflict-resolution>> que durant le merge, l'index
+peut stocker de multiples version d'un même fichier (appelés "stages").
+La troisième colonne dans la sortie de <a href="http://www.kernel.org/pub/software/scm/git/docs/git-ls-files.html">git ls-files</a> ci-dessus
+est le numéro du "stage", et prendra une valeur autre que 0 pour les
+fichiers avec des conflits de merge.</p></li>
+</ol>
+
+
+<p>L'index est donc un sorte de zone d'assemblage temporaire, qui contient
+le "tree" sur lequel vous êtes en train de travailler.</p>
+
+
+  </div>
+  
+  <div class="span-21">
+    <hr/>
+    <div class="center"><a href="7_les_références_git.html">Prev</a>  <a href="7_le_packfile.html">Next</a></div>
+    <hr/>
+  </div>
+  
+  <div class="span-17 footer">
+  	<div class="menu">
+  		This book is maintained by Scott Chacon, and hosting is donated by GitHub.
+  		<br>
+  		Please email me at <a href="mailto:schacon@gmail.com">schacon@gmail.com</a>
+  		with patches, suggestions and comments.
+	  </div>
+  </div>
+  <div class="span-4 last center">
+    <a href="http://github.com"><img src="assets/images/github.png" alt="github logo"></a>
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-82337-12");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<script src="http://static.getclicky.com/40584.js" type="text/javascript"></script>
+<noscript><p><img alt="Clicky" src="http://in.getclicky.com/40584-db6.gif" /></p></noscript>
+
+</body>
+</html>

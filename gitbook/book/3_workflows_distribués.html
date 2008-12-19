@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Git Book - Workflows Distribués</title>
+	<meta http-equiv="content-language" content="en">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="icon" href="favicon.png" type="image/png">
+	<link rel="stylesheet" href="assets/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="assets/blueprint/print.css" type="text/css" media="print">
+  <!--[if IE]><link rel="stylesheet" href="assets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/stylesheets/mac_classic.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/stylesheets/style.css" type="text/css" media="screen, projection">
+</head>
+
+<body>
+<div class="container chapter showgrids">
+
+  <div class="span-21 header">
+    <div class="nav"><a href="3_comparer_les_commits_-_git_diff.html">Prev</a>  <a href="3_tag_avec_git.html">Next</a></div>
+    <div class="title"><a href='index.html'>Git Community Book</a></div>
+  </div>
+  
+  <div class="span-21">
+    <br/>
+  </div>
+  
+  <div class="span-21">
+    <h2>Workflows Distribués </h2>
+
+<p>Supposons qu'Alice a démarré un nouveau projet dans son dépôt git
+situé dans /home/alice/project, et que Bob, qui a un répertoire
+utilisateur sur la même machine (/home/bob/), veuille y
+contribuer.</p>
+
+<p>Bob commence par:</p>
+
+<pre><code>$ git clone /home/alice/project mondepot
+</code></pre>
+
+<p>Cela crée un répertoire "mondepot" qui contient un clone du dépôt
+d'Alice. Le clone est une copie parfaite du projet original,
+possédant aussi sa propre copie de l'historique du projet original.</p>
+
+<p>Bob fait quelques changements et les commit:</p>
+
+<pre><code>(editer des fichiers)
+$ git commit -a
+(répéter autant que nécessaire)
+</code></pre>
+
+<p>Quand il est prêt, il dit à Alice de récupérer (pull) ses changements
+depuis son dépôt situé dans /home/bob/mondepot. Alice fait alors:</p>
+
+<pre><code>$ cd /home/alice/project
+$ git pull /home/bob/myrepo master
+</code></pre>
+
+<p>Cela merge les changement de la branche "master" de Bob dans la branche
+courante d'Alice. Si Alice a fait ses propres changements pendant ce temps,
+alors elle devra peut être réparer quelques conflit à la main. (Notes l'option
+"master" dans la commande ci-dessus, elle n'est pas nécessaire car c'est
+l'option par défaut.)</p>
+
+<p>La commande "pull" travaille donc en 2 étapes: elle récupère les changements
+d'une branche distante, et merge ces changements dans la branche courante.</p>
+
+<p>Quand vous travaillez dans une petite équipe soudée, il est courant
+que tous interagissent très souvent avec le même dépôt. En définissant un
+raccourci pour le dépôt 'distant', nous pouvons rendre ces opération plus
+simples:</p>
+
+<pre><code>$ git remote add bob /home/bob/mondepot
+</code></pre>
+
+<p>Avec ça, Alice peut effectuer la première opération seulement en
+utilisant la commande "git fetch", elle ne mergera pas les modifications
+avec sa propre branche:</p>
+
+<pre><code>$ git fetch bob
+</code></pre>
+
+<p>Contrairement à la version longue, quand Alice récupère (fetch) les
+données de Bob en utilisant un raccourci configuré avec 'git remote'.
+alors ce qui est récupéré est stocké dans une branche de suivi distant,
+dans notre cas 'bob/master'. Donc maintenant:</p>
+
+<pre><code>$ git log -p master..bob/master
+</code></pre>
+
+<p>montre la liste de tous les changements que Bob a fait depuis qu'il a créé
+une branche depuis la branche "master" d'Alice.</p>
+
+<p>Après avoir examiné ces changements, Alice peut les merger dans sa branche
+"master":</p>
+
+<pre><code>$ git merge bob/master
+</code></pre>
+
+<p>Ce <code>merge</code> peut aussi être fait en récupérant les données depuis
+sa propre branche de suivi distant, comme ceci:</p>
+
+<pre><code>$ git pull . remotes/bob/master
+</code></pre>
+
+<p>Git récupère toujours les merges dans la branche courante,
+quelques soient les options de la ligne de commande.</p>
+
+<p>Plus tard, Bob peut mettre à jour son dot avec les dernières
+modifications d'Alice en utilisant:</p>
+
+<pre><code>$ git pull
+</code></pre>
+
+<p>Il n'a besoin de donner le chemin vers le dot d'Alice; quand Bob a cloné
+le dépôt d'Alice, git a stocké l'adresse de son dépôt dans la configuration
+du dépôt, et cette adresse est utilisée pour récupérer les données avec 'pull':</p>
+
+<pre><code>$ git config --get remote.origin.url
+/home/alice/project
+</code></pre>
+
+<p>(La configuration complète créée par git-clone est visible en lançant
+"git config -l", et la page de documentation de <a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git config</a>
+explique chacune de ces options.)</p>
+
+<p>Git conserve aussi une copie propre de la branche "master" d'Alice,
+sous le nom "origin/master":</p>
+
+<pre><code>$ git branch -r
+  origin/master
+</code></pre>
+
+<p>Si Bob décide plus tard de travailler avec un hébergeur différent,
+il pourra toujours créer des clones et récupérer les données en utilisant
+le protocole ssh:</p>
+
+<pre><code>$ git clone alice.org:/home/alice/project myrepo
+</code></pre>
+
+<p>D'une autre manière, git contient un protocole natif, ou peut aussi utiliser
+rsync ou http; voir <a href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git pull</a> pour plus de détails.</p>
+
+<p>Git peut aussi être utilisé de manière plus similaire à CVS, avec un dépôt
+central sur lequel de nombreux utilisateurs envoient leur modifications;
+voir <a href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git push</a> et <a href="http://www.kernel.org/pub/software/scm/git/docs/gitcvs-migration.html">gitcvs-migration</a>.</p>
+
+<h3>Les Dépôt Git Publiques </h3>
+
+<p>Une autre façon d'envoyer des modifications à un projet est d'avertir
+le chef de ce projet afin qu'il récupère les changements depuis votre
+dépôt en utilisant <a href="http://www.kernel.org/pub/software/scm/git/docs/git-pull.html">git pull</a>. C'est un manière d'obtenir les
+mises à jours du dépôt principal, mais cela fonctionne aussi dans
+l'autre sens.</p>
+
+<p>Si vous et le chef de projets avaient tous les 2 un compte sur le même
+ordinateur, alors vous pouvez échanger les modifications de vos dépôts
+respectifs directement; les commandes qui acceptent des URL de dépôts
+comme options, accepteront aussi un chemin de répertoire local:</p>
+
+<pre><code>$ git clone /path/to/repository
+$ git pull /path/to/other/repository
+</code></pre>
+
+<p>ou une adresse ssh:</p>
+
+<pre><code>$ git clone ssh://yourhost/~you/repository
+</code></pre>
+
+<p>Pour les projets avec quelques développeurs, ou pour synchroniser quelques
+projets privés, cela peut vous suffire.</p>
+
+<p>Cependant, la pratique la plus courante est de maintenir un dépôt publique
+(généralement sur le même host) pour que les autres puissent y récupérer les
+changements. Cela est souvent plus efficace, et vous permet de séparer
+proprement le travail privé en cours de réalisation des projets publiques
+et visibles.</p>
+
+<p>Vous continuerez à travailler au jour-le-jour sur votre dépôt personnel,
+mais périodiquement vous enverrez (push) les modifications de votre
+dépôt personnel sur votre dépôt publique, permettant alors aux autres
+développeurs de récupérer (pull) les changements disponible dans ce dépôt.
+Donc le flux de travail, dans une situation où un autre développeur 
+fournit des changement dans son dépôt publique, ressemble à ça:</p>
+
+<pre><code>                           vous envoyez (push)
+  votre dépôt personnel ---------------------------&gt; votre dépot publique
+            ^                                               |
+            |                                               |
+            | vous récupérez (pull)                         | ils récupèrent (pull)
+            |                                               |
+            |                                               |
+            |               ils envoient (push)             V
+  leur dépôt publique &lt;------------------------------  leur dépôt
+</code></pre>
+
+<h3>Publier des Modifications sur un Dépôt Publique </h3>
+
+<p>L'utilisation des protocoles http et git permet aux autres développeurs
+de récupérer les derniers changements, mais ils n'auront pas l'autorisation
+d'écriture sur ces dépôt. Pour cela, vous devrez mettre à jour votre dépôt
+publique avec les derniers changements obtenus votre le dépôt privé.</p>
+
+<p>La façon la plus simple de procéder est d'utiliser <a href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git push</a> et ssh;
+pour mettre à jour la brancje "master" avec le dernier état de votre branche
+"master", lancez:</p>
+
+<pre><code>$ git push ssh://yourserver.com/~you/proj.git master:master
+</code></pre>
+
+<p>ou juste</p>
+
+<pre><code>$ git push ssh://yourserver.com/~you/proj.git master
+</code></pre>
+
+<p>Comem avec git-fetch, git-push se plaindra qu'il n'y a pas eu d'avance rapide
+(fast-forward); allez à la section suivante pour plus de détails pour gérer
+ce cas.</p>
+
+<p>La cible d'un "push" est normalement un dépôt 'nu'. Vous pouvez aussi publier
+vers un dépôt qui contient une arborescence de travail, mais cette arborescence
+ne sera pas mise à jour durant la publication. Cela pourra vous amener à des
+résultats inattendus, par exemple si la branche que vous publiez est l'actuelle
+branche de travail sur le dépôt publique.</p>
+
+<p>Comme avec git-fetch, vous pouvez aussi rajouter des options de configuration
+pour vous permettre d'aller plus rapidement; par exemple, après:</p>
+
+<pre><code>$ cat &gt;&gt;.git/config &lt;&lt;EOF
+[remote "public-repo"]
+    url = ssh://yourserver.com/~you/proj.git
+EOF
+</code></pre>
+
+<p>vous devriez pouvoir effectuer les opérations précédentes avec juste</p>
+
+<pre><code>$ git push public-repo master
+</code></pre>
+
+<p>Voir les explications des options remote.<name>.url, branch.<name>.remote,
+et remote.<name>.push dans <a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git config</a> pour plus de détails.</p>
+
+<h3>Que faire quand une publication échoue </h3>
+
+<p>Si une publication ne se termine pas avec une avance de la branche distante,
+alors elle échouera avec un message d'erreur comme celui-ci:</p>
+
+<pre><code>error: remote 'refs/heads/master' is not an ancestor of
+local  'refs/heads/master'.
+Maybe you are not up-to-date and need to pull first?
+error: failed to push to 'ssh://yourserver.com/~you/proj.git'
+</code></pre>
+
+<p>Cela peut arrivé, par exemple, si:</p>
+
+<pre><code>- vous avez utilisé `git-reset --hard` pour effacer un commit déjà publié, ou
+- vous avez utilisé `git-commit --amend` pour remplacer un commit déjà publié, ou
+- vous avez utilisé `git-rebase` pour recombiner un commit déjà publié.
+</code></pre>
+
+<p>Vous pouvez forcer un git-push à effectuer quand même la mise à jour
+en rajoutant le préfixe '+' au nom de la branche:</p>
+
+<pre><code>$ git push ssh://yourserver.com/~you/proj.git +master
+</code></pre>
+
+<p>Normalement, quand le sommet de la branche d'un dépôt publique est modifié,
+il est modifié pour pointer vers un descendant du commit ver lequel il
+pointait avant. En forçant la publication dans cette situation, vous
+cassez cette convention.</p>
+
+<p>Néanmoins, c'est une bonne pratique pour les gens qui ont besoin de publier
+simplement une série de patches des travaux en cours, et c'est un
+compromis acceptable tant que vous prévenez les autres développeurs que
+vous comptez gérer la branche de cette façon.</p>
+
+<p>Il est aussi possible qu'une publication échoue de cette façon quand
+d'autres personnes ont le droit de publier sur le même dépôt. Dans ce cas,
+la solution la plus correcte est de retenter la publication après avoir mis
+à jour votre travail: soit par un git-pull, soit par un git-fetch suivi
+d'une recombinaison (rebase); voir la prochaine partie et
+<a href="http://www.kernel.org/pub/software/scm/git/docs/gitcvs-migration.html">gitcvs-migration</a> pour plus de détails.</p>
+
+<p><div class="gitcast">
+        <embed src="http://gitcasts.com/flowplayer/FlowPlayerLight.swf?config=%7Bembedded%3Atrue%2CbaseURL%3A%27http%3A%2F%2Fgitcasts%2Ecom%2Fflowplayer%27%2CvideoFile%3A%27http%3A%2F%2Fmedia%2Egitcasts%2Ecom%2Fc8-dist-workflow%2Eflv%27%2CautoBuffering%3Afalse%2CautoPlay%3Afalse%7D" width="620" height="445" scale="noscale" bgcolor="111111" type="application/x-shockwave-flash" allowFullScreen="true" allowScriptAccess="always" allowNetworking="all" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+        <br>"GitCast #8: Distributed Workflow"
+        </div></p>
+
+
+  </div>
+  
+  <div class="span-21">
+    <hr/>
+    <div class="center"><a href="3_comparer_les_commits_-_git_diff.html">Prev</a>  <a href="3_tag_avec_git.html">Next</a></div>
+    <hr/>
+  </div>
+  
+  <div class="span-17 footer">
+  	<div class="menu">
+  		This book is maintained by Scott Chacon, and hosting is donated by GitHub.
+  		<br>
+  		Please email me at <a href="mailto:schacon@gmail.com">schacon@gmail.com</a>
+  		with patches, suggestions and comments.
+	  </div>
+  </div>
+  <div class="span-4 last center">
+    <a href="http://github.com"><img src="assets/images/github.png" alt="github logo"></a>
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-82337-12");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<script src="http://static.getclicky.com/40584.js" type="text/javascript"></script>
+<noscript><p><img alt="Clicky" src="http://in.getclicky.com/40584-db6.gif" /></p></noscript>
+
+</body>
+</html>
