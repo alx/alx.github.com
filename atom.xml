@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Alex Girard Feed</title>
- <link href="http://alx.github.com/atom.xml" rel="self"/>
- <link href="http://alx.github.com"/>
- <updated>2008-12-19T07:12:24+01:00</updated>
- <id>http://alx.github.com</id>
+ <link href="http://alexgirard.com/atom.xml" rel="self"/>
+ <link href="http://alexgirard.com"/>
+ <updated>2008-12-20T12:41:48+01:00</updated>
+ <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
@@ -13,10 +13,38 @@
 
  
  <entry>
+   <title>Les raisons d'une gestion distribuée de vos fichiers, aujourd'hui</title>
+   <link href="http://alexgirard.com/2008/12/20/raison-gestion-distribuee.html"/>
+   <updated>2008-12-20T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2008/12/20/raison-gestion-distribuee</id>
+   <content type="html">&lt;h1&gt;Les raisons d&#8217;une gestion distribuée de vos fichiers, aujourd&#8217;hui&lt;/h1&gt;
+&lt;p class="meta"&gt;20 Déc 2008 &#8211; Toulouse&lt;/p&gt;
+&lt;p&gt;Ce texte est une traduction d&#8217;un article du blog &lt;a href="http://jamesgolick.com/"&gt;James on Software&lt;/a&gt;, écrit par James Golick, un développeur web basé à Montréal, et publié le 20 janvier 2008. Il nous montre une application des réseaux centralisé, décentralisés et distribués, appliquée à la gestion de version de fichiers.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://jamesgolick.com/2008/1/21/why-distributed-version-control-matters-to-you-today"&gt;Lire l&#8217;article en anglais&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Depuis que &lt;a href="http://youtube.com/watch?v=4XpnKHJAok8"&gt;Linus Torvald&lt;/a&gt; (initiateur de Linux) vous parle de &lt;a href="http://git.or.cz/"&gt;git&lt;/a&gt;, vous vous demandez sûrement de quoi il veut parler, &lt;a href="http://macournoyer.wordpress.com/2007/12/27/moron-no-more-i-can-git/"&gt;vous n&#8217;êtes pas les seuls&lt;/a&gt;.&lt;br /&gt;
+La gestion distribuée de version de fichier est l&#8217;un des concept logiciel des moins bien compris, aujourd&#8217;hui. Il y a beaucoup de geeks qui vous diront que vous devriez l&#8217;utiliser, mais personne n&#8217;a encore réussi a expliquer pourquoi. Alors je m&#8217;y essaye.&lt;/p&gt;
+&lt;h2&gt;Mais de quoi nous parle Linus?&lt;/h2&gt;
+&lt;p&gt;Premièrement, voyons ce qu&#8217;est une gestion distribué de version de fichier. L&#8217;approche la plus commune pour décrire un système décentralisé est de présenter une image comme celle-ci, qui vient d&#8217;une page du manuel de &lt;a href="http://www.selenic.com/mercurial/wiki/"&gt;Mercurial&lt;/a&gt;, appelée &lt;a href="http://www.selenic.com/mercurial/wiki/index.cgi/UnderstandingMercurial"&gt;ComprendreMercurial&lt;/a&gt; (en anglais):&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/mercurial.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Si vous comprenez cette image (et que vous êtes nouveau dans la gestion de version de fichier), félicitations. Pour les autres, continuons avec une description plus claire.&lt;/p&gt;
+&lt;p&gt;Commençons par voir les différence entre la gestion centralisée et la gestion décentralisée de version de fichier. Avec un système centralisé comme Subversion ou &lt;span class="caps"&gt;CVS&lt;/span&gt;, il n&#8217;y a qu&#8217;*une seule copie du dépôt* de fichier (endroit où tous les fichiers sont stockés); cette copie est généralement placé sur un serveur accessible à plusieurs personnes. Quand un développeur travaille sur le code, il crée ce qu&#8217;on appelle une &#8220;copie de travail&#8221; (&#8220;checkout&#8221;) depuis le dépôt central. Cette copie contient assez d&#8217;information pour permettre au développeur d&#8217;interagir avec le serveur central, mais elle ne contient pas l&#8217;historique des révisions du projet, ni les branches ou les tags qui ont été créés (bien que ces branches et tags peuvent être explicitement demandés).&lt;/p&gt;
+&lt;p&gt;Avec un système décentralisé, l&#8217;opposé est vrai. Au lieu de demander une copie de travail, le développeur travaille sur une copie de l&#8217;intégralité du dépôt de fichier, qui &lt;strong&gt;inclut l&#8217;historique complet des révisions du projet ainsi que toutes les branches et tags&lt;/strong&gt;. La copie que le développeur reçoit est identique au dépôt où ils ont demandé cette copie. Les commits, branches, et tags ont lieu localement, sur la copie que les développeur ont fait. Les changements peuvent être envoyés (&#8220;&lt;em&gt;push&lt;/em&gt;&#8221;) et reçus (&#8220;&lt;em&gt;pull&lt;/em&gt;&#8221;) vers et depuis un dépôt public, ou la copie d&#8217;un autre développeur, ou sur n&#8217;importe quel autre dépôt qui existe.&lt;/p&gt;
+&lt;h2&gt;Donc?&lt;/h2&gt;
+&lt;p&gt;D&#8217;habitude, quand vous voulez la version finale ou les sources d&#8217;un projet open-source, vous vous dirigez vers le site officiel du projet. Le dépôt du projet est bien gardé, avec des privilèges &lt;a href="http://www.rubyonrails.org/core"&gt;pour certains développeurs&lt;/a&gt; qui peuvent changer le code. Celui qui voudra effectuer un changement dans le code devra d&#8217;abord récupérer une &#8220;copie de travail&#8221;, proposer un patch, et espérer qu&#8217;il soit accepté.&lt;/p&gt;
+&lt;p&gt;Quand chaque développeur a une copie complète du dépôt sur sa machine, la hiérarchie des projets open-source n&#8217;est pas pour autant supprimée. Le développeur qui veut travailler sur le code peut faire une copie du dépôt, effectuer des changements localement autant qu&#8217;il veut, recevoir les changements des copies des autres développeurs, et publier ses changements pour que les autres développeurs puissent les utiliser ou les rapatrier sur leur propre dépôt. Dans un système décentralisé, il n&#8217;y a pas de clé sur le dépôt du code source. Si l&#8217;auteur original continue de maintenir la meilleure version du code, super; sinon, les utilisateurs de ce code peuvent commencer à récupérer leur source de la personne qui offre la meilleure version.&lt;/p&gt;
+&lt;h2&gt;Vraiment?&lt;/h2&gt;
+&lt;p&gt;Beaucoup (peut-être la plupart) des plugins rails sont inactifs. Il ont été créés pour combler un manque, publiés, mis à jours pendant quelques mois, puis laissé a l&#8217;abandon. Puisque la plupart des plugins rails résident dans des dépôt subversion, personne ne peut continuer le développement sans perdre l&#8217;historique des révisions du projet, et avoir s&#8217;encombrer de problème pour configurer un serveur subversion public.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://code.whytheluckystiff.net/markaby/"&gt;Markaby&lt;/a&gt; n&#8217;est pas une exception à cette règle. Quand j&#8217;ai voulu l&#8217;utiliser dans un projet récent, j&#8217;ai trouvé qu&#8217;il été incompatible avec rails 2.0.2. D&#8217;après les logs subversion de markaby, les derniers changements dataient du 24 novembre 2007, quelques semaines avant la publication de cette version de rails. Heureusement, j&#8217;ai retrouvé un &lt;a href="http://dev.rubyonrails.org/ticket/10543"&gt;ticket&lt;/a&gt; dans le support de rails, qui donnait des instructions pour fixer le plugin avec un hack &#8211; une solution qui fonctionnait bien pour moi, mais qui n&#8217;apporterait rien aux utilisateurs qui ne trouveraient pas ce cheminement autour du plugin. Normalement, sans privilèges pour changer le code de markaby sur le dépôt officiel, je ne pourrait pas offrir ce fix publiquement.&lt;/p&gt;
+&lt;p&gt;Aucun problème avec un système distribué! En utilisant &lt;a href="http://www.kernel.org/pub/software/scm/git/docs/git-svn.html"&gt;git-svn&lt;/a&gt; pour passer Markaby sur un dépôt git, &lt;a href="http://github.com/giraffesoft/markaby/tree/master"&gt;j&#8217;ai publié mes changements&lt;/a&gt;, et maintenant n&#8217;importe qui peut récupérer une copie de Markaby en tapant la commande suivante:&lt;/p&gt;
+&lt;p&gt;$ git clone git@github.com:giraffesoft/markaby.git&lt;/p&gt;
+&lt;p&gt;Encore plus cool, quelqu&#8217;un avec assez de privilèges sur le dépôt officiel peut récupérer les changements, et les remettre dans subversion, avec les messages des modifications inclus! &lt;strong&gt;Le développement de ce plugin peut continuer n&#8217;importe où, et par n&#8217;importe qui&lt;/strong&gt;. C&#8217;est la beauté de la décentralisation.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>Easy Wordpress upgrade with Git</title>
-   <link href="http://alx.github.com/2008/12/14/easy-wordpress-update-with-git.html"/>
+   <link href="http://alexgirard.com/2008/12/14/easy-wordpress-update-with-git.html"/>
    <updated>2008-12-14T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/12/14/easy-wordpress-update-with-git</id>
+   <id>http://alexgirard.com/2008/12/14/easy-wordpress-update-with-git</id>
    <content type="html">&lt;p&gt;Wordpress has released its new version 2.7 few days ago, and since all my blogs are now controlled with Git behind, here is the way to do it quickly and easyly.&lt;/p&gt;
 &lt;p&gt;You might take care not to have modified anything in the Wordpress Core files (like &lt;em&gt;wp-includes&lt;/em&gt;) or in &lt;em&gt;/wp-content/themes/default&lt;/em&gt; as these changes will be crushed during the copy.&lt;/p&gt;
 &lt;ul&gt;
@@ -41,9 +69,9 @@
  
  <entry>
    <title>One night coding with a bug at the end</title>
-   <link href="http://alx.github.com/2008/12/09/one-night-coding-with-a-bug-at-the-end.html"/>
+   <link href="http://alexgirard.com/2008/12/09/one-night-coding-with-a-bug-at-the-end.html"/>
    <updated>2008-12-09T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/12/09/one-night-coding-with-a-bug-at-the-end</id>
+   <id>http://alexgirard.com/2008/12/09/one-night-coding-with-a-bug-at-the-end</id>
    <content type="html">&lt;p&gt;We&#8217;ve spend several hurs this afternoon with Seb to see how to refactor his system, and how to use the last ruby technologies, like &lt;a href="http://merbivore.com"&gt;Merb&lt;/a&gt; and a lot of nice little gems available on &lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; to make it even easier to manage.&lt;/p&gt;
 &lt;p&gt;Then, I&#8217;ve spent the night starting to implement the idea, which is nearly working:&lt;/p&gt;
 &lt;ul&gt;
@@ -64,9 +92,9 @@
  
  <entry>
    <title>GitHub discoveries and todo list</title>
-   <link href="http://alx.github.com/2008/12/08/github-discoveries-and-todo.html"/>
+   <link href="http://alexgirard.com/2008/12/08/github-discoveries-and-todo.html"/>
    <updated>2008-12-08T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/12/08/github-discoveries-and-todo</id>
+   <id>http://alexgirard.com/2008/12/08/github-discoveries-and-todo</id>
    <content type="html">&lt;p&gt;Quite a productive week with a lot of discoveries on GitHub, a little surf over there bring you to a lot of interesting projects and blogs:&lt;/p&gt;
 &lt;ul&gt;
 	&lt;li&gt;&lt;a href="http://sunfox.org/"&gt;Sunfox&lt;/a&gt;: A blog by a french guy, refreshing articles and music&lt;/li&gt;
@@ -87,9 +115,9 @@
  
  <entry>
    <title>Why Git is Better than X? en français</title>
-   <link href="http://alx.github.com/2008/12/02/why-git-is-better.html"/>
+   <link href="http://alexgirard.com/2008/12/02/why-git-is-better.html"/>
    <updated>2008-12-02T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/12/02/why-git-is-better</id>
+   <id>http://alexgirard.com/2008/12/02/why-git-is-better</id>
    <content type="html">&lt;p&gt;&lt;a href="http://jointheconversation.org/"&gt;Scott Chacon&lt;/a&gt; nous présente un nouveau site pour la diffusion de Git: &lt;a href="http://whygitisbetterthanx.com/"&gt;http://whygitisbetterthanx.com/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Scott Chacon est l&#8217;auteur des &lt;a href="http://gitcasts.com/"&gt;Gitcasts&lt;/a&gt; et de &lt;a href="http://jointheconversation.org/2008/06/02/railsconf-git-talk/"&gt;la conférence à la RailsConf&lt;/a&gt; qui aura permis à énormément de développeur de découvrir comment fonctionne vraiment Git.&lt;/p&gt;
 &lt;p&gt;Avec sa communauté sur &lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; et sa facilité d&#8217;utilisation, il faudra maintenant compter sur Git durant les prochaines années, ce qui est une bonne chose. Voici ce que donne une collaboration à plusieurs pour la traduction du document de Scott Chacon:&lt;/p&gt;
@@ -99,9 +127,9 @@
  
  <entry>
    <title>Binema reboot, retour à la case Conception</title>
-   <link href="http://alx.github.com/2008/12/01/binema-reboot-retour-a-la-conception.html"/>
+   <link href="http://alexgirard.com/2008/12/01/binema-reboot-retour-a-la-conception.html"/>
    <updated>2008-12-01T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/12/01/binema-reboot-retour-a-la-conception</id>
+   <id>http://alexgirard.com/2008/12/01/binema-reboot-retour-a-la-conception</id>
    <content type="html">&lt;p&gt;Binema.com est mort, après une année d&#8217;uptime et quelques mois de mises à jours: le concept était assez bon, mais la publication de nouvelles fiches de films étaient trop fastidieuse, faisant fuir les potentiels éditeurs&#8230;&lt;/p&gt;
 &lt;h2&gt;Qu&#8217;était Binema?&lt;/h2&gt;
 &lt;p&gt;Binema.com était un site contenant des fiches de films, avec des liens vers leurs descriptions sur &lt;a href="http:allocine.com"&gt;allocine&lt;/a&gt; et &lt;a href="http://imdb.com"&gt;&lt;span class="caps"&gt;IMDB&lt;/span&gt;&lt;/a&gt;, afin de présenter aux visiteurs l&#8217;intérêt de chaque film publié. Et en plus de cela, en se plaçant dans une zone grise de légalité (faire un lien vers un site proposant du contenu copyrighté, de la même façon que Google), Binema proposait des liens vers des sites de torrents (&lt;a href="http://mininova.org"&gt;Mininova&lt;/a&gt;, &lt;a href="http://thepiratebay.org"&gt;The Pirate Bay&lt;/a&gt;, &#8230;) afin de proposer aux visiteurs de télécharger le film, et aussi un lien vers les bons sous-titres pour ce films. En effet, il n&#8217;est pas souvent évident de trouver les sous-titres correspondants au film que vous avez téléchargé en VO.&lt;/p&gt;
@@ -130,9 +158,9 @@
  
  <entry>
    <title>Using Merb-Slices to manage your gems</title>
-   <link href="http://alx.github.com/2008/11/29/using-merb-slices-to-create-gems.html"/>
+   <link href="http://alexgirard.com/2008/11/29/using-merb-slices-to-create-gems.html"/>
    <updated>2008-11-29T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/29/using-merb-slices-to-create-gems</id>
+   <id>http://alexgirard.com/2008/11/29/using-merb-slices-to-create-gems</id>
    <content type="html">&lt;p&gt;This weekend, I wanted to experiement a bit more with &lt;a href="http://github.com/wycats/merb/tree/master/merb-slices"&gt;merb-slices&lt;/a&gt;, and thought it would be a good idea to use it to manage some of the gems I&#8217;ve created. It include few advantages:&lt;/p&gt;
 &lt;ul&gt;
 	&lt;li&gt;You can add a web interface to test your gem&lt;/li&gt;
@@ -153,9 +181,9 @@
  
  <entry>
    <title>Barceloneta.fr nouvelles couleurs</title>
-   <link href="http://alx.github.com/2008/11/27/barceloneta-contre-attaque.html"/>
+   <link href="http://alexgirard.com/2008/11/27/barceloneta-contre-attaque.html"/>
    <updated>2008-11-27T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/27/barceloneta-contre-attaque</id>
+   <id>http://alexgirard.com/2008/11/27/barceloneta-contre-attaque</id>
    <content type="html">&lt;p&gt;Grosse mise à jour pour Barceloneta.fr, après 2 ans de loyaux services sur un panier e-commerce fait-maison avec &lt;a href="http://rubyonrails.com"&gt;Ruby On Rails&lt;/a&gt;, voici maintenant venir la dernière version de &lt;a href="http://wordpress.org"&gt;Wordpress&lt;/a&gt; avec le plugin &lt;a href="http://www.instinct.co.nz/e-commerce"&gt;wp-shopping-cart&lt;/a&gt;, la meilleure solution open-source du moment, avec un tas de fonctionnalités permettant de facilement gérer un stock de produits ou de gérer les passerelles de paiements en ligne sans trop de soucies.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://barceloneta.fr"&gt;&lt;img src="http://farm4.static.flickr.com/3219/3061622137_a18d43b561.jpg" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Le design du blog est de Sandra, et comme d&#8217;habitude, il est disponible en téléchargement sur mon espace &lt;a href="http://github.com/alx"&gt;Github&lt;/a&gt;:&lt;/p&gt;
@@ -167,9 +195,9 @@
  
  <entry>
    <title>Web-app de Blog Backup</title>
-   <link href="http://alx.github.com/2008/11/25/conception-blog-backup-webapp.html"/>
+   <link href="http://alexgirard.com/2008/11/25/conception-blog-backup-webapp.html"/>
    <updated>2008-11-25T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/25/conception-blog-backup-webapp</id>
+   <id>http://alexgirard.com/2008/11/25/conception-blog-backup-webapp</id>
    <content type="html">&lt;p&gt;Dans l&#8217;idée de me faire la main sur le framework &lt;a href="http://merbivore.com"&gt;Merb&lt;/a&gt;, il  a des dizaine de concept qui me viennent à l&#8217;esprit.&lt;/p&gt;
 &lt;p&gt;Afin d&#8217;allier l&#8217;utile à l&#8217;agréable, et pour pouvoir me soulager d&#8217;un manque, je pense développer une interface de backup de blog. Beaucoup de mes projets utilisent en effet Wordpress comme gestionnaire de contenu (&lt;span class="caps"&gt;CMS&lt;/span&gt;), mais il me manque la sécurité de ne pas voir disparaître toute les données dans un crash d&#8217;une machine ou une mauvaise manipulation sur les bases de données.&lt;/p&gt;
 &lt;h2&gt;Définition de l&#8217;application&lt;/h2&gt;
@@ -203,18 +231,18 @@
  
  <entry>
    <title>Itinerant lifestyle</title>
-   <link href="http://alx.github.com/2008/11/21/itinerant-lifestyle.html"/>
+   <link href="http://alexgirard.com/2008/11/21/itinerant-lifestyle.html"/>
    <updated>2008-11-21T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/21/itinerant-lifestyle</id>
+   <id>http://alexgirard.com/2008/11/21/itinerant-lifestyle</id>
    <content type="html">&lt;p&gt;&lt;em&gt;Possessions meant little to Erdős; most of his belongings would fit in a suitcase, as dictated by his itinerant lifestyle. Awards and other earnings were in general donated to people in need and various worthy causes. He spent most of his life as a vagabond, travelling between scientific conferences and the homes of colleagues all over the world. He would typically show up at a colleague&#8217;s doorstep and announce &#8220;my brain is open&#8221;, staying long enough to collaborate on a few papers before moving on a few days later. In many cases, he would ask the current collaborator about whom he (Erdős) should visit next. His working style has been humorously compared to traversing a linked list.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Paul_Erd%C5%91s"&gt;Wikipedia entry on Paul Erdős&lt;/a&gt;&lt;/p&gt;</content>
  </entry>
  
  <entry>
    <title>DouceOffensive.org nouvel espoir</title>
-   <link href="http://alx.github.com/2008/11/21/douce-offensive.html"/>
+   <link href="http://alexgirard.com/2008/11/21/douce-offensive.html"/>
    <updated>2008-11-21T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/21/douce-offensive</id>
+   <id>http://alexgirard.com/2008/11/21/douce-offensive</id>
    <content type="html">&lt;h1&gt;DouceOffensive.org nouvel espoir&lt;/h1&gt;
 &lt;p class="meta"&gt;21 Nov 2008 &#8211; Toulouse&lt;/p&gt;
 &lt;p&gt;Après une semaine de travail, la nouvelle version de &lt;a href="http://douceoffensive.org"&gt;Douceoffensive.org&lt;/a&gt; est en ligne!&lt;/p&gt;
@@ -225,9 +253,9 @@
  
  <entry>
    <title>Initiation à Merb</title>
-   <link href="http://alx.github.com/2008/11/20/initiation-a-merb.html"/>
+   <link href="http://alexgirard.com/2008/11/20/initiation-a-merb.html"/>
    <updated>2008-11-20T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/20/initiation-a-merb</id>
+   <id>http://alexgirard.com/2008/11/20/initiation-a-merb</id>
    <content type="html">&lt;h1&gt;Initiation à Merb&lt;/h1&gt;
 &lt;p class="meta"&gt;20 Nov 2008 &#8211; Toulouse&lt;/p&gt;
 &lt;p&gt;Merb, nouveau framework Ruby, est le remplaçant officiel de Ruby on Rails.&lt;/p&gt;
@@ -317,9 +345,9 @@ end
  
  <entry>
    <title>Exporting Wordpress in Textile</title>
-   <link href="http://alx.github.com/2008/11/19/exporting-wordpress-to-textile.html"/>
+   <link href="http://alexgirard.com/2008/11/19/exporting-wordpress-to-textile.html"/>
    <updated>2008-11-19T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/19/exporting-wordpress-to-textile</id>
+   <id>http://alexgirard.com/2008/11/19/exporting-wordpress-to-textile</id>
    <content type="html">&lt;h1&gt;Exporting Wordpress in Textile&lt;/h1&gt;
 &lt;p class="meta"&gt;19 Nov 2008 &#8211; Toulouse&lt;/p&gt;
 &lt;p&gt;After moving to &lt;a href="/2008/11/18/using-git-to-blog.html"&gt;Jekyll and Git blogging&lt;/a&gt; yesterday, I fougt a bit to retrieve my old post from &lt;a href="http://blog.alexgirard.com"&gt;my current Wordpress blog&lt;/a&gt; inside this new blog.&lt;/p&gt;
@@ -330,9 +358,9 @@ end
  
  <entry>
    <title>Using Git To Blog</title>
-   <link href="http://alx.github.com/2008/11/18/using-git-to-blog.html"/>
+   <link href="http://alexgirard.com/2008/11/18/using-git-to-blog.html"/>
    <updated>2008-11-18T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/18/using-git-to-blog</id>
+   <id>http://alexgirard.com/2008/11/18/using-git-to-blog</id>
    <content type="html">&lt;h1&gt;Using Git To Blog&lt;/h1&gt;
 &lt;p class="meta"&gt;18 Nov 2008 &#8211; Toulouse&lt;/p&gt;
 &lt;p&gt;Starting today, I&#8217;ll use git to manage my blog. This is an idea from &lt;a href="http://tom.preston-werner.com/"&gt;Tom Preston-Werner&lt;/a&gt;, one of the cofounder of &lt;a href="http://github.com"&gt;github&lt;/a&gt;, you can read about his &lt;a href="http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html"&gt;experiment to build the blogging tool&lt;/a&gt; in use on my new blog.&lt;/p&gt;
@@ -347,9 +375,9 @@ end
  
  <entry>
    <title>Available-for-Hire Wordpress plugin</title>
-   <link href="http://alx.github.com/2008/11/14/available-for-hire-plugin.html"/>
+   <link href="http://alexgirard.com/2008/11/14/available-for-hire-plugin.html"/>
    <updated>2008-11-14T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/14/available-for-hire-plugin</id>
+   <id>http://alexgirard.com/2008/11/14/available-for-hire-plugin</id>
    <content type="html">&lt;h1&gt;Available-for-Hire Wordpress plugin&lt;/h1&gt;
 &lt;p class="meta"&gt;14 Nov 2008 &#8211; Madrid&lt;/p&gt;
 &lt;p&gt;It was when reading &lt;a href="http://drnicwilliams.com/"&gt;Dr Nic blog&lt;/a&gt; that I noticed the big banner at the bottom announcing his availability for hire.&lt;/p&gt;
@@ -360,9 +388,9 @@ end
  
  <entry>
    <title>Pressmark Embed update</title>
-   <link href="http://alx.github.com/2008/10/20/pressmark-embed-update.html"/>
+   <link href="http://alexgirard.com/2008/10/20/pressmark-embed-update.html"/>
    <updated>2008-10-20T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/10/20/pressmark-embed-update</id>
+   <id>http://alexgirard.com/2008/10/20/pressmark-embed-update</id>
    <content type="html">&lt;h1&gt;Pressmark Embed update&lt;/h1&gt;
 &lt;p class="meta"&gt;18 Nov 2008 &#8211; Toulouse&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://github.com/alx/pressmark/tree/master"&gt;Pressmark&lt;/a&gt;, a social bookmarking portal made with &lt;a href="http://wordpress.org"&gt;Wordpress&lt;/a&gt;, has been updated to include embedded videos/music!&lt;/p&gt;
@@ -372,9 +400,9 @@ end
  
  <entry>
    <title>Rapid Bokmarking with Ubiquity</title>
-   <link href="http://alx.github.com/2008/09/10/ubuquity-rapid-bookmarking.html"/>
+   <link href="http://alexgirard.com/2008/09/10/ubuquity-rapid-bookmarking.html"/>
    <updated>2008-09-10T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/09/10/ubuquity-rapid-bookmarking</id>
+   <id>http://alexgirard.com/2008/09/10/ubuquity-rapid-bookmarking</id>
    <content type="html">&lt;h1&gt;Rapid Bokmarking with Ubiquity&lt;/h1&gt;
 &lt;p class="meta"&gt;09 Sep 2008 &#8211; Madrid&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://labs.mozilla.com/2008/08/introducing-ubiquity/"&gt;&lt;img src="http://blog.alexgirard.com/wp-content/uploads/2008/09/ubiquity_side.png" alt="" /&gt;&lt;/a&gt; I was the only new thing I was blown away with after a week without internet: &lt;a href="http://labs.mozilla.com/2008/08/introducing-ubiquity/"&gt;Ubiquity&lt;/a&gt;&lt;/p&gt;
@@ -386,9 +414,9 @@ end
  
  <entry>
    <title>Comic Books to PDF</title>
-   <link href="http://alx.github.com/2008/08/13/comic-books-to-pdf.html"/>
+   <link href="http://alexgirard.com/2008/08/13/comic-books-to-pdf.html"/>
    <updated>2008-08-13T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/08/13/comic-books-to-pdf</id>
+   <id>http://alexgirard.com/2008/08/13/comic-books-to-pdf</id>
    <content type="html">&lt;h1&gt;Comic Books to &lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/h1&gt;
 &lt;p class="meta"&gt;13 Aug 2008 &#8211; Madrid&lt;/p&gt;
 &lt;p&gt;&lt;img src="http://blog.alexgirard.com/wp-content/uploads/2008/08/imagen-1-193x300.png" alt="" /&gt;&lt;/p&gt;
@@ -413,9 +441,9 @@ end
  
  <entry>
    <title>New Flat and Wifi Extension</title>
-   <link href="http://alx.github.com/2008/07/26/new-flat-and-wifi-extension.html"/>
+   <link href="http://alexgirard.com/2008/07/26/new-flat-and-wifi-extension.html"/>
    <updated>2008-07-26T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/07/26/new-flat-and-wifi-extension</id>
+   <id>http://alexgirard.com/2008/07/26/new-flat-and-wifi-extension</id>
    <content type="html">&lt;h1&gt;New Flat and Wifi Extension&lt;/h1&gt;
 &lt;p class="meta"&gt;26 Jul 2008 &#8211; Madrid&lt;/p&gt;
 &lt;p&gt;Here comes some photos of the new flat we occupy with Maki, after a Ikea triathlon (1 day shopping, 1 day building, 1 day enjoying), on the same building of the office, just 3 floors below:&lt;/p&gt;
@@ -428,9 +456,9 @@ end
  
  <entry>
    <title>Openmoko GPS Software and Hardware</title>
-   <link href="http://alx.github.com/2008/07/18/openmoko-gps-software-and-hardware.html"/>
+   <link href="http://alexgirard.com/2008/07/18/openmoko-gps-software-and-hardware.html"/>
    <updated>2008-07-18T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/07/18/openmoko-gps-software-and-hardware</id>
+   <id>http://alexgirard.com/2008/07/18/openmoko-gps-software-and-hardware</id>
    <content type="html">&lt;h1&gt;Openmoko &lt;span class="caps"&gt;GPS&lt;/span&gt; Software and Hardware&lt;/h1&gt;
 &lt;p class="meta"&gt;18 Jul 2008 &#8211; Madrid&lt;/p&gt;
 &lt;p&gt;The great thing about an open-source phone, like &lt;a href="http://openmoko.com"&gt;openmoko&lt;/a&gt;,  is that when there&#8217;s a problem, all the community can gather to find a solution.&lt;/p&gt;
@@ -450,9 +478,9 @@ h2. Software solution&lt;/p&gt;
  
  <entry>
    <title>Azureus and Mininova Bookmarks</title>
-   <link href="http://alx.github.com/2008/07/17/azureus-and-mininova-bookmarks.html"/>
+   <link href="http://alexgirard.com/2008/07/17/azureus-and-mininova-bookmarks.html"/>
    <updated>2008-07-17T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/07/17/azureus-and-mininova-bookmarks</id>
+   <id>http://alexgirard.com/2008/07/17/azureus-and-mininova-bookmarks</id>
    <content type="html">&lt;h1&gt;Azureus and Mininova Bookmarks&lt;/h1&gt;
 &lt;p class="meta"&gt;17 Jul 2008 &#8211; Madrid&lt;/p&gt;
 &lt;p&gt;Last week, &lt;a href="http://blog.mininova.org/articles/2008/07/08/new-feature-personal-bookmarks-remote-downloading/"&gt;Mininova has released a bookmark system&lt;/a&gt; for its users, it would allow remote downloading, but information are missing to configure &lt;a href="http://azureus.sourceforge.net"&gt;Azureus/Vuze&lt;/a&gt; properly, here is a mini tutorial.&lt;/p&gt;
@@ -498,9 +526,9 @@ h2. Software solution&lt;/p&gt;
  
  <entry>
    <title>SSH Connect sortcut</title>
-   <link href="http://alx.github.com/2008/06/03/ssh-connect-shortcut.html"/>
+   <link href="http://alexgirard.com/2008/06/03/ssh-connect-shortcut.html"/>
    <updated>2008-06-03T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/06/03/ssh-connect-shortcut</id>
+   <id>http://alexgirard.com/2008/06/03/ssh-connect-shortcut</id>
    <content type="html">&lt;h1&gt;&lt;span class="caps"&gt;SSH&lt;/span&gt; Connect sortcut&lt;/h1&gt;
 &lt;p class="meta"&gt;3 Jun 2008 &#8211; Madrid&lt;/p&gt;
 &lt;p&gt;With dozens of ssh connections each days, you better need a shortcut way to make it faster. Frustation comes to a end with this script:&lt;/p&gt;
@@ -510,9 +538,9 @@ h2. Software solution&lt;/p&gt;
  
  <entry>
    <title>Social Bookmarking with Wordpress</title>
-   <link href="http://alx.github.com/2008/05/22/pressmark-bookmark-with-wordpress.html"/>
+   <link href="http://alexgirard.com/2008/05/22/pressmark-bookmark-with-wordpress.html"/>
    <updated>2008-05-22T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/05/22/pressmark-bookmark-with-wordpress</id>
+   <id>http://alexgirard.com/2008/05/22/pressmark-bookmark-with-wordpress</id>
    <content type="html">&lt;h1&gt;Social Bookmarking with Wordpress&lt;/h1&gt;
 &lt;p class="meta"&gt;22 May 2008 &#8211; Madrid&lt;/p&gt;
 &lt;p&gt;Pressmark is a &lt;a href="http://www.wordpress.org"&gt;Wordpress&lt;/a&gt; installation with all you need to start a social bookmarking website (like &lt;a href="http://del.icio.us"&gt;del.icio.us&lt;/a&gt;, &lt;a href="http://sabros.us"&gt;sabros.us&lt;/a&gt;, &#8230;).&lt;/p&gt;
@@ -549,9 +577,9 @@ If you feel like adding your own modification to the code, you can clone/fork th
  
  <entry>
    <title>FastCGI configuration with Nginx on CentOS</title>
-   <link href="http://alx.github.com/2008/05/20/nginx-fastcgi-configuration-on-centos.html"/>
+   <link href="http://alexgirard.com/2008/05/20/nginx-fastcgi-configuration-on-centos.html"/>
    <updated>2008-05-20T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/05/20/nginx-fastcgi-configuration-on-centos</id>
+   <id>http://alexgirard.com/2008/05/20/nginx-fastcgi-configuration-on-centos</id>
    <content type="html">&lt;h1&gt;FastCGI configuration with Nginx on CentOS&lt;/h1&gt;
 &lt;p class="meta"&gt;20 May 2008 &#8211; Madrid&lt;/p&gt;
 &lt;p&gt;&lt;img src="http://blog.alexgirard.com/wp-content/uploads/2008/05/nginx_small.png" alt="" /&gt; After a week of &#8220;&lt;em&gt;502 Bad Gateway&lt;/em&gt;&#8221; error on &lt;a href="http://blog.feevy.com"&gt;blog.feevy.com&lt;/a&gt;, it was time to dive in our new &lt;a href="http://wiki.codemongers.com/Main"&gt;Nginx&lt;/a&gt; toy on Feevy server and understand what happened.&lt;/p&gt;
@@ -564,9 +592,9 @@ If you feel like adding your own modification to the code, you can clone/fork th
  
  <entry>
    <title>A La Poursuite du Vide, par John Perry Barlow</title>
-   <link href="http://alx.github.com/2008/04/30/a-la-poursuite-du-vide.html"/>
+   <link href="http://alexgirard.com/2008/04/30/a-la-poursuite-du-vide.html"/>
    <updated>2008-04-30T00:00:00+02:00</updated>
-   <id>http://alx.github.com/2008/04/30/a-la-poursuite-du-vide</id>
+   <id>http://alexgirard.com/2008/04/30/a-la-poursuite-du-vide</id>
    <content type="html">&lt;h1&gt;A La Poursuite du Vide, par John Perry Barlow&lt;/h1&gt;
 &lt;p class="meta"&gt;30 Avril 2008 &#8211; Toulouse&lt;/p&gt;
 &lt;p&gt;Un traduction du texte original de John Perry Barlow, aussi &lt;a href="http://w2.eff.org/Misc/Publications/John_Perry_Barlow/HTML/The_Pursuit_of_Emptyness.html"&gt;disponible en anglais&lt;/a&gt;:&lt;/p&gt;
