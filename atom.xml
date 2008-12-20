@@ -4,13 +4,41 @@
  <title>Alex Girard Feed</title>
  <link href="http://alx.github.com/atom.xml" rel="self"/>
  <link href="http://alx.github.com"/>
- <updated>2008-12-19T07:12:24+01:00</updated>
+ <updated>2008-12-20T16:00:23+01:00</updated>
  <id>http://alx.github.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Les raisons d'une gestion distribuée de vos fichiers, aujourd'hui</title>
+   <link href="http://alx.github.com/2008/12/20/raison-gestion-distribuee.html"/>
+   <updated>2008-12-20T00:00:00+01:00</updated>
+   <id>http://alx.github.com/2008/12/20/raison-gestion-distribuee</id>
+   <content type="html">&lt;h1&gt;Les raisons d&#8217;une gestion distribuée de vos fichiers, aujourd&#8217;hui&lt;/h1&gt;
+&lt;p class="meta"&gt;20 Déc 2008 &#8211; Toulouse&lt;/p&gt;
+&lt;p&gt;Ce texte est une traduction d&#8217;un article du blog &lt;a href="http://jamesgolick.com/"&gt;James on Software&lt;/a&gt;, écrit par James Golick, un développeur web basé à Montréal, et publié le 20 janvier 2008. Il nous montre une application des réseaux centralisé, décentralisés et distribués, appliquée à la gestion de version de fichiers.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://jamesgolick.com/2008/1/21/why-distributed-version-control-matters-to-you-today"&gt;Lire l&#8217;article en anglais&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Depuis que &lt;a href="http://youtube.com/watch?v=4XpnKHJAok8"&gt;Linus Torvald&lt;/a&gt; (initiateur de Linux) vous parle de &lt;a href="http://git.or.cz/"&gt;git&lt;/a&gt;, vous vous demandez sûrement de quoi il veut parler, &lt;a href="http://macournoyer.wordpress.com/2007/12/27/moron-no-more-i-can-git/"&gt;vous n&#8217;êtes pas les seuls&lt;/a&gt;.&lt;br /&gt;
+La gestion distribuée de version de fichier est l&#8217;un des concept logiciel des moins bien compris, aujourd&#8217;hui. Il y a beaucoup de geeks qui vous diront que vous devriez l&#8217;utiliser, mais personne n&#8217;a encore réussi a expliquer pourquoi. Alors je m&#8217;y essaye.&lt;/p&gt;
+&lt;h2&gt;Mais de quoi nous parle Linus?&lt;/h2&gt;
+&lt;p&gt;Premièrement, voyons ce qu&#8217;est une gestion distribué de version de fichier. L&#8217;approche la plus commune pour décrire un système décentralisé est de présenter une image comme celle-ci, qui vient d&#8217;une page du manuel de &lt;a href="http://www.selenic.com/mercurial/wiki/"&gt;Mercurial&lt;/a&gt;, appelée &lt;a href="http://www.selenic.com/mercurial/wiki/index.cgi/UnderstandingMercurial"&gt;ComprendreMercurial&lt;/a&gt; (en anglais):&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/mercurial.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Si vous comprenez cette image (et que vous êtes nouveau dans la gestion de version de fichier), félicitations. Pour les autres, continuons avec une description plus claire.&lt;/p&gt;
+&lt;p&gt;Commençons par voir les différence entre la gestion centralisée et la gestion décentralisée de version de fichier. Avec un système centralisé comme Subversion ou &lt;span class="caps"&gt;CVS&lt;/span&gt;, il n&#8217;y a qu&#8217;*une seule copie du dépôt* de fichier (endroit où tous les fichiers sont stockés); cette copie est généralement placé sur un serveur accessible à plusieurs personnes. Quand un développeur travaille sur le code, il crée ce qu&#8217;on appelle une &#8220;copie de travail&#8221; (&#8220;checkout&#8221;) depuis le dépôt central. Cette copie contient assez d&#8217;information pour permettre au développeur d&#8217;interagir avec le serveur central, mais elle ne contient pas l&#8217;historique des révisions du projet, ni les branches ou les tags qui ont été créés (bien que ces branches et tags peuvent être explicitement demandés).&lt;/p&gt;
+&lt;p&gt;Avec un système décentralisé, l&#8217;opposé est vrai. Au lieu de demander une copie de travail, le développeur travaille sur une copie de l&#8217;intégralité du dépôt de fichier, qui &lt;strong&gt;inclut l&#8217;historique complet des révisions du projet ainsi que toutes les branches et tags&lt;/strong&gt;. La copie que le développeur reçoit est identique au dépôt où ils ont demandé cette copie. Les commits, branches, et tags ont lieu localement, sur la copie que les développeur ont fait. Les changements peuvent être envoyés (&#8220;&lt;em&gt;push&lt;/em&gt;&#8221;) et reçus (&#8220;&lt;em&gt;pull&lt;/em&gt;&#8221;) vers et depuis un dépôt public, ou la copie d&#8217;un autre développeur, ou sur n&#8217;importe quel autre dépôt qui existe.&lt;/p&gt;
+&lt;h2&gt;Donc?&lt;/h2&gt;
+&lt;p&gt;D&#8217;habitude, quand vous voulez la version finale ou les sources d&#8217;un projet open-source, vous vous dirigez vers le site officiel du projet. Le dépôt du projet est bien gardé, avec des privilèges &lt;a href="http://www.rubyonrails.org/core"&gt;pour certains développeurs&lt;/a&gt; qui peuvent changer le code. Celui qui voudra effectuer un changement dans le code devra d&#8217;abord récupérer une &#8220;copie de travail&#8221;, proposer un patch, et espérer qu&#8217;il soit accepté.&lt;/p&gt;
+&lt;p&gt;Quand chaque développeur a une copie complète du dépôt sur sa machine, la hiérarchie des projets open-source n&#8217;est pas pour autant supprimée. Le développeur qui veut travailler sur le code peut faire une copie du dépôt, effectuer des changements localement autant qu&#8217;il veut, recevoir les changements des copies des autres développeurs, et publier ses changements pour que les autres développeurs puissent les utiliser ou les rapatrier sur leur propre dépôt. Dans un système décentralisé, il n&#8217;y a pas de clé sur le dépôt du code source. Si l&#8217;auteur original continue de maintenir la meilleure version du code, super; sinon, les utilisateurs de ce code peuvent commencer à récupérer leur source de la personne qui offre la meilleure version.&lt;/p&gt;
+&lt;h2&gt;Vraiment?&lt;/h2&gt;
+&lt;p&gt;Beaucoup (peut-être la plupart) des plugins rails sont inactifs. Il ont été créés pour combler un manque, publiés, mis à jours pendant quelques mois, puis laissé a l&#8217;abandon. Puisque la plupart des plugins rails résident dans des dépôt subversion, personne ne peut continuer le développement sans perdre l&#8217;historique des révisions du projet, et avoir s&#8217;encombrer de problème pour configurer un serveur subversion public.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://code.whytheluckystiff.net/markaby/"&gt;Markaby&lt;/a&gt; n&#8217;est pas une exception à cette règle. Quand j&#8217;ai voulu l&#8217;utiliser dans un projet récent, j&#8217;ai trouvé qu&#8217;il été incompatible avec rails 2.0.2. D&#8217;après les logs subversion de markaby, les derniers changements dataient du 24 novembre 2007, quelques semaines avant la publication de cette version de rails. Heureusement, j&#8217;ai retrouvé un &lt;a href="http://dev.rubyonrails.org/ticket/10543"&gt;ticket&lt;/a&gt; dans le support de rails, qui donnait des instructions pour fixer le plugin avec un hack &#8211; une solution qui fonctionnait bien pour moi, mais qui n&#8217;apporterait rien aux utilisateurs qui ne trouveraient pas ce cheminement autour du plugin. Normalement, sans privilèges pour changer le code de markaby sur le dépôt officiel, je ne pourrait pas offrir ce fix publiquement.&lt;/p&gt;
+&lt;p&gt;Aucun problème avec un système distribué! En utilisant &lt;a href="http://www.kernel.org/pub/software/scm/git/docs/git-svn.html"&gt;git-svn&lt;/a&gt; pour passer Markaby sur un dépôt git, &lt;a href="http://github.com/giraffesoft/markaby/tree/master"&gt;j&#8217;ai publié mes changements&lt;/a&gt;, et maintenant n&#8217;importe qui peut récupérer une copie de Markaby en tapant la commande suivante:&lt;/p&gt;
+&lt;p&gt;$ git clone git@github.com:giraffesoft/markaby.git&lt;/p&gt;
+&lt;p&gt;Encore plus cool, quelqu&#8217;un avec assez de privilèges sur le dépôt officiel peut récupérer les changements, et les remettre dans subversion, avec les messages des modifications inclus! &lt;strong&gt;Le développement de ce plugin peut continuer n&#8217;importe où, et par n&#8217;importe qui&lt;/strong&gt;. C&#8217;est la beauté de la décentralisation.&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Easy Wordpress upgrade with Git</title>
