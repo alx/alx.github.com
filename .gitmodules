@@ -1,0 +1,3 @@
+[submodule "twitticious"]
+	path = twitticious
+	url = git@github.com:alx/twitticious.git
