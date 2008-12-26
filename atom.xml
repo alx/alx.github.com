@@ -4,7 +4,7 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2008-12-26T14:31:59+01:00</updated>
+ <updated>2008-12-26T14:33:26+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
@@ -25,7 +25,7 @@ for the pictures and twitter for the news.&lt;/p&gt;
 &lt;a href="http://foca.tumblr.com/"&gt;foca&lt;/a&gt; ad re-adapt it to fecth vairous information&lt;br /&gt;
 from Flickr and send them to the &lt;a href="http://twitpic.com/api/"&gt;TwitPic &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The result:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/imges/twitpic.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/twitpic.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;It&#8217;s downloadable and clonable on github:&lt;br /&gt;
 &lt;a href="http://github.com/alx/flickr-downloader/"&gt;Flickr Twit&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;It&#8217;s just and experiment for the weekend, but it surely can be useful in&lt;br /&gt;
