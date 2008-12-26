@@ -4,11 +4,34 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2008-12-21T14:37:03+01:00</pubDate>
-    <lastBuildDate>2008-12-21T14:37:03+01:00</lastBuildDate>
+    <pubDate>2008-12-26T14:32:32+01:00</pubDate>
+    <lastBuildDate>2008-12-26T14:32:32+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>A Mashup a day keeps the boredom away</title>
+   		<link>http://alx.github.com/2008/12/26/a-mashup-a-day.html</link>
+   		<guid>http://alx.github.com/2008/12/26/a-mashup-a-day</guid>
+   		<description>&lt;p&gt;Bakc on Twitter after a few months, and on reblog ideas after a few years,&lt;br /&gt;
+I wanted to experiment a small mashup to follow 25C3 conference using flickr&lt;br /&gt;
+for the pictures and twitter for the news.&lt;/p&gt;
+&lt;p&gt;It was not long to find a Sinatra project using the Flickr &lt;span class="caps"&gt;API&lt;/span&gt;: &lt;br /&gt;
+&lt;a href="http://github.com/foca/flickr-downloader/tree"&gt;flickr-downloader&lt;/a&gt; from&lt;br /&gt;
+&lt;a href="http://foca.tumblr.com/"&gt;foca&lt;/a&gt; ad re-adapt it to fecth vairous information&lt;br /&gt;
+from Flickr and send them to the &lt;a href="http://twitpic.com/api/"&gt;TwitPic &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The result:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/imges/twitpic.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;It&#8217;s downloadable and clonable on github:&lt;br /&gt;
+&lt;a href="http://github.com/alx/flickr-downloader/"&gt;Flickr Twit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It&#8217;s just and experiment for the weekend, but it surely can be useful in&lt;br /&gt;
+recent world events that have primarely happened on twitter: London-Mumbaï&lt;br /&gt;
+terrorist attacks, big concert at X-Y site, weddings for a day&#8230; or to&lt;br /&gt;
+follow a group of flickr artists inside a twitter feed.&lt;/p&gt;
+&lt;p&gt;Thanks to Noah to have made &lt;a href="http://twitpic.com"&gt;TwitPic&lt;/a&gt; what it has become.&lt;/p&gt;</description>
+   		<pubDate>2008-12-26T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>25C3 - My remote lecture program</title>
    		<link>http://alx.github.com/2008/12/21/25c3-program.html</link>
@@ -267,42 +290,6 @@ La gestion distribuée de version de fichier est l&#8217;un des concept logiciel
 	&lt;li&gt;&lt;a href="http://github.com/alx/barceloneta/tree/master/wp-content/themes/barceloneta"&gt;Seulement voir le thème barceloneta.fr&lt;/a&gt; pour l&#8217;appliquer sur votre blog Wordpress&lt;/li&gt;
 &lt;/ul&gt;</description>
    		<pubDate>2008-11-27T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>Web-app de Blog Backup</title>
-   		<link>http://alx.github.com/2008/11/25/conception-blog-backup-webapp.html</link>
-   		<guid>http://alx.github.com/2008/11/25/conception-blog-backup-webapp</guid>
-   		<description>&lt;p&gt;Dans l&#8217;idée de me faire la main sur le framework &lt;a href="http://merbivore.com"&gt;Merb&lt;/a&gt;, il  a des dizaine de concept qui me viennent à l&#8217;esprit.&lt;/p&gt;
-&lt;p&gt;Afin d&#8217;allier l&#8217;utile à l&#8217;agréable, et pour pouvoir me soulager d&#8217;un manque, je pense développer une interface de backup de blog. Beaucoup de mes projets utilisent en effet Wordpress comme gestionnaire de contenu (&lt;span class="caps"&gt;CMS&lt;/span&gt;), mais il me manque la sécurité de ne pas voir disparaître toute les données dans un crash d&#8217;une machine ou une mauvaise manipulation sur les bases de données.&lt;/p&gt;
-&lt;h2&gt;Définition de l&#8217;application&lt;/h2&gt;
-&lt;p&gt;L&#8217;application de backup de blog est une application en ligne qui permet aux utilisateurs enregistrés d&#8217;ajouter un blog et de récupérer une backup de ce blog à n&#8217;importe quel moment.&lt;/p&gt;
-&lt;h2&gt;Fonctionnement de l&#8217;application&lt;/h2&gt;
-&lt;h3&gt;L&#8217;utilisateur sauvegarde son blog&lt;/h3&gt;
-&lt;ul&gt;
-	&lt;li&gt;L&#8217;utilisateur crée un compte et se connecte&lt;/li&gt;
-	&lt;li&gt;L&#8217;utilisateur ajoute l&#8217;adresse de son blog dans son compte&lt;br /&gt;
-	* Si nécessaire, on lui demandera les données de connexion pour xml-rpc&lt;br /&gt;
-	* Si xml-rpc n&#8217;est pas disponible, alors les backup se feront a partir du fil &lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/li&gt;
-	&lt;li&gt;L&#8217;utilisateur se déconnecte&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;L&#8217;utilisateur récupère une backup&lt;/h3&gt;
-&lt;ul&gt;
-	&lt;li&gt;L&#8217;utilisateur se connecte à son compte&lt;/li&gt;
-	&lt;li&gt;L&#8217;utilisateur télécharge le fichier xml de backup lié a un blog&lt;/li&gt;
-	&lt;li&gt;L&#8217;utilisateur se déconnecte&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Extensions&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Versionning&lt;/strong&gt;: l&#8217;application passer automatiquement sur les blog pour récupérer les dernières mises à jours. Un système de versionning permettra à l&#8217;utilisateur de récupérer des backup de diverses dates.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Migration&lt;/strong&gt;: un bouton de migration servira à l&#8217;utilisateur pour saisir l&#8217;url de son nouveau blog, l&#8217;application se chargera alors de communiquer au nouveau blog les données de l&#8217;ancien, et l&#8217;application se changera de surveiller ce nouveau blog a partir de ce moment.&lt;/p&gt;
-&lt;h2&gt;Limitations&lt;/h2&gt;
-&lt;ul&gt;
-	&lt;li&gt;&lt;em&gt;Des plugins de backup existent déjà&lt;/em&gt;: le but de l&#8217;application est de fournir une interface simple sans installation de la part de l&#8217;utilisateur.&lt;/li&gt;
-	&lt;li&gt;&lt;em&gt;Seulement compatible avec Wordpress&lt;/em&gt;: l&#8217;application doit Être facilement extensible à d&#8217;autre systèmes de blog, soit par xml-rpc, soit par &lt;span class="caps"&gt;RSS&lt;/span&gt;.&lt;/li&gt;
-	&lt;li&gt;&lt;em&gt;Peu de personnes sont concernés&lt;/em&gt;: très bien pour un démarrage, mon application se limitera à la dizaine de blog que je dois sauvegarder.&lt;/li&gt;
-	&lt;li&gt;&lt;em&gt;Restauration sans fichier&lt;/em&gt;: si disponible dans le blog de l&#8217;utilisateur, l&#8217;utilisateur peut directement saisir une url disponible dans l&#8217;application, liée à sa sauvegarde, et l&#8217;application communiquera la backup en xml-rpc au blog.&lt;/li&gt;
-&lt;/ul&gt;</description>
-   		<pubDate>2008-11-25T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>

@@ -4,13 +4,36 @@
  <title>Alex Girard Feed</title>
  <link href="http://alx.github.com/atom.xml" rel="self"/>
  <link href="http://alx.github.com"/>
- <updated>2008-12-21T14:37:03+01:00</updated>
+ <updated>2008-12-26T14:32:32+01:00</updated>
  <id>http://alx.github.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>A Mashup a day keeps the boredom away</title>
+   <link href="http://alx.github.com/2008/12/26/a-mashup-a-day.html"/>
+   <updated>2008-12-26T00:00:00+01:00</updated>
+   <id>http://alx.github.com/2008/12/26/a-mashup-a-day</id>
+   <content type="html">&lt;p&gt;Bakc on Twitter after a few months, and on reblog ideas after a few years,&lt;br /&gt;
+I wanted to experiment a small mashup to follow 25C3 conference using flickr&lt;br /&gt;
+for the pictures and twitter for the news.&lt;/p&gt;
+&lt;p&gt;It was not long to find a Sinatra project using the Flickr &lt;span class="caps"&gt;API&lt;/span&gt;: &lt;br /&gt;
+&lt;a href="http://github.com/foca/flickr-downloader/tree"&gt;flickr-downloader&lt;/a&gt; from&lt;br /&gt;
+&lt;a href="http://foca.tumblr.com/"&gt;foca&lt;/a&gt; ad re-adapt it to fecth vairous information&lt;br /&gt;
+from Flickr and send them to the &lt;a href="http://twitpic.com/api/"&gt;TwitPic &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The result:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/imges/twitpic.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;It&#8217;s downloadable and clonable on github:&lt;br /&gt;
+&lt;a href="http://github.com/alx/flickr-downloader/"&gt;Flickr Twit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It&#8217;s just and experiment for the weekend, but it surely can be useful in&lt;br /&gt;
+recent world events that have primarely happened on twitter: London-Mumbaï&lt;br /&gt;
+terrorist attacks, big concert at X-Y site, weddings for a day&#8230; or to&lt;br /&gt;
+follow a group of flickr artists inside a twitter feed.&lt;/p&gt;
+&lt;p&gt;Thanks to Noah to have made &lt;a href="http://twitpic.com"&gt;TwitPic&lt;/a&gt; what it has become.&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>25C3 - My remote lecture program</title>

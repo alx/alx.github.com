@@ -2,12 +2,19 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>http://alx.github.com</loc>
-		<lastmod>2008-12-21T14:37:03+01:00</lastmod>
+		<lastmod>2008-12-26T14:32:32+01:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
 
 	
+ 	<url>
+   		<loc>http://alx.github.com/2008/12/26/a-mashup-a-day.html</loc>
+   		<lastmod>2008-12-26T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
  	<url>
    		<loc>http://alx.github.com/2008/12/21/25c3-program.html</loc>
    		<lastmod>2008-12-21T00:00:00+01:00</lastmod>
