@@ -4,7 +4,7 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2008-12-28T23:40:23+01:00</updated>
+ <updated>2008-12-28T23:41:34+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
@@ -19,7 +19,7 @@
    <id>http://alexgirard.com/2008/12/28/gitbook-en-francais</id>
    <content type="html">&lt;p&gt;Une nouvelle traduction en cours de correction est maintenant disponible pour tous ceux voulant en connaître plus sur Git: le &lt;a href="http://book.git-scm.com/"&gt;Git Community Book&lt;/a&gt; est disponible sur &lt;a href="http://github.com/schacon/gitbook/"&gt;GitHub&lt;/a&gt;, et après en avoir appris énormément durant la traduction de la centaine de pages de cette ouvrage en cours de réalisation, je vous ai généré la version française actuelle:&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://alexgirard.com/git-book/"&gt;&lt;img src="/images/gitbook.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Vous y trouverez le &lt;a href="http://alexgirard.com/git-book/book_fr.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt; et aussi pleins d&#8217;erreurs à corriger. Je vous invite à m&#8217;envoyer un mail à &lt;a href="mailto:alexgirard@gmail.com"&gt;alx.girard@gmail.com&lt;/a&gt; avec vos corrections, suggestions, et commentaires; ou à participer au projet en le &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;forkant sur github&lt;/a&gt; et en travaillant dans la branche &lt;em&gt;french&lt;/em&gt; avant de m&#8217;envoyer vos &lt;em&gt;pull-request&lt;/em&gt;.&lt;/p&gt;</content>
+&lt;p&gt;Vous y trouverez le &lt;a href="http://alexgirard.com/git-book/book_fr.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt; et aussi pleins d&#8217;erreurs à corriger. Je vous invite à m&#8217;envoyer un mail à &lt;a href="mailto:alx.girard@gmail.com"&gt;alx.girard@gmail.com&lt;/a&gt; avec vos corrections, suggestions, et commentaires; ou à participer au projet en le &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;forkant sur github&lt;/a&gt; et en travaillant dans la branche &lt;em&gt;french&lt;/em&gt; avant de m&#8217;envoyer vos &lt;em&gt;pull-request&lt;/em&gt;.&lt;/p&gt;</content>
  </entry>
  
  <entry>
