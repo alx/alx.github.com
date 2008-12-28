@@ -4,11 +4,21 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2008-12-27T14:35:21+01:00</pubDate>
-    <lastBuildDate>2008-12-27T14:35:21+01:00</lastBuildDate>
+    <pubDate>2008-12-28T23:38:35+01:00</pubDate>
+    <lastBuildDate>2008-12-28T23:38:35+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>Git Community Book en Français!</title>
+   		<link>http://alx.github.com/2008/12/28/gitbook-en-francais.html</link>
+   		<guid>http://alx.github.com/2008/12/28/gitbook-en-francais</guid>
+   		<description>&lt;p&gt;Une nouvelle traduction en cours de correction est maintenant disponible pour tous ceux voulant en connaître plus sur Git. Le &lt;a href="http://book.git-scm.com/"&gt;Git Community Book&lt;/a&gt; est disponible sur &lt;a href="http://github.com/schacon/gitbook/"&gt;GitHub&lt;/a&gt;, et après en avoir appris énormément durant la traduction de la centaine de pages de cette ouvrage en cours de réalisation, je vous ai générer la version française actuelle:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://alexgirard.com/git-book/"&gt;&lt;img src="/images/gitbook.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Vous y trouverez le &lt;a href="http://alexgirard.com/git-book/book_fr.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt; et aussi pleins d&#8217;erreurs à corriger. Je vous invite à m&#8217;envoyer un mail à &lt;a href="mailto:alexgirard@gmail.com"&gt;alx.girard@gmail.com&lt;/a&gt; avec vos corrections, suggestions, et commentaires; ou de participer au projet en le &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;forkant sur github&lt;/a&gt; et en travaillant dans la branche &lt;em&gt;french&lt;/em&gt; avant de m&#8217;envoyer vos pull-request.&lt;/p&gt;</description>
+   		<pubDate>2008-12-28T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>Using Git submodules to publish jekyll blog on many hosts</title>
    		<link>http://alx.github.com/2008/12/27/git-public-websites.html</link>
@@ -258,29 +268,6 @@ La gestion distribuée de version de fichier est l&#8217;un des concept logiciel
 &lt;/ol&gt;
 &lt;p&gt;Pour éveiller l&#8217;intérêt des utilisateurs, et les pousser à participer à l&#8217;essor de la base de donnée, le concept peut être rendu interactif. Il peut être simple d&#8217;utiliser twitter pour permettre l&#8217;ajout de torrent, binema ne sera alors qu&#8217;un robot qui reçoit des commandes pour stocker des information dans une base de donnée, qui est ensuite affichée sur une page web.&lt;/p&gt;</description>
    		<pubDate>2008-12-01T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>Using Merb-Slices to manage your gems</title>
-   		<link>http://alx.github.com/2008/11/29/using-merb-slices-to-create-gems.html</link>
-   		<guid>http://alx.github.com/2008/11/29/using-merb-slices-to-create-gems</guid>
-   		<description>&lt;p&gt;This weekend, I wanted to experiement a bit more with &lt;a href="http://github.com/wycats/merb/tree/master/merb-slices"&gt;merb-slices&lt;/a&gt;, and thought it would be a good idea to use it to manage some of the gems I&#8217;ve created. It include few advantages:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;You can add a web interface to test your gem&lt;/li&gt;
-	&lt;li&gt;Rspec is directly include to debug the gem when problems appear&lt;/li&gt;
-	&lt;li&gt;It&#8217;s easy to create, deploy and could be used in any rails/merb app&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I&#8217;ve tested the migration with &lt;a href="http://rfeedfinder.rubyforge.org"&gt;rfeedfinder&lt;/a&gt;, a gem to discover feed url from any webpage. In a few easy steps, I migrated the gem into a slice:&lt;/p&gt;
-&lt;ol&gt;
-	&lt;li&gt;Create a slice: &lt;em&gt;merb-gen slice rfeedfinder-slice&lt;/em&gt;&lt;/li&gt;
-	&lt;li&gt;Copy te class you need from your gem lib in a new file inside &lt;em&gt;lib/rfeedfinder-slice/&lt;/em&gt; directory. Enclose it inside &#8216;&lt;em&gt;module RfeedfinderSlice &#8230; end&lt;/em&gt;&#8217;&lt;/li&gt;
-	&lt;li&gt;In &lt;a href="http://github.com/alx/rfeedfinder-slice/tree/master/lib/rfeedfinder-slice.rb"&gt;&lt;em&gt;lib/rfeedfinder-slice.rb&lt;/em&gt;&lt;/a&gt;, add your gem dependencies at the end of the file&lt;/li&gt;
-	&lt;li&gt;Don&#8217;t forget to include your lib file into the dependencies&lt;/li&gt;
-	&lt;li&gt;To install the gem on your system, nothing easier than: &lt;em&gt;sudo rake install&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I&#8217;ll let you see the web interface, all the routes are already configure, you just need to add a form, and get fancy if you want to use the slice as a proper merb-slice to be included in a complete merb app. Then you can use it in a ruby script, or in other rails/merb applications:&lt;/p&gt;
-&lt;script src="http://gist.github.com/30501.js"&gt;&lt;/script&gt;&lt;p&gt;See the end result on github: &lt;a href="http://github.com/alx/rfeedfinder-slice/"&gt;rfeedfinder-slice&lt;/a&gt;&lt;/p&gt;</description>
-   		<pubDate>2008-11-29T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>
