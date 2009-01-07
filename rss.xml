@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-01-07T01:59:33+01:00</pubDate>
-    <lastBuildDate>2009-01-07T01:59:33+01:00</lastBuildDate>
+    <pubDate>2009-01-07T02:00:54+01:00</pubDate>
+    <lastBuildDate>2009-01-07T02:00:54+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -37,9 +37,9 @@
 2, Marietta Karamanli &#8211; Place: 559&lt;/p&gt;
 &lt;p&gt;Avec ces données, il ne me manquait plus qu&#8217;a situé chacun des sièges. Heureusement, le &lt;a href="http://www.assemblee-nationale.fr/seance/hemicycle.asp"&gt;plan de l&#8217;hémicycle&lt;/a&gt; est aussi disponible en ligne, et en ajoutant un peu d&#8217;interaction grâce à &lt;a href="http://shoooes.net/"&gt;Shoes&lt;/a&gt;, j&#8217;ai rapidement créé un fichier de coordonnées de tous les sièges. (&lt;em&gt;En passant, j&#8217;aimerai maintenant avoir plus d&#8217;information sur l&#8217;histoire de l&#8217;Assemblée, il manque des numéros de sièges, la curiosité me poussera sûrement à répondre à ces manques prochainement.&lt;/em&gt;)&lt;/p&gt;
 &lt;p&gt;Voici l&#8217;application qui m&#8217;a servie à situer chaque siège:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/seatmap.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/seatmap.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;Et enfin, avec l&#8217;aide du code de &lt;a href="http://blog.corunet.com/english/the-definitive-heatmap"&gt;clickmaps&lt;/a&gt;, idéalement disponible en ruby, j&#8217;ai put le modifier un petit peu pour analyser cette séance:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/20090090.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/20090090.jpg" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;Ce n&#8217;est qu&#8217;un début, avec du code encore tout poussiéreux, et des idées d&#8217;analyses qui peuvent être assez marrante, ou plus sérieusement poussées pour permettre une autre vision de la scène politique encore assez obscure à l&#8217;Assemblée.&lt;/p&gt;
 &lt;p&gt;Vous pouvez télécharger et suivre le développement de cet outils sur &lt;a href="http://github.com/alx/politimap/"&gt;github.com/alx/politimap/&lt;/a&gt;&lt;/p&gt;</description>
    		<pubDate>2009-01-07T00:00:00+01:00</pubDate>
