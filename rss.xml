@@ -4,11 +4,47 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2008-12-28T23:41:45+01:00</pubDate>
-    <lastBuildDate>2008-12-28T23:41:45+01:00</lastBuildDate>
+    <pubDate>2009-01-07T01:59:33+01:00</pubDate>
+    <lastBuildDate>2009-01-07T01:59:33+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>Politimap, les zones chaudes de l'Assemblée Nationale</title>
+   		<link>http://alx.github.com/2009/01/07/politimap-premiere.html</link>
+   		<guid>http://alx.github.com/2009/01/07/politimap-premiere</guid>
+   		<description>&lt;p&gt;Après quelques surprises lors du passage de Jérémie Zimmermann à &lt;a href="http://www.cinemas-utopia.org/toulouse/"&gt;Utopia Toulouse&lt;/a&gt; pour présenter le travail de &lt;a href="http://laquadrature.net"&gt;La Quadrature du Net&lt;/a&gt;, et après m&#8217;être rapidement perdu dans une tentative de lecture des texte des sessions de l&#8217;Assemblée Nationale, je me suis dit qu&#8217;il serait plus marrant de visualiser l&#8217;activité de ces sessions sous forme de &lt;a href="http://images.google.com/images?q=heatmap"&gt;heatmap&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Sachant que tous les textes, et le fiches de chaque député sont librement accessible sur le site de l&#8217;Assemblée, il ne me manquait plus que quelques lignes pour analyser le nombre de prise de parole dans chaque séance. Ainsi, durant la première séance du 8 décembre 2008, évoquant la communication audiovisuelle et le nouveau service public de la télévision, voici le nombre de prise de parole:&lt;/p&gt;
+&lt;p&gt;58, Noël Mamère &#8211; Place: 596&lt;br /&gt;
+45, Patrick Bloche &#8211; Place: 453&lt;br /&gt;
+34, Marcel Rogemont &#8211; Place: 479&lt;br /&gt;
+30, Patrick Roy &#8211; Place: 550&lt;br /&gt;
+24, Benoist Apparu &#8211; Place: 138&lt;br /&gt;
+23, Patrice Martin-Lalande &#8211; Place: 125&lt;br /&gt;
+23, Jean-François Copé &#8211; Place: 99&lt;br /&gt;
+22, Patrick Braouezec &#8211; Place: 585&lt;br /&gt;
+21, Frédéric Lefebvre &#8211; Place: 358&lt;br /&gt;
+20, Michel Herbillon &#8211; Place: 259&lt;br /&gt;
+15, Christian Kert &#8211; Place: 343&lt;br /&gt;
+12, Sandrine Mazetier &#8211; Place: 429&lt;br /&gt;
+7, Yves Censi &#8211; Place: 79&lt;br /&gt;
+6, Jean Dionis du Séjour &#8211; Place: 397&lt;br /&gt;
+5, Dino Cinieri &#8211; Place: 196&lt;br /&gt;
+4, Richard Dell&#8217;Agnola &#8211; Place: 357&lt;br /&gt;
+4, Richard Mallié &#8211; Place: 76&lt;br /&gt;
+3, Bruno Le Roux &#8211; Place: 421&lt;br /&gt;
+2, Françoise de Panafieu &#8211; Place: 177&lt;br /&gt;
+2, Marietta Karamanli &#8211; Place: 559&lt;/p&gt;
+&lt;p&gt;Avec ces données, il ne me manquait plus qu&#8217;a situé chacun des sièges. Heureusement, le &lt;a href="http://www.assemblee-nationale.fr/seance/hemicycle.asp"&gt;plan de l&#8217;hémicycle&lt;/a&gt; est aussi disponible en ligne, et en ajoutant un peu d&#8217;interaction grâce à &lt;a href="http://shoooes.net/"&gt;Shoes&lt;/a&gt;, j&#8217;ai rapidement créé un fichier de coordonnées de tous les sièges. (&lt;em&gt;En passant, j&#8217;aimerai maintenant avoir plus d&#8217;information sur l&#8217;histoire de l&#8217;Assemblée, il manque des numéros de sièges, la curiosité me poussera sûrement à répondre à ces manques prochainement.&lt;/em&gt;)&lt;/p&gt;
+&lt;p&gt;Voici l&#8217;application qui m&#8217;a servie à situer chaque siège:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/seatmap.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Et enfin, avec l&#8217;aide du code de &lt;a href="http://blog.corunet.com/english/the-definitive-heatmap"&gt;clickmaps&lt;/a&gt;, idéalement disponible en ruby, j&#8217;ai put le modifier un petit peu pour analyser cette séance:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/20090090.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Ce n&#8217;est qu&#8217;un début, avec du code encore tout poussiéreux, et des idées d&#8217;analyses qui peuvent être assez marrante, ou plus sérieusement poussées pour permettre une autre vision de la scène politique encore assez obscure à l&#8217;Assemblée.&lt;/p&gt;
+&lt;p&gt;Vous pouvez télécharger et suivre le développement de cet outils sur &lt;a href="http://github.com/alx/politimap/"&gt;github.com/alx/politimap/&lt;/a&gt;&lt;/p&gt;</description>
+   		<pubDate>2009-01-07T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>Git Community Book en Français!</title>
    		<link>http://alx.github.com/2008/12/28/gitbook-en-francais.html</link>
@@ -237,37 +273,6 @@ La gestion distribuée de version de fichier est l&#8217;un des concept logiciel
 &lt;p&gt;&lt;a href="http://github.com/alx/whygitisbetter/network"&gt;&lt;img src="/images/git-network.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Si vous avez besoin de plus d&#8217;informations en français, vous pouvez &lt;a href="http://fr.whygitisbetterthanx.com/"&gt;consultez la traduction française&lt;/a&gt; de &lt;em&gt;Why Git is Better Than X&lt;/em&gt;.&lt;/p&gt;</description>
    		<pubDate>2008-12-02T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>Binema reboot, retour à la case Conception</title>
-   		<link>http://alx.github.com/2008/12/01/binema-reboot-retour-a-la-conception.html</link>
-   		<guid>http://alx.github.com/2008/12/01/binema-reboot-retour-a-la-conception</guid>
-   		<description>&lt;p&gt;Binema.com est mort, après une année d&#8217;uptime et quelques mois de mises à jours: le concept était assez bon, mais la publication de nouvelles fiches de films étaient trop fastidieuse, faisant fuir les potentiels éditeurs&#8230;&lt;/p&gt;
-&lt;h2&gt;Qu&#8217;était Binema?&lt;/h2&gt;
-&lt;p&gt;Binema.com était un site contenant des fiches de films, avec des liens vers leurs descriptions sur &lt;a href="http:allocine.com"&gt;allocine&lt;/a&gt; et &lt;a href="http://imdb.com"&gt;&lt;span class="caps"&gt;IMDB&lt;/span&gt;&lt;/a&gt;, afin de présenter aux visiteurs l&#8217;intérêt de chaque film publié. Et en plus de cela, en se plaçant dans une zone grise de légalité (faire un lien vers un site proposant du contenu copyrighté, de la même façon que Google), Binema proposait des liens vers des sites de torrents (&lt;a href="http://mininova.org"&gt;Mininova&lt;/a&gt;, &lt;a href="http://thepiratebay.org"&gt;The Pirate Bay&lt;/a&gt;, &#8230;) afin de proposer aux visiteurs de télécharger le film, et aussi un lien vers les bons sous-titres pour ce films. En effet, il n&#8217;est pas souvent évident de trouver les sous-titres correspondants au film que vous avez téléchargé en VO.&lt;/p&gt;
-&lt;p&gt;Binema consistait en une version modifiée de &lt;a href="http://wordpress.org"&gt;Wordpress&lt;/a&gt; 2.3 avec l&#8217;ajout du plugin Custom Panel pour gérer tous les champs informatifs pour chaque film. Lourde édition, et pas facile de recruter des éditeurs qui doivent se plonger dans une certaine documentation avant de pouvoir publier du contenu.&lt;/p&gt;
-&lt;h2&gt;Comment réussir un reboot?&lt;/h2&gt;
-&lt;p&gt;Le reboot de binema consiste à seulement garder le minimum des fonctionnalités nécessaires:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;Avoir une liste de films téléchargeables&lt;/li&gt;
-	&lt;li&gt;Les sous-titres sont disponibles pour les films en VO&lt;/li&gt;
-	&lt;li&gt;N&#8217;importe quel utilisateur peut participer à l&#8217;expansion de la liste&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;En simplifiant le processus de publication, on peut distinguer 4 étapes de la fiche d&#8217;un film:&lt;/p&gt;
-&lt;ol&gt;
-	&lt;li&gt;Le lien vers un torrent d&#8217;un film existe, il est ajouté sur binema&lt;/li&gt;
-	&lt;li&gt;Un administrateur, ou un robot, valide le torrent: la page est disponible et contient un lien vers fichier .torrent&lt;/li&gt;
-	&lt;li&gt;Il manque maintenant les sous-titres associé à ce film
-	&lt;ol&gt;
-		&lt;li&gt;Le film est en français: pas de sous-titres nécessaire, la fiche du film passe au niveau suivant&lt;/li&gt;
-		&lt;li&gt;Le film est en VO: sous-titre en attente, affichage du film dans a liste d&#8217;attente afin qu&#8217;un utilisateur trouve les sous-titres&lt;/li&gt;
-	&lt;/ol&gt;&lt;/li&gt;
-	&lt;li&gt;Quand le sous-titre est validé, la fiche du film est finie pour une publication minimale&lt;/li&gt;
-	&lt;li&gt;Les films respectant une bonne qualité video, audio, des sous-titres, avec les informations nécessaires, la fiche du film passent dans à la catégorie Spécial&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Pour éveiller l&#8217;intérêt des utilisateurs, et les pousser à participer à l&#8217;essor de la base de donnée, le concept peut être rendu interactif. Il peut être simple d&#8217;utiliser twitter pour permettre l&#8217;ajout de torrent, binema ne sera alors qu&#8217;un robot qui reçoit des commandes pour stocker des information dans une base de donnée, qui est ensuite affichée sur une page web.&lt;/p&gt;</description>
-   		<pubDate>2008-12-01T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>
