@@ -4,13 +4,49 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2008-12-28T23:41:34+01:00</updated>
+ <updated>2009-01-07T01:58:51+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Politimap, les zones chaudes de l'Assemblée Nationale</title>
+   <link href="http://alexgirard.com/2009/01/07/politimap-premiere.html"/>
+   <updated>2009-01-07T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2009/01/07/politimap-premiere</id>
+   <content type="html">&lt;p&gt;Après quelques surprises lors du passage de Jérémie Zimmermann à &lt;a href="http://www.cinemas-utopia.org/toulouse/"&gt;Utopia Toulouse&lt;/a&gt; pour présenter le travail de &lt;a href="http://laquadrature.net"&gt;La Quadrature du Net&lt;/a&gt;, et après m&#8217;être rapidement perdu dans une tentative de lecture des texte des sessions de l&#8217;Assemblée Nationale, je me suis dit qu&#8217;il serait plus marrant de visualiser l&#8217;activité de ces sessions sous forme de &lt;a href="http://images.google.com/images?q=heatmap"&gt;heatmap&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Sachant que tous les textes, et le fiches de chaque député sont librement accessible sur le site de l&#8217;Assemblée, il ne me manquait plus que quelques lignes pour analyser le nombre de prise de parole dans chaque séance. Ainsi, durant la première séance du 8 décembre 2008, évoquant la communication audiovisuelle et le nouveau service public de la télévision, voici le nombre de prise de parole:&lt;/p&gt;
+&lt;p&gt;58, Noël Mamère &#8211; Place: 596&lt;br /&gt;
+45, Patrick Bloche &#8211; Place: 453&lt;br /&gt;
+34, Marcel Rogemont &#8211; Place: 479&lt;br /&gt;
+30, Patrick Roy &#8211; Place: 550&lt;br /&gt;
+24, Benoist Apparu &#8211; Place: 138&lt;br /&gt;
+23, Patrice Martin-Lalande &#8211; Place: 125&lt;br /&gt;
+23, Jean-François Copé &#8211; Place: 99&lt;br /&gt;
+22, Patrick Braouezec &#8211; Place: 585&lt;br /&gt;
+21, Frédéric Lefebvre &#8211; Place: 358&lt;br /&gt;
+20, Michel Herbillon &#8211; Place: 259&lt;br /&gt;
+15, Christian Kert &#8211; Place: 343&lt;br /&gt;
+12, Sandrine Mazetier &#8211; Place: 429&lt;br /&gt;
+7, Yves Censi &#8211; Place: 79&lt;br /&gt;
+6, Jean Dionis du Séjour &#8211; Place: 397&lt;br /&gt;
+5, Dino Cinieri &#8211; Place: 196&lt;br /&gt;
+4, Richard Dell&#8217;Agnola &#8211; Place: 357&lt;br /&gt;
+4, Richard Mallié &#8211; Place: 76&lt;br /&gt;
+3, Bruno Le Roux &#8211; Place: 421&lt;br /&gt;
+2, Françoise de Panafieu &#8211; Place: 177&lt;br /&gt;
+2, Marietta Karamanli &#8211; Place: 559&lt;/p&gt;
+&lt;p&gt;Avec ces données, il ne me manquait plus qu&#8217;a situé chacun des sièges. Heureusement, le &lt;a href="http://www.assemblee-nationale.fr/seance/hemicycle.asp"&gt;plan de l&#8217;hémicycle&lt;/a&gt; est aussi disponible en ligne, et en ajoutant un peu d&#8217;interaction grâce à &lt;a href="http://shoooes.net/"&gt;Shoes&lt;/a&gt;, j&#8217;ai rapidement créé un fichier de coordonnées de tous les sièges. (&lt;em&gt;En passant, j&#8217;aimerai maintenant avoir plus d&#8217;information sur l&#8217;histoire de l&#8217;Assemblée, il manque des numéros de sièges, la curiosité me poussera sûrement à répondre à ces manques prochainement.&lt;/em&gt;)&lt;/p&gt;
+&lt;p&gt;Voici l&#8217;application qui m&#8217;a servie à situer chaque siège:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/seatmap.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Et enfin, avec l&#8217;aide du code de &lt;a href="http://blog.corunet.com/english/the-definitive-heatmap"&gt;clickmaps&lt;/a&gt;, idéalement disponible en ruby, j&#8217;ai put le modifier un petit peu pour analyser cette séance:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/20090090.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Ce n&#8217;est qu&#8217;un début, avec du code encore tout poussiéreux, et des idées d&#8217;analyses qui peuvent être assez marrante, ou plus sérieusement poussées pour permettre une autre vision de la scène politique encore assez obscure à l&#8217;Assemblée.&lt;/p&gt;
+&lt;p&gt;Vous pouvez télécharger et suivre le développement de cet outils sur &lt;a href="http://github.com/alx/politimap/"&gt;github.com/alx/politimap/&lt;/a&gt;&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Git Community Book en Français!</title>
