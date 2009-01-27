@@ -4,11 +4,20 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-01-07T16:09:33+01:00</pubDate>
-    <lastBuildDate>2009-01-07T16:09:33+01:00</lastBuildDate>
+    <pubDate>2009-01-27T17:16:54+01:00</pubDate>
+    <lastBuildDate>2009-01-27T17:16:54+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>Ruby and Windows, stupid trick to delete a file</title>
+   		<link>http://alexgirard.com/2009/01/27/ruby-wundows-unlink.html</link>
+   		<guid>http://alexgirard.com/2009/01/27/ruby-wundows-unlink</guid>
+   		<description>&lt;p&gt;Sometimes, you&#8217;ve to be strong enough to delete a &#8220;&lt;em&gt;permission denied&lt;/em&gt;&#8221; file under windows with ruby:&lt;/p&gt;
+&lt;script src="http://gist.github.com/53396.js"&gt;&lt;/script&gt;&lt;p&gt;It doesn&#8217;t take too long, but that&#8217;s the kind of stupid trick you can avoid if you choose another platform to make your code.&lt;/p&gt;</description>
+   		<pubDate>2009-01-27T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>Politimap, les zones chaudes de l'Assemblée Nationale</title>
    		<link>http://alexgirard.com/2009/01/07/politimap-premiere.html</link>
@@ -261,18 +270,6 @@ La gestion distribuée de version de fichier est l&#8217;un des concept logiciel
 	&lt;li&gt;&lt;a href="http://barceloneta.fr"&gt;Barceloneta.fr&lt;/a&gt; iPhone app: an eCommerce application that would serve a lot of people, the next big hit in my pocket :)&lt;/li&gt;
 &lt;/ul&gt;</description>
    		<pubDate>2008-12-08T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>Why Git is Better than X? en français</title>
-   		<link>http://alexgirard.com/2008/12/02/why-git-is-better.html</link>
-   		<guid>http://alexgirard.com/2008/12/02/why-git-is-better</guid>
-   		<description>&lt;p&gt;&lt;a href="http://jointheconversation.org/"&gt;Scott Chacon&lt;/a&gt; nous présente un nouveau site pour la diffusion de Git: &lt;a href="http://whygitisbetterthanx.com/"&gt;http://whygitisbetterthanx.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Scott Chacon est l&#8217;auteur des &lt;a href="http://gitcasts.com/"&gt;Gitcasts&lt;/a&gt; et de &lt;a href="http://jointheconversation.org/2008/06/02/railsconf-git-talk/"&gt;la conférence à la RailsConf&lt;/a&gt; qui aura permis à énormément de développeur de découvrir comment fonctionne vraiment Git.&lt;/p&gt;
-&lt;p&gt;Avec sa communauté sur &lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; et sa facilité d&#8217;utilisation, il faudra maintenant compter sur Git durant les prochaines années, ce qui est une bonne chose. Voici ce que donne une collaboration à plusieurs pour la traduction du document de Scott Chacon:&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://github.com/alx/whygitisbetter/network"&gt;&lt;img src="/images/git-network.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Si vous avez besoin de plus d&#8217;informations en français, vous pouvez &lt;a href="http://fr.whygitisbetterthanx.com/"&gt;consultez la traduction française&lt;/a&gt; de &lt;em&gt;Why Git is Better Than X&lt;/em&gt;.&lt;/p&gt;</description>
-   		<pubDate>2008-12-02T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>
