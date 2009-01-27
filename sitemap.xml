@@ -2,12 +2,19 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>http://alx.github.com</loc>
-		<lastmod>2009-01-07T16:10:05+01:00</lastmod>
+		<lastmod>2009-01-27T17:17:27+01:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
 
 	
+ 	<url>
+   		<loc>http://alx.github.com/2009/01/27/ruby-wundows-unlink.html</loc>
+   		<lastmod>2009-01-27T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
  	<url>
    		<loc>http://alx.github.com/2009/01/07/politimap-premiere.html</loc>
    		<lastmod>2009-01-07T00:00:00+01:00</lastmod>

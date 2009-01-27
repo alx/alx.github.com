@@ -4,13 +4,22 @@
  <title>Alex Girard Feed</title>
  <link href="http://alx.github.com/atom.xml" rel="self"/>
  <link href="http://alx.github.com"/>
- <updated>2009-01-07T16:10:05+01:00</updated>
+ <updated>2009-01-27T17:17:27+01:00</updated>
  <id>http://alx.github.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Ruby and Windows, stupid trick to delete a file</title>
+   <link href="http://alx.github.com/2009/01/27/ruby-wundows-unlink.html"/>
+   <updated>2009-01-27T00:00:00+01:00</updated>
+   <id>http://alx.github.com/2009/01/27/ruby-wundows-unlink</id>
+   <content type="html">&lt;p&gt;Sometimes, you&#8217;ve to be strong enough to delete a &#8220;&lt;em&gt;permission denied&lt;/em&gt;&#8221; file under windows with ruby:&lt;/p&gt;
+&lt;script src="http://gist.github.com/53396.js"&gt;&lt;/script&gt;&lt;p&gt;It doesn&#8217;t take too long, but that&#8217;s the kind of stupid trick you can avoid if you choose another platform to make your code.&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Politimap, les zones chaudes de l'Assemblée Nationale</title>
