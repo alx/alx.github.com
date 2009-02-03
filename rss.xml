@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-03T04:22:56+01:00</pubDate>
-    <lastBuildDate>2009-02-03T04:22:56+01:00</lastBuildDate>
+    <pubDate>2009-02-03T19:37:25+01:00</pubDate>
+    <lastBuildDate>2009-02-03T19:37:25+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -59,6 +59,19 @@ module Resource
 end
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Pour cette manipulation, il n&#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</description>
+   		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>10 invites to Spotify.com</title>
+   		<link>http://alexgirard.com/2009/02/03/invites-to-spotify.html</link>
+   		<guid>http://alexgirard.com/2009/02/03/invites-to-spotify</guid>
+   		<description>&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
+&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
+&lt;p&gt;Thanks to years of music industry battle, we&#8217;ve got this old technology quietly moving in, and it worries me a bit that it&#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
+&lt;p&gt;Test it, it&#8217;s simple, you might like it, but it&#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
+If only there was a subscription (and a better music player) on last.fm, they&#8217;d win them all.&lt;/p&gt;</description>
    		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
  	</item>
  	
@@ -277,29 +290,6 @@ La gestion distribuée de version de fichier est l&#8217;un des concept logiciel
 &lt;/ul&gt;
 &lt;p&gt;You just have to upgrade your blog database now, going to: &lt;em&gt;http://your-blog.com/wp-admin/upgrade.php&lt;/em&gt;&lt;/p&gt;</description>
    		<pubDate>2008-12-14T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>One night coding with a bug at the end</title>
-   		<link>http://alexgirard.com/2008/12/09/one-night-coding-with-a-bug-at-the-end.html</link>
-   		<guid>http://alexgirard.com/2008/12/09/one-night-coding-with-a-bug-at-the-end</guid>
-   		<description>&lt;p&gt;We&#8217;ve spend several hurs this afternoon with Seb to see how to refactor his system, and how to use the last ruby technologies, like &lt;a href="http://merbivore.com"&gt;Merb&lt;/a&gt; and a lot of nice little gems available on &lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; to make it even easier to manage.&lt;/p&gt;
-&lt;p&gt;Then, I&#8217;ve spent the night starting to implement the idea, which is nearly working:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;In the &lt;span class="caps"&gt;CMS&lt;/span&gt; part, pages are created&lt;/li&gt;
-	&lt;li&gt;These pages contain dynamic elements, they would call code references in various Merb Slice that would be availble in the app&lt;/li&gt;
-	&lt;li&gt;First Slice is the typical &lt;em&gt;Hello World&lt;/em&gt;: if user place a &lt;strong&gt;@@helloword_show&lt;/strong&gt; element in his page content, it will be replaced automaticly by &lt;em&gt;Hello World&lt;/em&gt; in the generated page content&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To manage this experimentation various steps had been necessary:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;Use &lt;a href="http://rspec.info/"&gt;rSpec&lt;/a&gt; to be sure the page model and its elements are solidly built&lt;/li&gt;
-	&lt;li&gt;&lt;a href="http://wiki.merbivore.com/howto/slice"&gt;Create a Slice&lt;/a&gt;: it&#8217;s the long, boring part, we&#8217;ll need to see how to automatize it, because actually there&#8217;s a lot of small edits each time to add a new Slice&lt;/li&gt;
-	&lt;li&gt;Connect from the &lt;span class="caps"&gt;CMS&lt;/span&gt; part to the Slice using &lt;a href="http://rest-client.heroku.com/"&gt;RestClient&lt;/a&gt;: it&#8217;s a ruby gem that allows you to make an http request in the simplest way. For example, the HelloWorld Slice return json object (it could be html or xml) containing the page element content&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Next, it might be useful to have a look at the &lt;a href="http://wiki.merbivore.com/howto/parts"&gt;Merb Parts&lt;/a&gt;, they are small &lt;em&gt;widgets&lt;/em&gt; with their own controller that could be used to generate simple content, we&#8217;ll need to see where to separate the &lt;span class="caps"&gt;CMS&lt;/span&gt; part from the various dynamic slices we&#8217;ll build.&lt;/p&gt;
-&lt;p&gt;And the night finish on this beautiful bug that have just appeared:&lt;/p&gt;
-&lt;script src="http://gist.github.com/33788.js"&gt;&lt;/script&gt;&lt;p&gt;I&#8217;ll have to rollback on the git commit to understand where a conflict has been created, or look for a new version of &lt;a href="http://datamapper.org/"&gt;DataMapper&lt;/a&gt; some reference to this &lt;em&gt;LazyArray::&lt;span class="caps"&gt;RETURN&lt;/span&gt;&lt;/em&gt;SELF_ constant were &lt;a href="http://github.com/dkubb/extlib/commit/471d856f57e66793caca1b9326abc0c66d5f2a14"&gt;recently deleted from some of its forks&lt;/a&gt; in github.&lt;/p&gt;</description>
-   		<pubDate>2008-12-09T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>
