@@ -2,12 +2,19 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>http://alx.github.com</loc>
-		<lastmod>2009-01-27T17:17:27+01:00</lastmod>
+		<lastmod>2009-02-03T04:19:53+01:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
 
 	
+ 	<url>
+   		<loc>http://alx.github.com/2009/02/03/sous-repertoire-merb.html</loc>
+   		<lastmod>2009-02-03T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
  	<url>
    		<loc>http://alx.github.com/2009/01/27/ruby-wundows-unlink.html</loc>
    		<lastmod>2009-01-27T00:00:00+01:00</lastmod>
@@ -114,14 +121,14 @@
  	</url>
  	
  	<url>
-   		<loc>http://alx.github.com/2008/11/21/douce-offensive.html</loc>
+   		<loc>http://alx.github.com/2008/11/21/itinerant-lifestyle.html</loc>
    		<lastmod>2008-11-21T00:00:00+01:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
  	</url>
  	
  	<url>
-   		<loc>http://alx.github.com/2008/11/21/itinerant-lifestyle.html</loc>
+   		<loc>http://alx.github.com/2008/11/21/douce-offensive.html</loc>
    		<lastmod>2008-11-21T00:00:00+01:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
