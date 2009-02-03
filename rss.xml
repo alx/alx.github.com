@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-03T04:21:44+01:00</pubDate>
-    <lastBuildDate>2009-02-03T04:21:44+01:00</lastBuildDate>
+    <pubDate>2009-02-03T04:22:56+01:00</pubDate>
+    <lastBuildDate>2009-02-03T04:22:56+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -19,27 +19,27 @@
 &lt;p&gt;Par défaut, Merb construit ce type d&#8217;arborescence:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
 app
-L__ controllers
+|__ controllers
 	|__ ...
-	L__ rockets.rb
-L__ models
+	|__ rockets.rb
+|__ models
 	|__ ...
-	L__ rocket.rb
+	|__ rocket.rb
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Et pour pas vous embêtez, vous entassez naturellement vos classes jusqu&#8217;à trop plein.&lt;br /&gt;
 Maintenant, vous voulez ranger vos contrôleurs et modèles de manière plus hiérarchiques:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
 app
-L__ controllers
+|__ controllers
 	|__ ...
-	L__ resource
+	|__ resource
 		|__ ...
-		L__ rockets.rb
-L__ models
+		|__ rockets.rb
+|__ models
 	|__ ...
-	L__ resource
+	|__ resource
 		|__ ...
-		L__ rocket.rb
+		|__ rocket.rb
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Solution&lt;/h2&gt;
 &lt;p&gt;Pour faire ceci, il vous faut d&#8217;abord modifier le fichier &lt;strong&gt;config/router.rb&lt;/strong&gt;, par exemple pour appeler le contrôleur de la ressource &lt;strong&gt;rocket&lt;/strong&gt;:&lt;/p&gt;
