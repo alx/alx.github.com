@@ -33,26 +33,30 @@
 <p>Petit travail d&#8217;un soir: organiser les classes de notre application Merb dans des sous-répertoire.</p>
 <h2>Problématique</h2>
 <p>Par défaut, Merb construit ce type d&#8217;arborescence:</p>
-<p>app<br />
-L__ controllers<br />
-	|<em>_ &#8230;<br />
-	L</em>_ rockets.rb<br />
-L__ models<br />
-	|<em>_ &#8230;<br />
-	L</em>_ rocket.rb</p>
+<pre><code>
+app
+L__ controllers
+	|__ ...
+	L__ rockets.rb
+L__ models
+	|__ ...
+	L__ rocket.rb
+</code></pre>
 <p>Et pour pas vous embêtez, vous entassez naturellement vos classes jusqu&#8217;à trop plein.<br />
 Maintenant, vous voulez ranger vos contrôleurs et modèles de manière plus hiérarchiques:</p>
-<p>app<br />
-L__ controllers<br />
-	|<em>_ &#8230;<br />
-	L</em>_ resource<br />
-		|<em>_ &#8230;<br />
-		L</em>_ rockets.rb<br />
-L__ models<br />
-	|<em>_ &#8230;<br />
-	L</em>_ resource<br />
-		|<em>_ &#8230;<br />
-		L</em>_ rocket.rb</p>
+<pre><code>
+app
+L__ controllers
+	|__ ...
+	L__ resource
+		|__ ...
+		L__ rockets.rb
+L__ models
+	|__ ...
+	L__ resource
+		|__ ...
+		L__ rocket.rb
+</code></pre>
 <h2>Solution</h2>
 <p>Pour faire ceci, il vous faut d&#8217;abord modifier le fichier <strong>config/router.rb</strong>, par exemple pour appeler le contrôleur de la ressource <strong>rocket</strong>:</p>
 <pre><code>
