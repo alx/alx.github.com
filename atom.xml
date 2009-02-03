@@ -4,13 +4,62 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2009-01-27T17:16:54+01:00</updated>
+ <updated>2009-02-03T04:19:28+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Merb et rangement de vos classes en sous-répertoire</title>
+   <link href="http://alexgirard.com/2009/02/03/sous-repertoire-merb.html"/>
+   <updated>2009-02-03T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2009/02/03/sous-repertoire-merb</id>
+   <content type="html">&lt;h1&gt;Merb et rangement de vos classes en sous-répertoire&lt;/h1&gt;
+&lt;p&gt;Petit travail d&#8217;un soir: organiser les classes de notre application Merb dans des sous-répertoire.&lt;/p&gt;
+&lt;h2&gt;Problématique&lt;/h2&gt;
+&lt;p&gt;Par défaut, Merb construit ce type d&#8217;arborescence:&lt;/p&gt;
+&lt;p&gt;app&lt;br /&gt;
+L__ controllers&lt;br /&gt;
+	|&lt;em&gt;_ &#8230;&lt;br /&gt;
+	L&lt;/em&gt;_ rockets.rb&lt;br /&gt;
+L__ models&lt;br /&gt;
+	|&lt;em&gt;_ &#8230;&lt;br /&gt;
+	L&lt;/em&gt;_ rocket.rb&lt;/p&gt;
+&lt;p&gt;Et pour pas vous embêtez, vous entassez naturellement vos classes jusqu&#8217;à trop plein.&lt;br /&gt;
+Maintenant, vous voulez ranger vos contrôleurs et modèles de manière plus hiérarchiques:&lt;/p&gt;
+&lt;p&gt;app&lt;br /&gt;
+L__ controllers&lt;br /&gt;
+	|&lt;em&gt;_ &#8230;&lt;br /&gt;
+	L&lt;/em&gt;_ resource&lt;br /&gt;
+		|&lt;em&gt;_ &#8230;&lt;br /&gt;
+		L&lt;/em&gt;_ rockets.rb&lt;br /&gt;
+L__ models&lt;br /&gt;
+	|&lt;em&gt;_ &#8230;&lt;br /&gt;
+	L&lt;/em&gt;_ resource&lt;br /&gt;
+		|&lt;em&gt;_ &#8230;&lt;br /&gt;
+		L&lt;/em&gt;_ rocket.rb&lt;/p&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Pour faire ceci, il vous faut d&#8217;abord modifier le fichier &lt;strong&gt;config/router.rb&lt;/strong&gt;, par exemple pour appeler le contrôleur de la ressource &lt;strong&gt;rocket&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+Merb::Router.prepare do |r|
+  
+  r.resources :resource_rockets, :controller =&gt; "resource/rockets"
+
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Vous devez déclarer le module du contrôleur dans &lt;strong&gt;app/controllers/resource/rockets.rb&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+module Resource
+  class Rockets &lt; Application
+	...
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pour cette manipulation, il n&#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Ruby and Windows, stupid trick to delete a file</title>
@@ -392,6 +441,15 @@ La gestion distribuée de version de fichier est l&#8217;un des concept logiciel
  </entry>
  
  <entry>
+   <title>Itinerant lifestyle</title>
+   <link href="http://alexgirard.com/2008/11/21/itinerant-lifestyle.html"/>
+   <updated>2008-11-21T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2008/11/21/itinerant-lifestyle</id>
+   <content type="html">&lt;p&gt;&lt;em&gt;Possessions meant little to Erdős; most of his belongings would fit in a suitcase, as dictated by his itinerant lifestyle. Awards and other earnings were in general donated to people in need and various worthy causes. He spent most of his life as a vagabond, travelling between scientific conferences and the homes of colleagues all over the world. He would typically show up at a colleague&#8217;s doorstep and announce &#8220;my brain is open&#8221;, staying long enough to collaborate on a few papers before moving on a few days later. In many cases, he would ask the current collaborator about whom he (Erdős) should visit next. His working style has been humorously compared to traversing a linked list.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Paul_Erd%C5%91s"&gt;Wikipedia entry on Paul Erdős&lt;/a&gt;&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>DouceOffensive.org nouvel espoir</title>
    <link href="http://alexgirard.com/2008/11/21/douce-offensive.html"/>
    <updated>2008-11-21T00:00:00+01:00</updated>
@@ -402,15 +460,6 @@ La gestion distribuée de version de fichier est l&#8217;un des concept logiciel
 &lt;p&gt;&lt;img src="http://farm4.static.flickr.com/3003/3047257469_2155830e70.jpg" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;Gérer par Wordpress et le plugin PhotoQ, le site ne consiste qu&#8217;en un thème minimaliste, alimenté par les photos de Guillaume Ajavon.&lt;/p&gt;
 &lt;p&gt;Comme d&#8217;habitude, vous pouvez &lt;a href="http://github.com/alx/douce-offensive/"&gt;télécharger ce blog complet&lt;/a&gt; (inclut thème et plugins) sur github.com si vous voulez vous monter le même système pour votre photoblog.&lt;/p&gt;</content>
- </entry>
- 
- <entry>
-   <title>Itinerant lifestyle</title>
-   <link href="http://alexgirard.com/2008/11/21/itinerant-lifestyle.html"/>
-   <updated>2008-11-21T00:00:00+01:00</updated>
-   <id>http://alexgirard.com/2008/11/21/itinerant-lifestyle</id>
-   <content type="html">&lt;p&gt;&lt;em&gt;Possessions meant little to Erdős; most of his belongings would fit in a suitcase, as dictated by his itinerant lifestyle. Awards and other earnings were in general donated to people in need and various worthy causes. He spent most of his life as a vagabond, travelling between scientific conferences and the homes of colleagues all over the world. He would typically show up at a colleague&#8217;s doorstep and announce &#8220;my brain is open&#8221;, staying long enough to collaborate on a few papers before moving on a few days later. In many cases, he would ask the current collaborator about whom he (Erdős) should visit next. His working style has been humorously compared to traversing a linked list.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Paul_Erd%C5%91s"&gt;Wikipedia entry on Paul Erdős&lt;/a&gt;&lt;/p&gt;</content>
  </entry>
  
  <entry>

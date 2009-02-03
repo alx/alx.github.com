@@ -1,0 +1,42 @@
+<h1>Merb et rangement de vos classes en sous-répertoire</h1>
+<p>Petit travail d&#8217;un soir: organiser les classes de notre application Merb dans des sous-répertoire.</p>
+<h2>Problématique</h2>
+<p>Par défaut, Merb construit ce type d&#8217;arborescence:</p>
+<p>app<br />
+L__ controllers<br />
+	|<em>_ &#8230;<br />
+	L</em>_ rockets.rb<br />
+L__ models<br />
+	|<em>_ &#8230;<br />
+	L</em>_ rocket.rb</p>
+<p>Et pour pas vous embêtez, vous entassez naturellement vos classes jusqu&#8217;à trop plein.<br />
+Maintenant, vous voulez ranger vos contrôleurs et modèles de manière plus hiérarchiques:</p>
+<p>app<br />
+L__ controllers<br />
+	|<em>_ &#8230;<br />
+	L</em>_ resource<br />
+		|<em>_ &#8230;<br />
+		L</em>_ rockets.rb<br />
+L__ models<br />
+	|<em>_ &#8230;<br />
+	L</em>_ resource<br />
+		|<em>_ &#8230;<br />
+		L</em>_ rocket.rb</p>
+<h2>Solution</h2>
+<p>Pour faire ceci, il vous faut d&#8217;abord modifier le fichier <strong>config/router.rb</strong>, par exemple pour appeler le contrôleur de la ressource <strong>rocket</strong>:</p>
+<pre><code>
+Merb::Router.prepare do |r|
+  
+  r.resources :resource_rockets, :controller =&gt; "resource/rockets"
+
+end
+</code></pre>
+<p>Vous devez déclarer le module du contrôleur dans <strong>app/controllers/resource/rockets.rb</strong>:</p>
+<pre><code>
+module Resource
+  class Rockets &lt; Application
+	...
+  end
+end
+</code></pre>
+<p>Pour cette manipulation, il n&#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.</p>

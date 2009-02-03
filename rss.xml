@@ -4,11 +4,60 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-01-27T17:16:54+01:00</pubDate>
-    <lastBuildDate>2009-01-27T17:16:54+01:00</lastBuildDate>
+    <pubDate>2009-02-03T04:19:28+01:00</pubDate>
+    <lastBuildDate>2009-02-03T04:19:28+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>Merb et rangement de vos classes en sous-répertoire</title>
+   		<link>http://alexgirard.com/2009/02/03/sous-repertoire-merb.html</link>
+   		<guid>http://alexgirard.com/2009/02/03/sous-repertoire-merb</guid>
+   		<description>&lt;h1&gt;Merb et rangement de vos classes en sous-répertoire&lt;/h1&gt;
+&lt;p&gt;Petit travail d&#8217;un soir: organiser les classes de notre application Merb dans des sous-répertoire.&lt;/p&gt;
+&lt;h2&gt;Problématique&lt;/h2&gt;
+&lt;p&gt;Par défaut, Merb construit ce type d&#8217;arborescence:&lt;/p&gt;
+&lt;p&gt;app&lt;br /&gt;
+L__ controllers&lt;br /&gt;
+	|&lt;em&gt;_ &#8230;&lt;br /&gt;
+	L&lt;/em&gt;_ rockets.rb&lt;br /&gt;
+L__ models&lt;br /&gt;
+	|&lt;em&gt;_ &#8230;&lt;br /&gt;
+	L&lt;/em&gt;_ rocket.rb&lt;/p&gt;
+&lt;p&gt;Et pour pas vous embêtez, vous entassez naturellement vos classes jusqu&#8217;à trop plein.&lt;br /&gt;
+Maintenant, vous voulez ranger vos contrôleurs et modèles de manière plus hiérarchiques:&lt;/p&gt;
+&lt;p&gt;app&lt;br /&gt;
+L__ controllers&lt;br /&gt;
+	|&lt;em&gt;_ &#8230;&lt;br /&gt;
+	L&lt;/em&gt;_ resource&lt;br /&gt;
+		|&lt;em&gt;_ &#8230;&lt;br /&gt;
+		L&lt;/em&gt;_ rockets.rb&lt;br /&gt;
+L__ models&lt;br /&gt;
+	|&lt;em&gt;_ &#8230;&lt;br /&gt;
+	L&lt;/em&gt;_ resource&lt;br /&gt;
+		|&lt;em&gt;_ &#8230;&lt;br /&gt;
+		L&lt;/em&gt;_ rocket.rb&lt;/p&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Pour faire ceci, il vous faut d&#8217;abord modifier le fichier &lt;strong&gt;config/router.rb&lt;/strong&gt;, par exemple pour appeler le contrôleur de la ressource &lt;strong&gt;rocket&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+Merb::Router.prepare do |r|
+  
+  r.resources :resource_rockets, :controller =&gt; "resource/rockets"
+
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Vous devez déclarer le module du contrôleur dans &lt;strong&gt;app/controllers/resource/rockets.rb&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+module Resource
+  class Rockets &lt; Application
+	...
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pour cette manipulation, il n&#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</description>
+   		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>Ruby and Windows, stupid trick to delete a file</title>
    		<link>http://alexgirard.com/2009/01/27/ruby-wundows-unlink.html</link>
@@ -247,29 +296,6 @@ La gestion distribuée de version de fichier est l&#8217;un des concept logiciel
 &lt;p&gt;And the night finish on this beautiful bug that have just appeared:&lt;/p&gt;
 &lt;script src="http://gist.github.com/33788.js"&gt;&lt;/script&gt;&lt;p&gt;I&#8217;ll have to rollback on the git commit to understand where a conflict has been created, or look for a new version of &lt;a href="http://datamapper.org/"&gt;DataMapper&lt;/a&gt; some reference to this &lt;em&gt;LazyArray::&lt;span class="caps"&gt;RETURN&lt;/span&gt;&lt;/em&gt;SELF_ constant were &lt;a href="http://github.com/dkubb/extlib/commit/471d856f57e66793caca1b9326abc0c66d5f2a14"&gt;recently deleted from some of its forks&lt;/a&gt; in github.&lt;/p&gt;</description>
    		<pubDate>2008-12-09T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>GitHub discoveries and todo list</title>
-   		<link>http://alexgirard.com/2008/12/08/github-discoveries-and-todo.html</link>
-   		<guid>http://alexgirard.com/2008/12/08/github-discoveries-and-todo</guid>
-   		<description>&lt;p&gt;Quite a productive week with a lot of discoveries on GitHub, a little surf over there bring you to a lot of interesting projects and blogs:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;&lt;a href="http://sunfox.org/"&gt;Sunfox&lt;/a&gt;: A blog by a french guy, refreshing articles and music&lt;/li&gt;
-	&lt;li&gt;&lt;a href="http://kevinmarsh.com/"&gt;Kevin Marsh&lt;/a&gt;: interesting articles about git and rails, with some nice best-pratices&lt;/li&gt;
-	&lt;li&gt;&lt;a href="http://github.com/newbamboo/panda/"&gt;Panda&lt;/a&gt;: Video encoding made easy with &lt;span class="caps"&gt;AWS&lt;/span&gt;, interesting to build a video portal without worrying about server diskspace&lt;/li&gt;
-	&lt;li&gt;&lt;a href="http://github.com/yfactorial/objectiveresource/"&gt;objectiveresource&lt;/a&gt;: A port of Ruby on Rails&#8217; ActiveResource to Objective-C (and specifically the iPhone), I&#8217;ll need to have a look after a week working on iPhone dev&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And the todo list for coming week:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;Work with Seb on &lt;a href="http://merbivore.com/"&gt;merb&lt;/a&gt; to refactor his &lt;span class="caps"&gt;CMS&lt;/span&gt;/eCommerce platform, lots of ideas about how to use merb potential and give it a nice kick&lt;/li&gt;
-	&lt;li&gt;Binema reboot: use a &lt;a href="http://twitter.com"&gt;twitter&lt;/a&gt; bot to add/edit movies on a reborn Binema. It could use &lt;a href="http://incubator.apache.org/couchdb/"&gt;CouchDB&lt;/a&gt; to create a many-universe torrent tracker&lt;/li&gt;
-	&lt;li&gt;Jekyll plugin: I really need to find a way to insert dynamic content in &lt;a href="http://github.com/mojombo/jekyll/"&gt;Jekyll&lt;/a&gt; blog generator, like a rss feed block that would be generated at the creation. Bad stuff is that this content would be static until next generation. To follow&lt;/li&gt;
-	&lt;li&gt;Wordpress &lt;span class="caps"&gt;JSON&lt;/span&gt;: it would be nice if I can get wordpress to export its data as json, it shouldn&#8217;t be too hard&lt;/li&gt;
-	&lt;li&gt;&lt;a href="http://douceoffensive.org"&gt;DouceOffensive&lt;/a&gt; iPhone app: just a first demo case to be sure I&#8217;m able to dev some niceties on iPhone for future contracts&lt;/li&gt;
-	&lt;li&gt;&lt;a href="http://barceloneta.fr"&gt;Barceloneta.fr&lt;/a&gt; iPhone app: an eCommerce application that would serve a lot of people, the next big hit in my pocket :)&lt;/li&gt;
-&lt;/ul&gt;</description>
-   		<pubDate>2008-12-08T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>
