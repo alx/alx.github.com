@@ -2,12 +2,19 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>http://alexgirard.com</loc>
-		<lastmod>2009-02-03T19:37:25+01:00</lastmod>
+		<lastmod>2009-02-11T09:29:22+01:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
 
 	
+ 	<url>
+   		<loc>http://alexgirard.com/2009/02/11/deploy-slice-capistrano.html</loc>
+   		<lastmod>2009-02-11T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
  	<url>
    		<loc>http://alexgirard.com/2009/02/03/sous-repertoire-merb.html</loc>
    		<lastmod>2009-02-03T00:00:00+01:00</lastmod>

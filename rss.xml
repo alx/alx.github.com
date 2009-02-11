@@ -4,11 +4,51 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-03T19:37:25+01:00</pubDate>
-    <lastBuildDate>2009-02-03T19:37:25+01:00</lastBuildDate>
+    <pubDate>2009-02-11T09:29:22+01:00</pubDate>
+    <lastBuildDate>2009-02-11T09:29:22+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>Deploy a Merb Slice with Rake and Capistrano</title>
+   		<link>http://alexgirard.com/2009/02/11/deploy-slice-capistrano.html</link>
+   		<guid>http://alexgirard.com/2009/02/11/deploy-slice-capistrano</guid>
+   		<description>&lt;h1&gt;Deploy a Merb Slice with Rake and Capistrano&lt;/h1&gt;
+&lt;p&gt;On the Slice side, you just need to install the code locally to retrieve the assets, and push the code on your Git repository to retrieve it on your production server.&lt;/p&gt;
+&lt;pre&gt;
+	&lt;code&gt;
+	sudo rake install
+	git push
+	&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;On the Merb App side, you&#8217;ll need to tell it to update the Slice gemon the server first.&lt;br /&gt;
+For this, I&#8217;ve made a special task in &lt;strong&gt;config/deploy.rb&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;
+	&lt;code&gt;
+		namespace :gems do
+
+		  desc "Update and install media_rocket gem"
+		  task :media_rocket do
+		    run "cd #{gems_path}/media_rocket/; git pull"
+		    sudo "echo" # Allows to run next command as root
+		    run "cd #{gems_path}/media_rocket/ &amp;&amp; sudo rake install"
+		  end
+
+		end	
+	&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;Then you&#8217;ll need to copy the assets from your Slice to your current application, add the changes to Git and deploy it:&lt;/p&gt;
+&lt;pre&gt;
+	&lt;code&gt;
+		rake slices:media_rocket:copy_assets
+		git commit -a -m "add last asset from media_rocket"
+		git push
+		cap deploy
+	&lt;/code&gt;
+&lt;/pre&gt;</description>
+   		<pubDate>2009-02-11T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>Merb et rangement de vos classes en sous-répertoire</title>
    		<link>http://alexgirard.com/2009/02/03/sous-repertoire-merb.html</link>
@@ -263,33 +303,6 @@ La gestion distribuée de version de fichier est l&#8217;un des concept logiciel
 &lt;p&gt;$ git clone git@github.com:giraffesoft/markaby.git&lt;/p&gt;
 &lt;p&gt;Encore plus cool, quelqu&#8217;un avec assez de privilèges sur le dépôt officiel peut récupérer les changements, et les remettre dans subversion, avec les messages des modifications inclus! &lt;strong&gt;Le développement de ce plugin peut continuer n&#8217;importe où, et par n&#8217;importe qui&lt;/strong&gt;. C&#8217;est la beauté de la décentralisation.&lt;/p&gt;</description>
    		<pubDate>2008-12-20T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>Easy Wordpress upgrade with Git</title>
-   		<link>http://alexgirard.com/2008/12/14/easy-wordpress-update-with-git.html</link>
-   		<guid>http://alexgirard.com/2008/12/14/easy-wordpress-update-with-git</guid>
-   		<description>&lt;p&gt;Wordpress has released its new version 2.7 few days ago, and since all my blogs are now controlled with Git behind, here is the way to do it quickly and easyly.&lt;/p&gt;
-&lt;p&gt;You might take care not to have modified anything in the Wordpress Core files (like &lt;em&gt;wp-includes&lt;/em&gt;) or in &lt;em&gt;/wp-content/themes/default&lt;/em&gt; as these changes will be crushed during the copy.&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;&lt;a href="http://wordpress.org/latest.zip"&gt;Download Wordpress&lt;/a&gt;&lt;/li&gt;
-	&lt;li&gt;Uncompress the archive on your computer, e.g. ~/Download/wordpress/&lt;/li&gt;
-	&lt;li&gt;Copy the files from the new Wordpress to your local git clone: &lt;em&gt;cp -r ~/Download/wordpress/* ~/my-blog-clone/&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The git part:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;Add the new files in your local git clone: &lt;em&gt;git add .&lt;/em&gt;&lt;/li&gt;
-	&lt;li&gt;Commit the upgrade locally: &lt;em&gt;git commit -a -m &#8220;upgrade to new wordpress&#8221;&lt;/em&gt;&lt;/li&gt;
-	&lt;li&gt;Push the changes to your git server: &lt;em&gt;git push&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Now, connect to your blog server, by ssh:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;&lt;em&gt;ssh username@your-blog-hosting.com&lt;/em&gt;&lt;/li&gt;
-	&lt;li&gt;Move to your blog folder in your server, it should already be a git clone: &lt;em&gt;cd my-blog-clone&lt;/em&gt;&lt;/li&gt;
-	&lt;li&gt;Retrieve the changes from the git server: &lt;em&gt;git pull&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You just have to upgrade your blog database now, going to: &lt;em&gt;http://your-blog.com/wp-admin/upgrade.php&lt;/em&gt;&lt;/p&gt;</description>
-   		<pubDate>2008-12-14T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>
