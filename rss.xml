@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-11T09:31:25+01:00</pubDate>
-    <lastBuildDate>2009-02-11T09:31:25+01:00</lastBuildDate>
+    <pubDate>2009-02-11T09:33:02+01:00</pubDate>
+    <lastBuildDate>2009-02-11T09:33:02+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -27,12 +27,12 @@ For this, I&#8217;ve made a special task in &lt;strong&gt;config/deploy.rb&lt;/s
 &lt;code&gt;
 namespace :gems do
 
-desc "Update and install media_rocket gem"
-	task :media_rocket do
-		run "cd #{gems_path}/media_rocket/; git pull"
-		sudo "echo" # Allows to run next command as root
-		run "cd #{gems_path}/media_rocket/ &amp;&amp; sudo rake install"
-	end
+  desc "Update and install media_rocket gem"
+  task :media_rocket do
+    run "cd #{gems_path}/media_rocket/; git pull"
+    sudo "echo" # Allows to run next command as root
+    run "cd #{gems_path}/media_rocket/ &amp;&amp; sudo rake install"
+  end
 
 end	
 &lt;/code&gt;
