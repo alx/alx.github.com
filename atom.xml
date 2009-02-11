@@ -4,7 +4,7 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2009-02-11T09:33:02+01:00</updated>
+ <updated>2009-02-11T10:37:53+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
@@ -47,6 +47,7 @@ end
 rake slices:media_rocket:copy_assets
 git commit -a -m "add last asset from media_rocket"
 git push
+cap gems:media_rocket
 cap deploy
 &lt;/code&gt;
 &lt;/pre&gt;</content>

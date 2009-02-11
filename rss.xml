@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-11T09:33:02+01:00</pubDate>
-    <lastBuildDate>2009-02-11T09:33:02+01:00</lastBuildDate>
+    <pubDate>2009-02-11T10:37:54+01:00</pubDate>
+    <lastBuildDate>2009-02-11T10:37:54+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -43,6 +43,7 @@ end
 rake slices:media_rocket:copy_assets
 git commit -a -m "add last asset from media_rocket"
 git push
+cap gems:media_rocket
 cap deploy
 &lt;/code&gt;
 &lt;/pre&gt;</description>
