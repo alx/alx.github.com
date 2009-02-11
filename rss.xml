@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-11T09:29:22+01:00</pubDate>
-    <lastBuildDate>2009-02-11T09:29:22+01:00</lastBuildDate>
+    <pubDate>2009-02-11T09:31:25+01:00</pubDate>
+    <lastBuildDate>2009-02-11T09:31:25+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -16,35 +16,35 @@
    		<description>&lt;h1&gt;Deploy a Merb Slice with Rake and Capistrano&lt;/h1&gt;
 &lt;p&gt;On the Slice side, you just need to install the code locally to retrieve the assets, and push the code on your Git repository to retrieve it on your production server.&lt;/p&gt;
 &lt;pre&gt;
-	&lt;code&gt;
-	sudo rake install
-	git push
-	&lt;/code&gt;
+&lt;code&gt;
+sudo rake install
+git push
+&lt;/code&gt;
 &lt;/pre&gt;
 &lt;p&gt;On the Merb App side, you&#8217;ll need to tell it to update the Slice gemon the server first.&lt;br /&gt;
 For this, I&#8217;ve made a special task in &lt;strong&gt;config/deploy.rb&lt;/strong&gt;:&lt;/p&gt;
 &lt;pre&gt;
-	&lt;code&gt;
-		namespace :gems do
+&lt;code&gt;
+namespace :gems do
 
-		  desc "Update and install media_rocket gem"
-		  task :media_rocket do
-		    run "cd #{gems_path}/media_rocket/; git pull"
-		    sudo "echo" # Allows to run next command as root
-		    run "cd #{gems_path}/media_rocket/ &amp;&amp; sudo rake install"
-		  end
+desc "Update and install media_rocket gem"
+	task :media_rocket do
+		run "cd #{gems_path}/media_rocket/; git pull"
+		sudo "echo" # Allows to run next command as root
+		run "cd #{gems_path}/media_rocket/ &amp;&amp; sudo rake install"
+	end
 
-		end	
-	&lt;/code&gt;
+end	
+&lt;/code&gt;
 &lt;/pre&gt;
 &lt;p&gt;Then you&#8217;ll need to copy the assets from your Slice to your current application, add the changes to Git and deploy it:&lt;/p&gt;
 &lt;pre&gt;
-	&lt;code&gt;
-		rake slices:media_rocket:copy_assets
-		git commit -a -m "add last asset from media_rocket"
-		git push
-		cap deploy
-	&lt;/code&gt;
+&lt;code&gt;
+rake slices:media_rocket:copy_assets
+git commit -a -m "add last asset from media_rocket"
+git push
+cap deploy
+&lt;/code&gt;
 &lt;/pre&gt;</description>
    		<pubDate>2009-02-11T00:00:00+01:00</pubDate>
  	</item>

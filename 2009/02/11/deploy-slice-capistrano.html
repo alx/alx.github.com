@@ -32,35 +32,35 @@
 <h1>Deploy a Merb Slice with Rake and Capistrano</h1>
 <p>On the Slice side, you just need to install the code locally to retrieve the assets, and push the code on your Git repository to retrieve it on your production server.</p>
 <pre>
-	<code>
-	sudo rake install
-	git push
-	</code>
+<code>
+sudo rake install
+git push
+</code>
 </pre>
 <p>On the Merb App side, you&#8217;ll need to tell it to update the Slice gemon the server first.<br />
 For this, I&#8217;ve made a special task in <strong>config/deploy.rb</strong>:</p>
 <pre>
-	<code>
-		namespace :gems do
+<code>
+namespace :gems do
 
-		  desc "Update and install media_rocket gem"
-		  task :media_rocket do
-		    run "cd #{gems_path}/media_rocket/; git pull"
-		    sudo "echo" # Allows to run next command as root
-		    run "cd #{gems_path}/media_rocket/ &amp;&amp; sudo rake install"
-		  end
+desc "Update and install media_rocket gem"
+	task :media_rocket do
+		run "cd #{gems_path}/media_rocket/; git pull"
+		sudo "echo" # Allows to run next command as root
+		run "cd #{gems_path}/media_rocket/ &amp;&amp; sudo rake install"
+	end
 
-		end	
-	</code>
+end	
+</code>
 </pre>
 <p>Then you&#8217;ll need to copy the assets from your Slice to your current application, add the changes to Git and deploy it:</p>
 <pre>
-	<code>
-		rake slices:media_rocket:copy_assets
-		git commit -a -m "add last asset from media_rocket"
-		git push
-		cap deploy
-	</code>
+<code>
+rake slices:media_rocket:copy_assets
+git commit -a -m "add last asset from media_rocket"
+git push
+cap deploy
+</code>
 </pre>
 </div>
 
