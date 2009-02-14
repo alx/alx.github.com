@@ -4,7 +4,7 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2009-02-14T11:39:54+01:00</updated>
+ <updated>2009-02-14T11:41:11+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
@@ -20,9 +20,9 @@
    <content type="html">&lt;p&gt;Comme un premier site web dans les années 90, une première vidéo-conférence au début des années 2000, voici les premières lettres numériques de Youri à 6 mois en 2009:&lt;/p&gt;
 &lt;pre&gt;
 &lt;code&gt;
-_xw_
-_!?K N BNNNNNNNNN_
-_TTyoituryeYTRRGH?_
+	xw
+	!?K N BNNNNNNNNN
+	TTyoituryeYTRRGH?
 &lt;/code&gt;
 &lt;/pre&gt;</content>
  </entry>
