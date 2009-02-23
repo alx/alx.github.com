@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Azureus and Mininova Bookmarks</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<h1>Azureus and Mininova Bookmarks</h1>
+<p class="meta">17 Jul 2008 &#8211; Madrid</p>
+<p>Last week, <a href="http://blog.mininova.org/articles/2008/07/08/new-feature-personal-bookmarks-remote-downloading/">Mininova has released a bookmark system</a> for its users, it would allow remote downloading, but information are missing to configure <a href="http://azureus.sourceforge.net">Azureus/Vuze</a> properly, here is a mini tutorial.</p>
+<p>You can imagine the reation of channels on Mininova, give your feed to your friends, and all start to download the same torrents at the same time to improve your speed and share the good content!</p>
+<h2>Mininova configuration</h2>
+<ul>
+	<li><a href="http://www.mininova.org/register">Create a mininova account</a>, or use your own to <a href="http://www.mininova.org/login">login</a></li>
+	<li>When logged in, bookmark icon will appear next to the torrent link. Example: <a href="http://www.mininova.org/tor/175356">Auberge Espagnole</a></li>
+	<li>Click on the bookmark link, it will be add on <a href="http://www.mininova.org/my/bookmarks">your bookmarks page</a></li>
+</ul>
+<h2>Azureus configuration</h2>
+<p>Be sure to have <a href="http://azureus.sourceforge.net/">the last version of Azureus</a></p>
+<h3>Installing RSSFeed Scanner plugin</h3>
+<p>Open Azureus, and go in menu: <em>File &#8594; Plugins &#8594; Installation Wizard&#8230;</em></p>
+<p>Select &#8220;<em>By list from Sourceforge.net</em>&#8221;, and select the plugin <strong><span class="caps">RSS</span> Feed Scanner</strong> in the list, click <em>Next</em> and <em>Install</em></p>
+<h3>Configuring RSSFeed Scanner plugin</h3>
+<p>Go in menu: <em>File &#8594; Plugins &#8594; RSSFeed Scanner</em>, select &#8220;Options&#8221; tab</p>
+<h4>Adding a <span class="caps">RSS</span> Feed <span class="caps">URL</span></h4>
+<p>Click on the &#8220;+&#8221; next to the top box</p>
+<p><img src="http://blog.alexgirard.com/wp-content/uploads/2008/07/imagen-7-300x148.png" alt="" /></p>
+<ul>
+	<li>Give it a name</li>
+	<li>Set the <span class="caps">URL</span> you&#8217;ll find on <a href="http://www.mininova.org/my/bookmarks">your bookmarks page</a> on mininova (called <strong>Your personal <span class="caps">RSS</span> feed</strong>)</li>
+	<li>press &#8220;<strong>Enabled</strong>&#8221;</li>
+	<li>and save</li>
+</ul>
+<h4>Adding a Filter</h4>
+<p>Click on the &#8220;+&#8221; next to the bottom box</p>
+<p><img src="http://blog.alexgirard.com/wp-content/uploads/2008/07/imagen-8-300x278.png" alt="" /></p>
+<ul>
+	<li>Give it a name</li>
+	<li>Set the filter to &#8220;<strong>^http</strong>&#8221;</li>
+	<li>Select &#8220;<strong>Filter is a Regular Expression</strong>&#8221;</li>
+	<li>Deselect &#8220;<strong>Filter searches title</strong>&#8221;</li>
+	<li>Set state to &#8220;<strong>Forced Download</strong>&#8221; if you wanted your torrent to start automaticly</li>
+	<li>Set Feed to your mininova feed your mininova feed you&#8217;ve just added to Azureus</li>
+	<li>Set type to &#8220;<strong>None</strong>&#8221;</li>
+	<li>Press &#8220;<strong>Enabled</strong>&#8221;</li>
+	<li>and save</li>
+</ul>
+<p>Go inside tab &#8220;Status&#8221;, and you&#8217;ll see your bookmarks there, starting to download.</p>
+</div>
+
+<div id="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="/rss.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Initiation à Merb</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<h1>Initiation à Merb</h1>
+<p class="meta">20 Nov 2008 &#8211; Toulouse</p>
+<p>Merb, nouveau framework Ruby, est le remplaçant officiel de Ruby on Rails.</p>
+<p>Ruby on Rails est le framework de référence de développement web depuis quelques années, il permet de monter n&#8217;importe quelle application web en suivant la règle du 80-20: 80% des fonctionnalités en 20% du temps. Les limites de Rails se posent pour les 20% de fonctionnalités restantes de votre application, qui peuvent prendre un temps considérable à développer.</p>
+<p>Merb a été conçu a partir de ce principe, avec l&#8217;expérience obtenu dans Rails, en reprenant ses principes et en le modulant afin de réduire le coût machine.</p>
+<p><a href="http://pastie.org/14416">Pastie de la première version de Merb le 22 Septembre 2006</a></p>
+<h2>Les bases</h2>
+<p>Voici une série de tutorials, vidéo et liens vers de la documentation:</p>
+<ul>
+	<li><a href="http://github.com/wycats/merb/">Repository officiel de Merb</a> sur Github</li>
+	<li><a href="http://merbcamp.com/video/zygmuntowicz.mp4">Keynote du Merbcamp</a> (vidéo, mp4), introduction de Merb par son créateur, souligne les bons points du framework. Seule la première partie de la vidéo est consacrée à Merb, la suite parle de <a href="http://github.com/ezmobius/nanite/">Nanite</a>, un système de daemons Ruby pour monter du Cloud Computing</li>
+	<li><a href="http://wiki.merbivore.com/">Wiki officiel de Merbivore</a> avec beaucoup d&#8217;aide</li>
+</ul>
+<h2>Le Routeur Merb</h2>
+<ul>
+	<li><a href="http://merbcamp.com/images/watch.gif">Merb plumbing: The router</a> (vidéo, mp4)</li>
+	<li><a href="http://www.slideshare.net/carllerche/merb-pluming-the-router-presentation">Slides de la conférence</a></li>
+</ul>
+<p>Exemple d&#8217;une route customisée:</p>
+<pre>
+<code>
+Merb::Router.prepare do
+	match(:domain =&gt; "mydomain.com") do
+		match("/this-article", :method =&gt; "get").
+		  to(:articles)
+		# another route
+	end
+end		
+</code>
+</pre>
+<p>Résolution du problème de sous-domaine:</p>
+<pre>
+<code>
+	match(:subdomain =&gt; /(.*)/).
+	to(account =&gt; "subdomain[1]") do
+		#application routes here
+end		
+</code>
+</pre>
+<p>_defer_to_ ajouter une couche logique dans le routeur:</p>
+<pre>
+<code>
+match("/articles/:url").defer_to |request, param|
+
+	if article = Article.first(:url =&gt; params[:url])
+		# Article trouvée avec :url courante
+		params.merge(:articles, article)
+	elsif article = Article.first(:id =&gt; params[:url])
+		# Article trouvée avec :id présent dans l'url
+		# se diriger vers le bon article
+		redirect url(:articles, article.url)
+	else
+		# Route not matching, continue on router matches
+		false
+	end
+	
+end
+</code>
+</pre>
+<p>Dans la lib des slices, on peut rajouter facilement des routes au routeur:</p>
+<pre>
+<code>
+# Setup routes inside the host application
+#
+# @param scope&lt;Merb::Router::Behaviour&gt;
+#  Routes will be added within this scope (namespace). In fact, any 
+#  router behaviour is a valid namespace, so you can attach
+#  routes at any level of your router setup.
+#
+# @note prefix your named routes with :mauth_password_slice_
+#   to avoid potential conflicts with global named routes.
+def self.setup_router(scope)
+  # example of a named route      
+  scope.match("/login", :method =&gt; :get ).to(:controller =&gt; "/exceptions",  :action =&gt; "unauthenticated").name(:login)
+  scope.match("/login", :method =&gt; :put ).to(:controller =&gt; "sessions",     :action =&gt; "update"         ).name(:perform_login)
+  scope.match("/logout"                 ).to(:controller =&gt; "sessions",     :action =&gt; "destroy"        ).name(:logout)
+end
+</code>
+</pre>
+<h2>Projets à suivre</h2>
+<ul>
+	<li><a href="http://github.com/lukesutton/gluttonberg/">Gluttonberg:</a> Slice <span class="caps">CMS</span> pour Merb &#8211; <a href="http://github.com/lukesutton/gluttonberg/wikis">Wiki</a></li>
+	<li><a href="http://github.com/fabien/minigems/">minigems:</a> Version light de Rubygems pour charger les gems avec moins d&#8217;espace mémoire</li>
+	<li><a href="http://atmos.org/index.php/2008/10/19/multi-environment-merbdm-deployment-with-vladgit/">Déploiement d&#8217;application Merb avec Vlad et Git</a></li>
+</ul>
+</div>
+
+<div id="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="/rss.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>

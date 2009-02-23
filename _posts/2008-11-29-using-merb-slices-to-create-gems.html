@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Alex Girard</title>
+   <title>Using Merb-Slices to manage your gems</title>
    <meta name="author" content="Tom Preston-Werner" />
    <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
 
@@ -28,35 +28,36 @@
     <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
   </div>
   
-  
-<div id="home">
-  <h1>Blog Posts</h1>
+  <div id="post">
+<p>This weekend, I wanted to experiement a bit more with <a href="http://github.com/wycats/merb/tree/master/merb-slices">merb-slices</a>, and thought it would be a good idea to use it to manage some of the gems I&#8217;ve created. It include few advantages:</p>
+<ul>
+	<li>You can add a web interface to test your gem</li>
+	<li>Rspec is directly include to debug the gem when problems appear</li>
+	<li>It&#8217;s easy to create, deploy and could be used in any rails/merb app</li>
+</ul>
+<p>I&#8217;ve tested the migration with <a href="http://rfeedfinder.rubyforge.org">rfeedfinder</a>, a gem to discover feed url from any webpage. In a few easy steps, I migrated the gem into a slice:</p>
+<ol>
+	<li>Create a slice: <em>merb-gen slice rfeedfinder-slice</em></li>
+	<li>Copy te class you need from your gem lib in a new file inside <em>lib/rfeedfinder-slice/</em> directory. Enclose it inside &#8216;<em>module RfeedfinderSlice &#8230; end</em>&#8217;</li>
+	<li>In <a href="http://github.com/alx/rfeedfinder-slice/tree/master/lib/rfeedfinder-slice.rb"><em>lib/rfeedfinder-slice.rb</em></a>, add your gem dependencies at the end of the file</li>
+	<li>Don&#8217;t forget to include your lib file into the dependencies</li>
+	<li>To install the gem on your system, nothing easier than: <em>sudo rake install</em></li>
+</ol>
+<p>I&#8217;ll let you see the web interface, all the routes are already configure, you just need to add a form, and get fancy if you want to use the slice as a proper merb-slice to be included in a complete merb app. Then you can use it in a ruby script, or in other rails/merb applications:</p>
+<script src="http://gist.github.com/30501.js"></script><p>See the end result on github: <a href="http://github.com/alx/rfeedfinder-slice/">rfeedfinder-slice</a></p>
+</div>
+
+<div id="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
   <ul class="posts">
-	
-    <li><span>23 Feb 2009</span> &raquo; <a href="/2009/02/23/merb-slice-resource-wrong-number-argument.html">Merb Slice and Resources, wrong number of arguments</a></li>
-	
-    <li><span>14 Feb 2009</span> &raquo; <a href="/2009/02/14/youri-clavier.html">Youri au clavier, premieres touches</a></li>
-	
-    <li><span>11 Feb 2009</span> &raquo; <a href="/2009/02/11/deploy-slice-capistrano.html">Deploy a Merb Slice with Rake and Capistrano</a></li>
-	
-    <li><span>03 Feb 2009</span> &raquo; <a href="/2009/02/03/sous-repertoire-merb.html">Merb et rangement de vos classes en sous-répertoire</a></li>
-	
-    <li><span>03 Feb 2009</span> &raquo; <a href="/2009/02/03/invites-to-spotify.html">10 invites to Spotify.com</a></li>
-	
-	<li><a href="/archives.html">archives...</a></li>
-  </ul>
-  
-  <h1>Open Source Projects</h1>
-  <ul class="posts">
-    <li><a href="http://www.feevy.com">Feevy:</a> Dynamic blogroll on your blog with a simple js tag [<a href="http://github.com/alx/feevy/">code</a>]</li>
-    <li><a href="http://rfeedreader.rubyforge.org">rFeedReader:</a> Extract latest posts from any rss/atom feed, used on Feevy.com [<a href="http://github.com/alx/rfeedreader/">code</a>]</li>
-    <li><a href="http://rfeedfinder.rubyforge.org">rFeedFinder:</a> Discover rss/atom feed link on any webpage, used on Feevy.com [<a href="http://github.com/alx/rfeedfinder/">code</a>]</li>
-    <li><a href="http://openid.alexgirard.com">Openid-Server:</a> PHP package to install an OpenId server [<a href="http://github.com/alx/openid-server/">code</a>]</li>
-    <li><a href="http://bookmark.alexgirard.com">Pressmark:</a> Social bookmarking, <a href="http://delicious.com">Del.icio.us</a> clone, with Wordpress [<a href="http://github.com/alx/pressmark/">code</a>]</li>
-    <li><a href="http://arduino.cc">Arduino.tmbundle:</a> Textmate Bundle to make and upload programs to Arduino [<a href="http://github.com/alx/arduino.tmbundle/">code</a>]</li>
-	<li><a href="http://bbvablogs.com">Blogsfera:</a> Wordpress-Mu in Spanish, with useful plugins and themes by default [<a href="http://github.com/alx/blogsfera/">code</a>]</li>
-	<li><a href="http://barceloneta.fr">Barceloneta:</a> Blog-shop for Sandra Dupire [<a href="http://github.com/alx/barceloneta/">code</a>]</li>
-	<li><a href="http://douceoffensive.org">Douce Offensive:</a> Photoblog of Guillaume Ajavon [<a href="http://github.com/alx/douce-offensive/">code</a>]</li>
+    
   </ul>
 </div>
   

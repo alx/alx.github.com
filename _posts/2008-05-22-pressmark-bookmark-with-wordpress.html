@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Social Bookmarking with Wordpress</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<h1>Social Bookmarking with Wordpress</h1>
+<p class="meta">22 May 2008 &#8211; Madrid</p>
+<p>Pressmark is a <a href="http://www.wordpress.org">Wordpress</a> installation with all you need to start a social bookmarking website (like <a href="http://del.icio.us">del.icio.us</a>, <a href="http://sabros.us">sabros.us</a>, &#8230;).</p>
+<p><a href="http://bookmark.alexgirard.com"><img src="http://blog.alexgirard.com/wp-content/uploads/2008/05/image-1-300x212.png" alt="" /></a></p>
+<p><strong>You can see a demo of Pressmark installation on <a href="http://bookmark.alexgirard.com">bookmark.alexgirard.com</a></strong></p>
+<p>Pressmark includes <a href="http://svn.automattic.com/wpcom-themes/prologue/">Wordpress Prologue theme</a>, which has been used by Wordpress team to have a <a href="http://prologuedemo.wordpress.com/">twitter-like dev-blog</a>.</p>
+<p>Prologue include <a href="http://gravatar.com">Gravatar</a> support, so go to upload your avatar on <a href="http://gravatar.com">gravatar.com</a> to have a nicer output!<br />
+If you feel like adding your own modification to the code, you can clone/fork the project on Github:</p>
+<p><a href="http://github.com/alx/pressmark/">http://github.com/alx/pressmark/</a>. All contributions are welcomed!</p>
+<p><strong>Ideas to extend Pressmark:</strong></p>
+<ul>
+	<li>Bookmarlet, Jabber bot for easy posting;</li>
+	<li>Import from bigger social-bookmark accounts (delicious, magnolia, &#8230;)</li>
+	<li>Cross-blogging to decentralized bookmark management in various blog spaces</li>
+</ul>
+<p><strong>Installation</strong></p>
+<ul>
+	<li>Get Pressmark source code:
+	<ul>
+		<li><a href="http://github.com/alx/pressmark/tarball/master">Download it from Github</a></li>
+		<li>If you&#8217;ve got git installed, clone it from Github (to easily get last updated): <em>git clone git://github.com/alx/pressmark.git pressmark</em></li>
+	</ul></li>
+	<li>Move the source to your webserver, ask a geek how to do it if you don&#8217;t know :)</li>
+	<li>Wordpress configuration: copy &#8216;<em>wp-config-sample.php</em>&#8217; to &#8216;<em>wp-config.php</em>&#8217; and fill up the MySQL database information.</li>
+	<li>Access to the website where you&#8217;ve installed Pressmark, and begin the &#8220;2 min. installation&#8221; from Wordpress</li>
+	<li>Now that your website is ready, go in the administration pages and activate the following options:
+	<ul>
+		<li>In &#8216;<em>Design</em>&#8217;: select &#8216;<em>Pressmark</em>&#8217; theme;</li>
+		<li>In &#8216;<em>Setting</em>&#8217;: select &#8216;<em>Anyone can register</em>&#8217; and set the &#8216;<em>New User Default Role</em>&#8217; to &#8216;<em>Author</em>&#8217; if you want your users to post links;</li>
+		<li>In &#8216;<em>Plugins</em>&#8217;: activate &#8216;<em>WP-OpenID</em>&#8217; plugin</li>
+	</ul></li>
+</ul>
+</div>
+
+<div id="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="/rss.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>

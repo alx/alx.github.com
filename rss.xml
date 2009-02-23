@@ -4,11 +4,42 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-14T11:41:11+01:00</pubDate>
-    <lastBuildDate>2009-02-14T11:41:11+01:00</lastBuildDate>
+    <pubDate>2009-02-23T02:30:31+01:00</pubDate>
+    <lastBuildDate>2009-02-23T02:30:31+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>Merb Slice and Resources, wrong number of arguments</title>
+   		<link>http://alexgirard.com/2009/02/23/merb-slice-resource-wrong-number-argument.html</link>
+   		<guid>http://alexgirard.com/2009/02/23/merb-slice-resource-wrong-number-argument</guid>
+   		<description>&lt;h1&gt;Merb Slice and Resources, wrong number of arguments&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;
+merb : worker (port 4000) ~ Started request handling: Mon Feb 23 01:08:49 +0100 2009
+merb : worker (port 4000) ~ Routed to: {"format"=&amp;gt;nil, "submit"=&amp;gt;"Create Page", "action"=&amp;gt;"create", "controller"=&amp;gt;"webbastic/pages", "page"=&amp;gt;{"name"=&amp;gt;"home", "site_id"=&amp;gt;"1"}}
+merb : worker (port 4000) ~ Params: {"format"=&amp;gt;nil, "submit"=&amp;gt;"Create Page", "action"=&amp;gt;"create", "controller"=&amp;gt;"webbastic/pages", "page"=&amp;gt;{"name"=&amp;gt;"home", "site_id"=&amp;gt;"1"}}
+merb : worker (port 4000) ~ wrong number of arguments (0 for 1) - (ArgumentError)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When using resources in a Merb Slice, you can get this kind of error.&lt;br /&gt;
+I still don&amp;#8217;t know the core of the problem, but I&amp;#8217;ve found how to solve it.&lt;/p&gt;
+&lt;p&gt;It begins with the signature of the resource contoller method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+  # POST /pages
+  def create(page)
+    @page = Webbastic::Page.new(page)
+	.....
+&amp;lt;code&amp;gt;&lt;/pre&gt;
+&lt;p&gt;Someway, the &lt;strong&gt;page&lt;/strong&gt; object doesn&amp;#8217;t pass through &amp;#8211; number of argument equals 0 &amp;#8211; but you can still access to your parameters with &lt;strong&gt;params&lt;/strong&gt; object, modifying the method this way:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+  # POST /pages
+  def create
+    @page = Webbastic::Page.new(params[:page])
+	.....
+&amp;lt;code&amp;gt;&lt;/pre&gt;
+&lt;p&gt;I&amp;#8217;ve post a ticket on Merb dashboard, so this might have another official solution soon: &lt;a href="http://merb.lighthouseapp.com/projects/7433-merb/tickets/1225-merb-slice-and-resources-wrong-number-of-arguments"&gt;ticket #1225&lt;/a&gt;&lt;/p&gt;</description>
+   		<pubDate>2009-02-23T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>Youri au clavier, premieres touches</title>
    		<link>http://alexgirard.com/2009/02/14/youri-clavier.html</link>
@@ -36,8 +67,8 @@ sudo rake install
 git push
 &lt;/code&gt;
 &lt;/pre&gt;
-&lt;p&gt;On the Merb App side, you&#8217;ll need to tell it to update the Slice gemon the server first.&lt;br /&gt;
-For this, I&#8217;ve made a special task in &lt;strong&gt;config/deploy.rb&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;On the Merb App side, you&amp;#8217;ll need to tell it to update the Slice gemon the server first.&lt;br /&gt;
+For this, I&amp;#8217;ve made a special task in &lt;strong&gt;config/deploy.rb&lt;/strong&gt;:&lt;/p&gt;
 &lt;pre&gt;
 &lt;code&gt;
 namespace :gems do
@@ -46,13 +77,13 @@ namespace :gems do
   task :media_rocket do
     run "cd #{gems_path}/media_rocket/; git pull"
     sudo "echo" # Allows to run next command as root
-    run "cd #{gems_path}/media_rocket/ &amp;&amp; sudo rake install"
+    run "cd #{gems_path}/media_rocket/ &amp;amp;&amp;amp; sudo rake install"
   end
 
 end	
 &lt;/code&gt;
 &lt;/pre&gt;
-&lt;p&gt;Then you&#8217;ll need to copy the assets from your Slice to your current application, add the changes to Git and deploy it:&lt;/p&gt;
+&lt;p&gt;Then you&amp;#8217;ll need to copy the assets from your Slice to your current application, add the changes to Git and deploy it:&lt;/p&gt;
 &lt;pre&gt;
 &lt;code&gt;
 rake slices:media_rocket:copy_assets
@@ -66,26 +97,13 @@ cap deploy
  	</item>
  	
  	<item>
-   		<title>10 invites to Spotify.com</title>
-   		<link>http://alexgirard.com/2009/02/03/invites-to-spotify.html</link>
-   		<guid>http://alexgirard.com/2009/02/03/invites-to-spotify</guid>
-   		<description>&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
-&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;It&#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
-&lt;p&gt;Thanks to years of music industry battle, we&#8217;ve got this old technology quietly moving in, and it worries me a bit that it&#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
-&lt;p&gt;Test it, it&#8217;s simple, you might like it, but it&#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
-If only there was a subscription (and a better music player) on last.fm, they&#8217;d win them all.&lt;/p&gt;</description>
-   		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
    		<title>Merb et rangement de vos classes en sous-répertoire</title>
    		<link>http://alexgirard.com/2009/02/03/sous-repertoire-merb.html</link>
    		<guid>http://alexgirard.com/2009/02/03/sous-repertoire-merb</guid>
    		<description>&lt;h1&gt;Merb et rangement de vos classes en sous-répertoire&lt;/h1&gt;
-&lt;p&gt;Petit travail d&#8217;un soir: organiser les classes de notre application Merb dans des sous-répertoire.&lt;/p&gt;
+&lt;p&gt;Petit travail d&amp;#8217;un soir: organiser les classes de notre application Merb dans des sous-répertoire.&lt;/p&gt;
 &lt;h2&gt;Problématique&lt;/h2&gt;
-&lt;p&gt;Par défaut, Merb construit ce type d&#8217;arborescence:&lt;/p&gt;
+&lt;p&gt;Par défaut, Merb construit ce type d&amp;#8217;arborescence:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
 app
 |__ controllers
@@ -95,7 +113,7 @@ app
 	|__ ...
 	|__ rocket.rb
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Et pour pas vous embêtez, vous entassez naturellement vos classes jusqu&#8217;à trop plein.&lt;br /&gt;
+&lt;p&gt;Et pour pas vous embêtez, vous entassez naturellement vos classes jusqu&amp;#8217;à trop plein.&lt;br /&gt;
 Maintenant, vous voulez ranger vos contrôleurs et modèles de manière plus hiérarchiques:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
 app
@@ -111,23 +129,36 @@ app
 		|__ rocket.rb
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Solution&lt;/h2&gt;
-&lt;p&gt;Pour faire ceci, il vous faut d&#8217;abord modifier le fichier &lt;strong&gt;config/router.rb&lt;/strong&gt;, par exemple pour appeler le contrôleur de la ressource &lt;strong&gt;rocket&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Pour faire ceci, il vous faut d&amp;#8217;abord modifier le fichier &lt;strong&gt;config/router.rb&lt;/strong&gt;, par exemple pour appeler le contrôleur de la ressource &lt;strong&gt;rocket&lt;/strong&gt;:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
 Merb::Router.prepare do |r|
   
-  r.resources :resource_rockets, :controller =&gt; "resource/rockets"
+  r.resources :resource_rockets, :controller =&amp;gt; "resource/rockets"
 
 end
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Vous devez déclarer le module du contrôleur dans &lt;strong&gt;app/controllers/resource/rockets.rb&lt;/strong&gt;:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
 module Resource
-  class Rockets &lt; Application
+  class Rockets &amp;lt; Application
 	...
   end
 end
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Pour cette manipulation, il n&#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</description>
+&lt;p&gt;Pour cette manipulation, il n&amp;#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</description>
+   		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>10 invites to Spotify.com</title>
+   		<link>http://alexgirard.com/2009/02/03/invites-to-spotify.html</link>
+   		<guid>http://alexgirard.com/2009/02/03/invites-to-spotify</guid>
+   		<description>&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
+&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
+&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
+&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
+If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;</description>
    		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
  	</item>
  	
@@ -135,8 +166,8 @@ end
    		<title>Ruby and Windows, stupid trick to delete a file</title>
    		<link>http://alexgirard.com/2009/01/27/ruby-wundows-unlink.html</link>
    		<guid>http://alexgirard.com/2009/01/27/ruby-wundows-unlink</guid>
-   		<description>&lt;p&gt;Sometimes, you&#8217;ve to be strong enough to delete a &#8220;&lt;em&gt;permission denied&lt;/em&gt;&#8221; file under windows with ruby:&lt;/p&gt;
-&lt;script src="http://gist.github.com/53396.js"&gt;&lt;/script&gt;&lt;p&gt;It doesn&#8217;t take too long, but that&#8217;s the kind of stupid trick you can avoid if you choose another platform to make your code.&lt;/p&gt;</description>
+   		<description>&lt;p&gt;Sometimes, you&amp;#8217;ve to be strong enough to delete a &amp;#8220;&lt;em&gt;permission denied&lt;/em&gt;&amp;#8221; file under windows with ruby:&lt;/p&gt;
+&lt;script src="http://gist.github.com/53396.js"&gt;&lt;/script&gt;&lt;p&gt;It doesn&amp;#8217;t take too long, but that&amp;#8217;s the kind of stupid trick you can avoid if you choose another platform to make your code.&lt;/p&gt;</description>
    		<pubDate>2009-01-27T00:00:00+01:00</pubDate>
  	</item>
  	
@@ -144,34 +175,34 @@ end
    		<title>Politimap, les zones chaudes de l'Assemblée Nationale</title>
    		<link>http://alexgirard.com/2009/01/07/politimap-premiere.html</link>
    		<guid>http://alexgirard.com/2009/01/07/politimap-premiere</guid>
-   		<description>&lt;p&gt;Après quelques surprises lors du passage de Jérémie Zimmermann à &lt;a href="http://www.cinemas-utopia.org/toulouse/"&gt;Utopia Toulouse&lt;/a&gt; pour présenter le travail de &lt;a href="http://laquadrature.net"&gt;La Quadrature du Net&lt;/a&gt;, et après m&#8217;être rapidement perdu dans une tentative de lecture des texte des sessions de l&#8217;Assemblée Nationale, je me suis dit qu&#8217;il serait plus marrant de visualiser l&#8217;activité de ces sessions sous forme de &lt;a href="http://images.google.com/images?q=heatmap"&gt;heatmap&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Sachant que tous les textes, et le fiches de chaque député sont librement accessible sur le site de l&#8217;Assemblée, il ne me manquait plus que quelques lignes pour analyser le nombre de prise de parole dans chaque séance. Ainsi, durant la première séance du 8 décembre 2008, évoquant la communication audiovisuelle et le nouveau service public de la télévision, voici le nombre de prise de parole:&lt;/p&gt;
-&lt;p&gt;58, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2045.asp'&gt;No&#235;l Mam&#232;re&lt;/a&gt; &#8211; Place: 596&lt;br /&gt;
-45, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/543.asp'&gt;Patrick Bloche&lt;/a&gt; &#8211; Place: 453&lt;br /&gt;
-34, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2603.asp'&gt;Marcel Rogemont&lt;/a&gt; &#8211; Place: 479&lt;br /&gt;
-30, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267768.asp'&gt;Patrick Roy&lt;/a&gt; &#8211; Place: 550&lt;br /&gt;
-24, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/333224.asp'&gt;Benoist Apparu&lt;/a&gt; &#8211; Place: 138&lt;br /&gt;
-23, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2099.asp'&gt;Patrice Martin-Lalande&lt;/a&gt; &#8211; Place: 125&lt;br /&gt;
-23, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/917.asp'&gt;Jean-Fran&#231;ois Cop&#233;&lt;/a&gt; &#8211; Place: 99&lt;br /&gt;
-22, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/653.asp'&gt;Patrick Braouezec&lt;/a&gt; &#8211; Place: 585&lt;br /&gt;
-21, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/346886.asp'&gt;Fr&#233;d&#233;ric Lefebvre&lt;/a&gt; &#8211; Place: 358&lt;br /&gt;
-20, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1630.asp'&gt;Michel Herbillon&lt;/a&gt; &#8211; Place: 259&lt;br /&gt;
-15, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1761.asp'&gt;Christian Kert&lt;/a&gt; &#8211; Place: 343&lt;br /&gt;
-12, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/335319.asp'&gt;Sandrine Mazetier&lt;/a&gt; &#8211; Place: 429&lt;br /&gt;
-7, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267266.asp'&gt;Yves Censi&lt;/a&gt; &#8211; Place: 79&lt;br /&gt;
-6, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267087.asp'&gt;Jean Dionis du S&#233;jour&lt;/a&gt; &#8211; Place: 397&lt;br /&gt;
-5, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267429.asp'&gt;Dino Cinieri&lt;/a&gt; &#8211; Place: 196&lt;br /&gt;
-4, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1058.asp'&gt;Richard Dell&#39;Agnola&lt;/a&gt; &#8211; Place: 357&lt;br /&gt;
-4, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267719.asp'&gt;Richard Malli&#233;&lt;/a&gt; &#8211; Place: 76&lt;br /&gt;
-3, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1886.asp'&gt;Bruno Le Roux&lt;/a&gt; &#8211; Place: 421&lt;br /&gt;
-2, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2319.asp'&gt;Fran&#231;oise de Panafieu&lt;/a&gt; &#8211; Place: 177&lt;br /&gt;
-2, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/335054.asp'&gt;Marietta Karamanli&lt;/a&gt; &#8211; Place: 559&lt;/p&gt;
-&lt;p&gt;Avec ces données, il ne me manquait plus qu&#8217;a situé chacun des sièges. Heureusement, le &lt;a href="http://www.assemblee-nationale.fr/seance/hemicycle.asp"&gt;plan de l&#8217;hémicycle&lt;/a&gt; est aussi disponible en ligne, et en ajoutant un peu d&#8217;interaction grâce à &lt;a href="http://shoooes.net/"&gt;Shoes&lt;/a&gt;, j&#8217;ai rapidement créé un fichier de coordonnées de tous les sièges. (&lt;em&gt;En passant, j&#8217;aimerai maintenant avoir plus d&#8217;information sur l&#8217;histoire de l&#8217;Assemblée, il manque des numéros de sièges, la curiosité me poussera sûrement à répondre à ces manques prochainement.&lt;/em&gt;)&lt;/p&gt;
-&lt;p&gt;Voici l&#8217;application qui m&#8217;a servie à situer chaque siège:&lt;/p&gt;
+   		<description>&lt;p&gt;Après quelques surprises lors du passage de Jérémie Zimmermann à &lt;a href="http://www.cinemas-utopia.org/toulouse/"&gt;Utopia Toulouse&lt;/a&gt; pour présenter le travail de &lt;a href="http://laquadrature.net"&gt;La Quadrature du Net&lt;/a&gt;, et après m&amp;#8217;être rapidement perdu dans une tentative de lecture des texte des sessions de l&amp;#8217;Assemblée Nationale, je me suis dit qu&amp;#8217;il serait plus marrant de visualiser l&amp;#8217;activité de ces sessions sous forme de &lt;a href="http://images.google.com/images?q=heatmap"&gt;heatmap&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Sachant que tous les textes, et le fiches de chaque député sont librement accessible sur le site de l&amp;#8217;Assemblée, il ne me manquait plus que quelques lignes pour analyser le nombre de prise de parole dans chaque séance. Ainsi, durant la première séance du 8 décembre 2008, évoquant la communication audiovisuelle et le nouveau service public de la télévision, voici le nombre de prise de parole:&lt;/p&gt;
+&lt;p&gt;58, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2045.asp'&gt;No&amp;#235;l Mam&amp;#232;re&lt;/a&gt; &amp;#8211; Place: 596&lt;br /&gt;
+45, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/543.asp'&gt;Patrick Bloche&lt;/a&gt; &amp;#8211; Place: 453&lt;br /&gt;
+34, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2603.asp'&gt;Marcel Rogemont&lt;/a&gt; &amp;#8211; Place: 479&lt;br /&gt;
+30, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267768.asp'&gt;Patrick Roy&lt;/a&gt; &amp;#8211; Place: 550&lt;br /&gt;
+24, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/333224.asp'&gt;Benoist Apparu&lt;/a&gt; &amp;#8211; Place: 138&lt;br /&gt;
+23, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2099.asp'&gt;Patrice Martin-Lalande&lt;/a&gt; &amp;#8211; Place: 125&lt;br /&gt;
+23, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/917.asp'&gt;Jean-Fran&amp;#231;ois Cop&amp;#233;&lt;/a&gt; &amp;#8211; Place: 99&lt;br /&gt;
+22, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/653.asp'&gt;Patrick Braouezec&lt;/a&gt; &amp;#8211; Place: 585&lt;br /&gt;
+21, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/346886.asp'&gt;Fr&amp;#233;d&amp;#233;ric Lefebvre&lt;/a&gt; &amp;#8211; Place: 358&lt;br /&gt;
+20, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1630.asp'&gt;Michel Herbillon&lt;/a&gt; &amp;#8211; Place: 259&lt;br /&gt;
+15, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1761.asp'&gt;Christian Kert&lt;/a&gt; &amp;#8211; Place: 343&lt;br /&gt;
+12, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/335319.asp'&gt;Sandrine Mazetier&lt;/a&gt; &amp;#8211; Place: 429&lt;br /&gt;
+7, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267266.asp'&gt;Yves Censi&lt;/a&gt; &amp;#8211; Place: 79&lt;br /&gt;
+6, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267087.asp'&gt;Jean Dionis du S&amp;#233;jour&lt;/a&gt; &amp;#8211; Place: 397&lt;br /&gt;
+5, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267429.asp'&gt;Dino Cinieri&lt;/a&gt; &amp;#8211; Place: 196&lt;br /&gt;
+4, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1058.asp'&gt;Richard Dell&amp;#39;Agnola&lt;/a&gt; &amp;#8211; Place: 357&lt;br /&gt;
+4, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267719.asp'&gt;Richard Malli&amp;#233;&lt;/a&gt; &amp;#8211; Place: 76&lt;br /&gt;
+3, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1886.asp'&gt;Bruno Le Roux&lt;/a&gt; &amp;#8211; Place: 421&lt;br /&gt;
+2, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2319.asp'&gt;Fran&amp;#231;oise de Panafieu&lt;/a&gt; &amp;#8211; Place: 177&lt;br /&gt;
+2, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/335054.asp'&gt;Marietta Karamanli&lt;/a&gt; &amp;#8211; Place: 559&lt;/p&gt;
+&lt;p&gt;Avec ces données, il ne me manquait plus qu&amp;#8217;a situé chacun des sièges. Heureusement, le &lt;a href="http://www.assemblee-nationale.fr/seance/hemicycle.asp"&gt;plan de l&amp;#8217;hémicycle&lt;/a&gt; est aussi disponible en ligne, et en ajoutant un peu d&amp;#8217;interaction grâce à &lt;a href="http://shoooes.net/"&gt;Shoes&lt;/a&gt;, j&amp;#8217;ai rapidement créé un fichier de coordonnées de tous les sièges. (&lt;em&gt;En passant, j&amp;#8217;aimerai maintenant avoir plus d&amp;#8217;information sur l&amp;#8217;histoire de l&amp;#8217;Assemblée, il manque des numéros de sièges, la curiosité me poussera sûrement à répondre à ces manques prochainement.&lt;/em&gt;)&lt;/p&gt;
+&lt;p&gt;Voici l&amp;#8217;application qui m&amp;#8217;a servie à situer chaque siège:&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/seatmap.png" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;Et enfin, avec l&#8217;aide du code de &lt;a href="http://blog.corunet.com/english/the-definitive-heatmap"&gt;clickmaps&lt;/a&gt;, idéalement disponible en ruby, j&#8217;ai put le modifier un petit peu pour analyser cette séance:&lt;/p&gt;
+&lt;p&gt;Et enfin, avec l&amp;#8217;aide du code de &lt;a href="http://blog.corunet.com/english/the-definitive-heatmap"&gt;clickmaps&lt;/a&gt;, idéalement disponible en ruby, j&amp;#8217;ai put le modifier un petit peu pour analyser cette séance:&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/20090090.jpg" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;Ce n&#8217;est qu&#8217;un début, avec du code encore tout poussiéreux, et des idées d&#8217;analyses qui peuvent être assez marrante, ou plus sérieusement poussées pour permettre une autre vision de la scène politique encore assez obscure à l&#8217;Assemblée.&lt;/p&gt;
+&lt;p&gt;Ce n&amp;#8217;est qu&amp;#8217;un début, avec du code encore tout poussiéreux, et des idées d&amp;#8217;analyses qui peuvent être assez marrante, ou plus sérieusement poussées pour permettre une autre vision de la scène politique encore assez obscure à l&amp;#8217;Assemblée.&lt;/p&gt;
 &lt;p&gt;Vous pouvez télécharger et suivre le développement de cet outils sur &lt;a href="http://github.com/alx/politimap/"&gt;github.com/alx/politimap/&lt;/a&gt;&lt;/p&gt;</description>
    		<pubDate>2009-01-07T00:00:00+01:00</pubDate>
  	</item>
@@ -182,7 +213,7 @@ end
    		<guid>http://alexgirard.com/2008/12/28/gitbook-en-francais</guid>
    		<description>&lt;p&gt;Une nouvelle traduction en cours de correction est maintenant disponible pour tous ceux voulant en connaître plus sur Git: le &lt;a href="http://book.git-scm.com/"&gt;Git Community Book&lt;/a&gt; est disponible sur &lt;a href="http://github.com/schacon/gitbook/"&gt;GitHub&lt;/a&gt;, et après en avoir appris énormément durant la traduction de la centaine de pages de cette ouvrage en cours de réalisation, je vous ai généré la version française actuelle:&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://alexgirard.com/git-book/"&gt;&lt;img src="/images/gitbook.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Vous y trouverez le &lt;a href="http://alexgirard.com/git-book/book_fr.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt; et aussi pleins d&#8217;erreurs à corriger. Je vous invite à m&#8217;envoyer un mail à &lt;a href="mailto:alx.girard@gmail.com"&gt;alx.girard@gmail.com&lt;/a&gt; avec vos corrections, suggestions, et commentaires; ou à participer au projet en le &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;forkant sur github&lt;/a&gt; et en travaillant dans la branche &lt;em&gt;french&lt;/em&gt; avant de m&#8217;envoyer vos &lt;em&gt;pull-request&lt;/em&gt;.&lt;/p&gt;</description>
+&lt;p&gt;Vous y trouverez le &lt;a href="http://alexgirard.com/git-book/book_fr.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt; et aussi pleins d&amp;#8217;erreurs à corriger. Je vous invite à m&amp;#8217;envoyer un mail à &lt;a href="mailto:alx.girard@gmail.com"&gt;alx.girard@gmail.com&lt;/a&gt; avec vos corrections, suggestions, et commentaires; ou à participer au projet en le &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;forkant sur github&lt;/a&gt; et en travaillant dans la branche &lt;em&gt;french&lt;/em&gt; avant de m&amp;#8217;envoyer vos &lt;em&gt;pull-request&lt;/em&gt;.&lt;/p&gt;</description>
    		<pubDate>2008-12-28T00:00:00+01:00</pubDate>
  	</item>
  	
@@ -190,13 +221,13 @@ end
    		<title>Using Git submodules to publish jekyll blog on many hosts</title>
    		<link>http://alexgirard.com/2008/12/27/git-public-websites.html</link>
    		<guid>http://alexgirard.com/2008/12/27/git-public-websites</guid>
-   		<description>&lt;p&gt;Since GitHub has released the Pages features, it has become a bit of a chore to manage publications on various websites. For example, if you use Jekyll on an external site and on Github Pages, you&#8217;ll need to change the links inside the rss feeds to take care the 2 domains.&lt;/p&gt;
-&lt;p&gt;To manage the publication of my 2 websites, which get the same content generated by Jekyll, I&#8217;ve choose to only use git submodules and a rake task to publish new content. It might not be the best solution, I recognize it&#8217;s a bit messy, but I least I just have to use this command to publish all content now: &lt;em&gt;rake publish&lt;/em&gt;&lt;/p&gt;
+   		<description>&lt;p&gt;Since GitHub has released the Pages features, it has become a bit of a chore to manage publications on various websites. For example, if you use Jekyll on an external site and on Github Pages, you&amp;#8217;ll need to change the links inside the rss feeds to take care the 2 domains.&lt;/p&gt;
+&lt;p&gt;To manage the publication of my 2 websites, which get the same content generated by Jekyll, I&amp;#8217;ve choose to only use git submodules and a rake task to publish new content. It might not be the best solution, I recognize it&amp;#8217;s a bit messy, but I least I just have to use this command to publish all content now: &lt;em&gt;rake publish&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/publish.png" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;The rake task and the organisation of the project is available on GitHub: &lt;a href="http://github.com/alx/hub/tree/master"&gt;Hub &#8211; A central place for publications&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Inside, you&#8217;ll just find git submodules in use on my publication ring: &lt;strong&gt;site-content&lt;/strong&gt; linking to my content, &lt;strong&gt;alexgirard.com&lt;/strong&gt; and &lt;strong&gt;alx.github.com&lt;/strong&gt; linking to 2 branches of my GitHub Page project (one branch for GitHub, one branch for &lt;a href="http://alexgirard.com"&gt;alexgirard.com&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;Inside the rakefile, you&#8217;ll find the different processes in use to publish on each website. It uses the &lt;a href="http://github.com/schacon/ruby-git/tree/master"&gt;git gem from Scott Chacon&lt;/a&gt; and was a good exercice after translating the &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;Git Book in french&lt;/a&gt; for a week.&lt;/p&gt;
-&lt;p&gt;You can easily imagine how to modify it, to simulate the new &lt;a href="http://github.com/blog/277-pages-generator"&gt;page generator&lt;/a&gt; for each of your project, or host the last version of the newly versions of various open book: &lt;a href="http://book.merbist.com/"&gt;Merb Book&lt;/a&gt;, &lt;a href="http://book.git-scm.com/"&gt;Git Community Book&lt;/a&gt; &#8230;&lt;/p&gt;</description>
+&lt;p&gt;The rake task and the organisation of the project is available on GitHub: &lt;a href="http://github.com/alx/hub/tree/master"&gt;Hub &amp;#8211; A central place for publications&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Inside, you&amp;#8217;ll just find git submodules in use on my publication ring: &lt;strong&gt;site-content&lt;/strong&gt; linking to my content, &lt;strong&gt;alexgirard.com&lt;/strong&gt; and &lt;strong&gt;alx.github.com&lt;/strong&gt; linking to 2 branches of my GitHub Page project (one branch for GitHub, one branch for &lt;a href="http://alexgirard.com"&gt;alexgirard.com&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Inside the rakefile, you&amp;#8217;ll find the different processes in use to publish on each website. It uses the &lt;a href="http://github.com/schacon/ruby-git/tree/master"&gt;git gem from Scott Chacon&lt;/a&gt; and was a good exercice after translating the &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;Git Book in french&lt;/a&gt; for a week.&lt;/p&gt;
+&lt;p&gt;You can easily imagine how to modify it, to simulate the new &lt;a href="http://github.com/blog/277-pages-generator"&gt;page generator&lt;/a&gt; for each of your project, or host the last version of the newly versions of various open book: &lt;a href="http://book.merbist.com/"&gt;Merb Book&lt;/a&gt;, &lt;a href="http://book.git-scm.com/"&gt;Git Community Book&lt;/a&gt; &amp;#8230;&lt;/p&gt;</description>
    		<pubDate>2008-12-27T00:00:00+01:00</pubDate>
  	</item>
  	
@@ -208,89 +239,10 @@ end
 &lt;p&gt;It was not long to find a Sinatra project using the Flickr &lt;span class="caps"&gt;API&lt;/span&gt;: &lt;a href="http://github.com/foca/flickr-downloader/tree"&gt;flickr-downloader&lt;/a&gt; from &lt;a href="http://foca.tumblr.com/"&gt;foca&lt;/a&gt; ad re-adapt it to fecth vairous information from Flickr and send them to the &lt;a href="http://twitpic.com/api/"&gt;TwitPic &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The result:&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/twitpic.png" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;It&#8217;s downloadable and clonable on github: &lt;a href="http://github.com/alx/flickr-downloader/"&gt;Flickr Twit&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;It&#8217;s just and experiment for the weekend, but it surely can be useful in recent world events that have primarely happened on twitter: London-Mumbaï terrorist attacks, big concert at X-Y site, weddings for a day&#8230; or to follow a group of flickr artists inside a twitter feed.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s downloadable and clonable on github: &lt;a href="http://github.com/alx/flickr-downloader/"&gt;Flickr Twit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s just and experiment for the weekend, but it surely can be useful in recent world events that have primarely happened on twitter: London-Mumbaï terrorist attacks, big concert at X-Y site, weddings for a day&amp;#8230; or to follow a group of flickr artists inside a twitter feed.&lt;/p&gt;
 &lt;p&gt;Thanks to Noah to have made &lt;a href="http://twitpic.com"&gt;TwitPic&lt;/a&gt; what it has become.&lt;/p&gt;</description>
    		<pubDate>2008-12-26T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>25C3 - My remote lecture program</title>
-   		<link>http://alexgirard.com/2008/12/21/25c3-program.html</link>
-   		<guid>http://alexgirard.com/2008/12/21/25c3-program</guid>
-   		<description>&lt;h1&gt;25C3 &#8211; My remote lecture program&lt;/h1&gt;
-&lt;p class="meta"&gt;21 Dec 2008 &#8211; Toulouse&lt;/p&gt;
-&lt;p&gt;2 years ago, I was visiting Christine in Berlin for Christmas, and it was a surprise to discover than the &lt;span class="caps"&gt;CCC&lt;/span&gt; was doing its &lt;a href="https://events.ccc.de/congress/2006-static/static/2/3/r/23rd_Chaos_Communication_Congress_7c1f.html"&gt;23rd conference&lt;/a&gt; at the same time, it has always been a hacker group orbiting in my sphere of ideas (&lt;a href="http://www.blinkenlights.net/"&gt;Blinkenlights&lt;/a&gt;, &#8230;). Since then, I&#8217;ve followed most of their events (and other hacker conferences too: &quot;HOPE&quot;http://www.thelasthope.org/, &lt;a href="http://whatthehack.org/"&gt;What The Hack&lt;/a&gt;, &lt;a href="http://www.defcon.org/"&gt;&lt;span class="caps"&gt;DEFCON&lt;/span&gt;&lt;/a&gt;, &#8230;) online and in real life (&lt;span class="caps"&gt;CCC&lt;/span&gt; Summer Camp 2007), it&#8217;s still the main gate to catch a lot of technical and sociological essays on the net.&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/25c3.png" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;The next &lt;a href="https://events.ccc.de/congress/2008/"&gt;25C3&lt;/a&gt; is starting on the 27th of December, and as usual to prepare my remote assistance, here is a list of lectures that would be nice to follow:&lt;/p&gt;
-&lt;h2&gt;Day 1 (2008-12-27)&lt;/h2&gt;
-&lt;h3&gt;Opening Session&lt;/h3&gt;
-&lt;p&gt;The starting speech, it might not be the most intersting, but it&#8217;s well propared and generally resume nicely the theme of the conference: &lt;strong&gt;Nothing to Hide&lt;/strong&gt; &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/3025.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Solar-powering your Geek Gear&lt;/h3&gt;
-&lt;p&gt;Green technologies already in used and that will surely become versatile in next years, probably some important information to catch inside to keep in touch with this technology. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2904.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Security Failures in Smart Card Payment Systems&lt;/h3&gt;
-&lt;p&gt;Another vector of attack on pin-cards, like most of credit cards in Europe now that simple signature are being replaced in most countries. Keep in touc with this skill to know the limits of the pin code security. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2953.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;About Cyborgs and Gargoyles &#8230;&lt;/h3&gt;
-&lt;p&gt;Wearable computing, getting some idea to implement solutions like &lt;a href="http://www.arduino.cc/en/Main/ArduinoBoardLilyPad"&gt;Arduino LilyPad&lt;/a&gt; in some projects (&lt;a href="http://barceloneta.fr"&gt;Barceloneta.fr&lt;/a&gt;, &lt;a href="http://www.orlandooo-things.net/"&gt;orlandooo-things&lt;/a&gt;, &#8230;). &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2892.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Building an international movement: hackerspaces.org&lt;/h3&gt;
-&lt;p&gt;Hacker Spaces are spreading all over the world, it could be seen starting in 2007, and 2008 have just made them grow on an international scale with some collaboration between them. Group meeting to inspire new spaces on smaller scale and decentralized nodes. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2806.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Terrorist All-Stars&lt;/h3&gt;
-&lt;p&gt;Not planned in the description of the lecture, but really in touch with french news. From my favorite speaker of last year, Anne Roth, who gave a lecture nammed &lt;a href="http://events.ccc.de/congress/2007/Fahrplan/events/2381.en.html"&gt;Wha is terrorism?&lt;/a&gt; explaining her situation since her friend is in german jail after being cought as a terrorist.&lt;br /&gt;
-It&#8217;ll surely be the lecture I&#8217;ll look for the most on the first day. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2991.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Just Estonia and Georgia?&lt;/h3&gt;
-&lt;p&gt;Cyber-warfare in cluster conflicts, interesting information to follow next small conflict that&#8217;ll depend on the capicity of countries to stay in touch with IT part of the conflict they&#8217;re in. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2988.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Hacking the iPhone&lt;/h3&gt;
-&lt;p&gt;A lecture by the &lt;a href="http://www.iphone-dev.org/"&gt;iphone-dev&lt;/a&gt; team, it could have been the hackers with the biggest impact on mainstream technology this years, and with their history, they&#8217;ll probably have some more information to share about the iPhone platform. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2976.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Beyond Asimov &#8211; Laws for Robots&lt;/h3&gt;
-&lt;p&gt;Society talk about future technologies and robots, to follow. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2815.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Collapsing the European security architecture&lt;/h3&gt;
-&lt;p&gt;Where is Europe going about technological and security issues? To keep in touch with actual EU legislation about these issues. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2669.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Messing Around with Garage Doors&lt;/h3&gt;
-&lt;p&gt;Some fun stuff with remote key and cloning tehcnologies. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/3030.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Day 2 (2008-12-28)&lt;/h2&gt;
-&lt;h3&gt;Embracing Post-Privacy&lt;/h3&gt;
-&lt;p&gt;I always like this privacy talks because they&#8217;re the best place to grasp the real privacy issue we&#8217;ve now with all-facebook-flickr-youtube internet, and to get some inspiring direction about where to go and kind-of protect ourselves. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2979.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Hacking the Atmosphere&lt;/h3&gt;
-&lt;p&gt;A hacker in the sky trying to enhance hi way to fly, inspirationnal for the development of &lt;span class="caps"&gt;UAV&lt;/span&gt; projects. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2940.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Anatomy of smartphone hardware&lt;/h3&gt;
-&lt;p&gt;Centered on &lt;a href="http://openmoko.org"&gt;OpenMoko Freerunner&lt;/a&gt;, a way to follow how the new mobile platforms are made from an hardware point of view. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/3008.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;The Trust Situation&lt;/h3&gt;
-&lt;p&gt;Another society talk on privacy, trust, and surveillance, I&#8217;ll be looking to know why people doesn&#8217;t seem to get the idea that it&#8217;s important ot protect some information, and break their trust network without realising it. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2665.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Scalable Swarm Robotics&lt;/h3&gt;
-&lt;p&gt;P2P robotic project, just for fun. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2890.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Rapid Prototype Your Life&lt;/h3&gt;
-&lt;p&gt;I&#8217;m looking for this lecture on the second day. By &lt;a href="http://brepettis.com/"&gt;Bre Pettis&lt;/a&gt;, a &lt;a href="http://make.com"&gt;Make: Magazine&lt;/a&gt; editor, speaking about the ways to quickly manufacture prototype useful for you only. The movement has started a few years ago, and now that pinting and cutting technologies becomes easily available, it&#8217;s just matter of creative spirit to build your own stuffs. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/3015.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Banking Malware 101&lt;/h3&gt;
-&lt;p&gt;A view of current botnet threat, to keep in touch. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/3020.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;The Infinite Library&lt;/h3&gt;
-&lt;p&gt;Porn pushing another time the limit of internet, to create a new way to store and access gigantic libraries now that there&#8217;re so much information available. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/3020.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Console Hacking 2008: Wii Fail&lt;/h3&gt;
-&lt;p&gt;A year after the breah showed on the Wii at 24c3, most information of technics that have been deployed since then. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2799.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Tricks: makes you smile&lt;/h3&gt;
-&lt;p&gt;Fun stuff, small tricks to play with web apps. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2992.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Blinkenlights Stereoscope&lt;/h3&gt;
-&lt;p&gt;Detils from the last blinkenlights installation in Toronto. State-of-the-art technological installation, get the ideas and mix them in your head for future projects. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2934.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Day 3 (2008-12-29)&lt;/h2&gt;
-&lt;h3&gt;Running your own &lt;span class="caps"&gt;GSM&lt;/span&gt; network&lt;/h3&gt;
-&lt;p&gt;What&#8217;s the state of the open-source &lt;span class="caps"&gt;GSM&lt;/span&gt; world? Since the protocol is over-closed, and some tools appears to get nearer to it (like the OpenMoko), it&#8217;ll be nice to have a point of view of the possibilities. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/3007.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Privacy in the social semantic web&lt;/h3&gt;
-&lt;p&gt;Mashup ideas about how to use &lt;span class="caps"&gt;XMPP&lt;/span&gt; to build your self-made social network. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2873.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Hacking into Botnets&lt;/h3&gt;
-&lt;p&gt;The most obscure network technology from last years, I&#8217;m always interested in getting some information about it. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/3000.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Objects as Software: The Coming Revolution&lt;/h3&gt;
-&lt;p&gt;The most important talk from this 3rd day, about &lt;a href="http://reprap.org"&gt;Reprap&lt;/a&gt; from &lt;a href="http://www.zachhoeken.com/"&gt;Zach Hoeken&lt;/a&gt;. It&#8217;ll surely contain a lot of known information, but with recent explosion of Open-Source Hardware, it&#8217;ll be its starting point to ppublish ideas in 2009. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2781.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Wikileaks&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://secure.wikileaks.org/wiki/Wikileaks"&gt;Wikileaks&lt;/a&gt; has been the most interesting source of information these last years, with more inside information than on &lt;a href="http://cryptome.org/"&gt;Cryptome&lt;/a&gt;  &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2916.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Day 4 (2008-12-30)&lt;/h2&gt;
-&lt;h3&gt;Why technology sucks&lt;/h3&gt;
-&lt;p&gt;Politics and technology, the bad mix and why we&#8217;ll see the young fighting the the older generation, that&#8217;ve be been without internet, for a long time. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/3004.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;La Quadrature du Net &#8211; Campaigning on Telecoms Package&lt;/h3&gt;
-&lt;p&gt;After the meeting in Utopia Toulouse, it&#8217;ll be interesting to follow the reaction in a room full of mostly-european hackers. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2791.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Crafting and Hacking: Separated at Birth&lt;/h3&gt;
-&lt;p&gt;Hackers love to make things and not only on computers. Following the new community growing and bringing other-than-computer hacks to the world. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2777.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Mining social contacts with active &lt;span class="caps"&gt;RFID&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;Following the &lt;span class="caps"&gt;RFID&lt;/span&gt;, fun stuff. &#8211; &lt;a href="http://events.ccc.de/congress/2008/Fahrplan/events/2899.en.html"&gt;view session&lt;/a&gt;&lt;/p&gt;</description>
-   		<pubDate>2008-12-21T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>
