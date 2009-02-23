@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-23T02:45:16+01:00</pubDate>
-    <lastBuildDate>2009-02-23T02:45:16+01:00</lastBuildDate>
+    <pubDate>2009-02-23T03:33:56+01:00</pubDate>
+    <lastBuildDate>2009-02-23T03:33:56+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -28,14 +28,14 @@ I still don&amp;#8217;t know the core of the problem, but I&amp;#8217;ve found h
   def create(page)
     @page = Webbastic::Page.new(page)
 	.....
-&amp;lt;code&amp;gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Someway, the &lt;strong&gt;page&lt;/strong&gt; object doesn&amp;#8217;t pass through &amp;#8211; number of argument equals 0 &amp;#8211; but you can still access to your parameters with &lt;strong&gt;params&lt;/strong&gt; object, modifying the method this way:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
   # POST /pages
   def create
     @page = Webbastic::Page.new(params[:page])
 	.....
-&amp;lt;code&amp;gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I&amp;#8217;ve post a ticket on Merb dashboard, so this might have another official solution soon: &lt;a href="http://merb.lighthouseapp.com/projects/7433-merb/tickets/1225-merb-slice-and-resources-wrong-number-of-arguments"&gt;ticket #1225&lt;/a&gt;&lt;/p&gt;</description>
    		<pubDate>2009-02-23T00:00:00+01:00</pubDate>
  	</item>
