@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Les raisons d'une gestion distribuée de vos fichiers, aujourd'hui</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<h1>Les raisons d&#8217;une gestion distribuée de vos fichiers, aujourd&#8217;hui</h1>
+<p class="meta">20 Déc 2008 &#8211; Toulouse</p>
+<p>Ce texte est une traduction d&#8217;un article du blog <a href="http://jamesgolick.com/">James on Software</a>, écrit par James Golick, un développeur web basé à Montréal, et publié le 20 janvier 2008. Il nous montre une application des réseaux centralisé, décentralisés et distribués, appliquée à la gestion de version de fichiers.</p>
+<p><a href="http://jamesgolick.com/2008/1/21/why-distributed-version-control-matters-to-you-today">Lire l&#8217;article en anglais</a></p>
+<p>Depuis que <a href="http://youtube.com/watch?v=4XpnKHJAok8">Linus Torvald</a> (initiateur de Linux) vous parle de <a href="http://git.or.cz/">git</a>, vous vous demandez sûrement de quoi il veut parler, <a href="http://macournoyer.wordpress.com/2007/12/27/moron-no-more-i-can-git/">vous n&#8217;êtes pas les seuls</a>.<br />
+La gestion distribuée de version de fichier est l&#8217;un des concept logiciel des moins bien compris, aujourd&#8217;hui. Il y a beaucoup de geeks qui vous diront que vous devriez l&#8217;utiliser, mais personne n&#8217;a encore réussi a expliquer pourquoi. Alors je m&#8217;y essaye.</p>
+<h2>Mais de quoi nous parle Linus?</h2>
+<p>Premièrement, voyons ce qu&#8217;est une gestion distribué de version de fichier. L&#8217;approche la plus commune pour décrire un système décentralisé est de présenter une image comme celle-ci, qui vient d&#8217;une page du manuel de <a href="http://www.selenic.com/mercurial/wiki/">Mercurial</a>, appelée <a href="http://www.selenic.com/mercurial/wiki/index.cgi/UnderstandingMercurial">ComprendreMercurial</a> (en anglais):</p>
+<p><img src="/images/mercurial.png" alt="" /></p>
+<p>Si vous comprenez cette image (et que vous êtes nouveau dans la gestion de version de fichier), félicitations. Pour les autres, continuons avec une description plus claire.</p>
+<p>Commençons par voir les différence entre la gestion centralisée et la gestion décentralisée de version de fichier. Avec un système centralisé comme Subversion ou <span class="caps">CVS</span>, il n&#8217;y a qu&#8217;*une seule copie du dépôt* de fichier (endroit où tous les fichiers sont stockés); cette copie est généralement placé sur un serveur accessible à plusieurs personnes. Quand un développeur travaille sur le code, il crée ce qu&#8217;on appelle une &#8220;copie de travail&#8221; (&#8220;checkout&#8221;) depuis le dépôt central. Cette copie contient assez d&#8217;information pour permettre au développeur d&#8217;interagir avec le serveur central, mais elle ne contient pas l&#8217;historique des révisions du projet, ni les branches ou les tags qui ont été créés (bien que ces branches et tags peuvent être explicitement demandés).</p>
+<p>Avec un système décentralisé, l&#8217;opposé est vrai. Au lieu de demander une copie de travail, le développeur travaille sur une copie de l&#8217;intégralité du dépôt de fichier, qui <strong>inclut l&#8217;historique complet des révisions du projet ainsi que toutes les branches et tags</strong>. La copie que le développeur reçoit est identique au dépôt où ils ont demandé cette copie. Les commits, branches, et tags ont lieu localement, sur la copie que les développeur ont fait. Les changements peuvent être envoyés (&#8220;<em>push</em>&#8221;) et reçus (&#8220;<em>pull</em>&#8221;) vers et depuis un dépôt public, ou la copie d&#8217;un autre développeur, ou sur n&#8217;importe quel autre dépôt qui existe.</p>
+<h2>Donc?</h2>
+<p>D&#8217;habitude, quand vous voulez la version finale ou les sources d&#8217;un projet open-source, vous vous dirigez vers le site officiel du projet. Le dépôt du projet est bien gardé, avec des privilèges <a href="http://www.rubyonrails.org/core">pour certains développeurs</a> qui peuvent changer le code. Celui qui voudra effectuer un changement dans le code devra d&#8217;abord récupérer une &#8220;copie de travail&#8221;, proposer un patch, et espérer qu&#8217;il soit accepté.</p>
+<p>Quand chaque développeur a une copie complète du dépôt sur sa machine, la hiérarchie des projets open-source n&#8217;est pas pour autant supprimée. Le développeur qui veut travailler sur le code peut faire une copie du dépôt, effectuer des changements localement autant qu&#8217;il veut, recevoir les changements des copies des autres développeurs, et publier ses changements pour que les autres développeurs puissent les utiliser ou les rapatrier sur leur propre dépôt. Dans un système décentralisé, il n&#8217;y a pas de clé sur le dépôt du code source. Si l&#8217;auteur original continue de maintenir la meilleure version du code, super; sinon, les utilisateurs de ce code peuvent commencer à récupérer leur source de la personne qui offre la meilleure version.</p>
+<h2>Vraiment?</h2>
+<p>Beaucoup (peut-être la plupart) des plugins rails sont inactifs. Il ont été créés pour combler un manque, publiés, mis à jours pendant quelques mois, puis laissé a l&#8217;abandon. Puisque la plupart des plugins rails résident dans des dépôt subversion, personne ne peut continuer le développement sans perdre l&#8217;historique des révisions du projet, et avoir s&#8217;encombrer de problème pour configurer un serveur subversion public.</p>
+<p><a href="http://code.whytheluckystiff.net/markaby/">Markaby</a> n&#8217;est pas une exception à cette règle. Quand j&#8217;ai voulu l&#8217;utiliser dans un projet récent, j&#8217;ai trouvé qu&#8217;il été incompatible avec rails 2.0.2. D&#8217;après les logs subversion de markaby, les derniers changements dataient du 24 novembre 2007, quelques semaines avant la publication de cette version de rails. Heureusement, j&#8217;ai retrouvé un <a href="http://dev.rubyonrails.org/ticket/10543">ticket</a> dans le support de rails, qui donnait des instructions pour fixer le plugin avec un hack &#8211; une solution qui fonctionnait bien pour moi, mais qui n&#8217;apporterait rien aux utilisateurs qui ne trouveraient pas ce cheminement autour du plugin. Normalement, sans privilèges pour changer le code de markaby sur le dépôt officiel, je ne pourrait pas offrir ce fix publiquement.</p>
+<p>Aucun problème avec un système distribué! En utilisant <a href="http://www.kernel.org/pub/software/scm/git/docs/git-svn.html">git-svn</a> pour passer Markaby sur un dépôt git, <a href="http://github.com/giraffesoft/markaby/tree/master">j&#8217;ai publié mes changements</a>, et maintenant n&#8217;importe qui peut récupérer une copie de Markaby en tapant la commande suivante:</p>
+<p>$ git clone git@github.com:giraffesoft/markaby.git</p>
+<p>Encore plus cool, quelqu&#8217;un avec assez de privilèges sur le dépôt officiel peut récupérer les changements, et les remettre dans subversion, avec les messages des modifications inclus! <strong>Le développement de ce plugin peut continuer n&#8217;importe où, et par n&#8217;importe qui</strong>. C&#8217;est la beauté de la décentralisation.</p>
+</div>
+
+<div id="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="/rss.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>
