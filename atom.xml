@@ -4,7 +4,7 @@
  <title>Alex Girard Feed</title>
  <link href="http://alx.github.com/atom.xml" rel="self"/>
  <link href="http://alx.github.com"/>
- <updated>2009-02-27T21:36:56+01:00</updated>
+ <updated>2009-02-27T21:39:25+01:00</updated>
  <id>http://alx.github.com</id>
  <author>
    <name>Alex Girard</name>
@@ -20,7 +20,7 @@
    <content type="html">&lt;h1&gt;Deploying a Merb app with Capistrano, monit and nginx&lt;/h1&gt;
 &lt;p&gt;For the second time this morning, we&amp;#8217;ve deployed a merb app on a server, and even if it&amp;#8217;s quite simple once you&amp;#8217;ve got the logic in the head, it&amp;#8217;s surely necessary to have this little note for future deploys.&lt;br /&gt;
 I hope it&amp;#8217;ll help other merb dev to fill the documentation hole about this process, feel free to complete or debug it in the comments. More documentation about this process is available &lt;a href="http://book.merbist.com/deployment/nginx"&gt;on the Merb Open Source Book&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/merb_deploy.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/merb_deploy.jpg" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;Let&amp;#8217;s suppose you all know how to use &lt;a href="http://www.capify.org/"&gt;Capistrano&lt;/a&gt;, and that your project is already deployed with it, you now want &lt;a href="http://wiki.codemongers.com/"&gt;Nginx&lt;/a&gt; to serve request to your merb app.&lt;/p&gt;
 &lt;h2&gt;Nginx&lt;/h2&gt;
 &lt;p&gt;First, you need to configure nginx to act as a proxy to send requests to your merb servers. In &lt;em&gt;/etc/nginx/conf.d/merb.conf&lt;/em&gt;:&lt;/p&gt;
