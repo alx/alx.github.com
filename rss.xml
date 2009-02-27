@@ -4,11 +4,94 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-23T03:33:56+01:00</pubDate>
-    <lastBuildDate>2009-02-23T03:33:56+01:00</lastBuildDate>
+    <pubDate>2009-02-27T21:36:56+01:00</pubDate>
+    <lastBuildDate>2009-02-27T21:36:56+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>Deploying a Merb app with Capistrano, monit and nginx</title>
+   		<link>http://alx.github.com/2009/02/27/deploy-merb-nginx-capistrano.html</link>
+   		<guid>http://alx.github.com/2009/02/27/deploy-merb-nginx-capistrano</guid>
+   		<description>&lt;h1&gt;Deploying a Merb app with Capistrano, monit and nginx&lt;/h1&gt;
+&lt;p&gt;For the second time this morning, we&amp;#8217;ve deployed a merb app on a server, and even if it&amp;#8217;s quite simple once you&amp;#8217;ve got the logic in the head, it&amp;#8217;s surely necessary to have this little note for future deploys.&lt;br /&gt;
+I hope it&amp;#8217;ll help other merb dev to fill the documentation hole about this process, feel free to complete or debug it in the comments. More documentation about this process is available &lt;a href="http://book.merbist.com/deployment/nginx"&gt;on the Merb Open Source Book&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/merb_deploy.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;#8217;s suppose you all know how to use &lt;a href="http://www.capify.org/"&gt;Capistrano&lt;/a&gt;, and that your project is already deployed with it, you now want &lt;a href="http://wiki.codemongers.com/"&gt;Nginx&lt;/a&gt; to serve request to your merb app.&lt;/p&gt;
+&lt;h2&gt;Nginx&lt;/h2&gt;
+&lt;p&gt;First, you need to configure nginx to act as a proxy to send requests to your merb servers. In &lt;em&gt;/etc/nginx/conf.d/merb.conf&lt;/em&gt;:&lt;/p&gt;
+&lt;pre&gt;
+&lt;code&gt;
+upstream merb_app {
+  server 127.0.0.1:4000;
+  server 127.0.0.1:4001;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;And in &lt;em&gt;/etc/nginx/sites-enabled/domain.conf&lt;/em&gt;, the most important line is &amp;#8220;&lt;strong&gt;proxy_pass http://merb_app;&lt;/strong&gt;&amp;#8221;:&lt;/p&gt;
+&lt;pre&gt;
+&lt;code&gt;
+server {
+    listen 80;
+    server_name domain.com;
+
+    root /home/deploy/merb_app/current/public;
+
+    access_log /home/deploy/merb_app/shared/log/access.log;
+    error_log /home/deploy/merb_app/shared/log/error.log;
+
+    location / {
+
+      proxy_set_header  X-Real-IP       $remote_addr;
+      proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header  Host            $http_host;
+
+      proxy_redirect false;
+      proxy_max_temp_file_size 0;
+
+      if (-f $request_filename) {
+        break;
+      }
+
+      if (-f $request_filename.html) {
+        rewrite (.*) $1.html break;
+      }
+
+      if (!-f $request_filename) {
+        proxy_pass http://merb_app;
+        break;
+      }
+
+    } # location
+
+} # server
+
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;We surely can merge this 2 files in the same configuration file, but it&amp;#8217;s just working this way today, let&amp;#8217;s change it later.&lt;/p&gt;
+&lt;h2&gt;Monit and monit_merb_mpc&lt;/h2&gt;
+&lt;p&gt;Thats the tricky part, you need to start a master merb that&amp;#8217;ll monitor workers on your app ports.&lt;/p&gt;
+&lt;p&gt;First, the &lt;em&gt;/etc/monit.d/domain.monit&lt;/em&gt; file, that&amp;#8217;ll be call to start/stop/restart all these processes:&lt;/p&gt;
+&lt;script src="http://gist.github.com/47691.js"&gt;&lt;/script&gt;&lt;p&gt;And the monit_merb_mpc script from &amp;#8220;Engine Yard&amp;#8221;:, the &lt;a href="http://pastie.org/333352"&gt;original&lt;/a&gt; was too buggy for our server, so here is a working version:&lt;/p&gt;
+&lt;script src="http://gist.github.com/46061.js"&gt;&lt;/script&gt;&lt;p&gt;It&amp;#8217;s surely still buggy, and all this long configuration surely will be replaced by a lighter god script that&amp;#8217;ll at the same time generate and monitor the master/workers processes.&lt;/p&gt;
+&lt;h2&gt;Restart with Capistrano&lt;/h2&gt;
+&lt;p&gt;The easiest part of all, you just need to tell your monit to start/stop/restart the group defined in the monit preferences:&lt;/p&gt;
+&lt;pre&gt;
+&lt;code&gt;
+namespace :deploy do
+  # Redefine the application server controls to use monit.
+  %W(restart start stop).each do |event|
+    desc "#{event} using Monit"
+    task event, :except =&amp;gt; { :no_release =&amp;gt; true } do
+      sudo "/usr/sbin/monit -c /etc/monit/monitrc -g #{application} #{event} all"
+    end
+  end
+end
+&lt;/code&gt;
+&lt;/pre&gt;</description>
+   		<pubDate>2009-02-27T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>Merb Slice and Resources, wrong number of arguments</title>
    		<link>http://alx.github.com/2009/02/23/merb-slice-resource-wrong-number-argument.html</link>
@@ -97,6 +180,19 @@ cap deploy
  	</item>
  	
  	<item>
+   		<title>10 invites to Spotify.com</title>
+   		<link>http://alx.github.com/2009/02/03/invites-to-spotify.html</link>
+   		<guid>http://alx.github.com/2009/02/03/invites-to-spotify</guid>
+   		<description>&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
+&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
+&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
+&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
+If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;</description>
+   		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
    		<title>Merb et rangement de vos classes en sous-répertoire</title>
    		<link>http://alx.github.com/2009/02/03/sous-repertoire-merb.html</link>
    		<guid>http://alx.github.com/2009/02/03/sous-repertoire-merb</guid>
@@ -146,19 +242,6 @@ module Resource
 end
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Pour cette manipulation, il n&amp;#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</description>
-   		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>10 invites to Spotify.com</title>
-   		<link>http://alx.github.com/2009/02/03/invites-to-spotify.html</link>
-   		<guid>http://alx.github.com/2009/02/03/invites-to-spotify</guid>
-   		<description>&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
-&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
-&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
-&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
-If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;</description>
    		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
  	</item>
  	
@@ -229,20 +312,6 @@ If only there was a subscription (and a better music player) on last.fm, they&am
 &lt;p&gt;Inside the rakefile, you&amp;#8217;ll find the different processes in use to publish on each website. It uses the &lt;a href="http://github.com/schacon/ruby-git/tree/master"&gt;git gem from Scott Chacon&lt;/a&gt; and was a good exercice after translating the &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;Git Book in french&lt;/a&gt; for a week.&lt;/p&gt;
 &lt;p&gt;You can easily imagine how to modify it, to simulate the new &lt;a href="http://github.com/blog/277-pages-generator"&gt;page generator&lt;/a&gt; for each of your project, or host the last version of the newly versions of various open book: &lt;a href="http://book.merbist.com/"&gt;Merb Book&lt;/a&gt;, &lt;a href="http://book.git-scm.com/"&gt;Git Community Book&lt;/a&gt; &amp;#8230;&lt;/p&gt;</description>
    		<pubDate>2008-12-27T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>A Mashup a day keeps the boredom away</title>
-   		<link>http://alx.github.com/2008/12/26/a-mashup-a-day.html</link>
-   		<guid>http://alx.github.com/2008/12/26/a-mashup-a-day</guid>
-   		<description>&lt;p&gt;Bakc on Twitter after a few months, and on reblog ideas after a few years, I wanted to experiment a small mashup to follow 25C3 conference using flickr for the pictures and twitter for the news.&lt;/p&gt;
-&lt;p&gt;It was not long to find a Sinatra project using the Flickr &lt;span class="caps"&gt;API&lt;/span&gt;: &lt;a href="http://github.com/foca/flickr-downloader/tree"&gt;flickr-downloader&lt;/a&gt; from &lt;a href="http://foca.tumblr.com/"&gt;foca&lt;/a&gt; ad re-adapt it to fecth vairous information from Flickr and send them to the &lt;a href="http://twitpic.com/api/"&gt;TwitPic &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The result:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/twitpic.png" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s downloadable and clonable on github: &lt;a href="http://github.com/alx/flickr-downloader/"&gt;Flickr Twit&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s just and experiment for the weekend, but it surely can be useful in recent world events that have primarely happened on twitter: London-Mumbaï terrorist attacks, big concert at X-Y site, weddings for a day&amp;#8230; or to follow a group of flickr artists inside a twitter feed.&lt;/p&gt;
-&lt;p&gt;Thanks to Noah to have made &lt;a href="http://twitpic.com"&gt;TwitPic&lt;/a&gt; what it has become.&lt;/p&gt;</description>
-   		<pubDate>2008-12-26T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>

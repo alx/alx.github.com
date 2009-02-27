@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Deploying a Merb app with Capistrano, monit and nginx</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<h1>Deploying a Merb app with Capistrano, monit and nginx</h1>
+<p>For the second time this morning, we&#8217;ve deployed a merb app on a server, and even if it&#8217;s quite simple once you&#8217;ve got the logic in the head, it&#8217;s surely necessary to have this little note for future deploys.<br />
+I hope it&#8217;ll help other merb dev to fill the documentation hole about this process, feel free to complete or debug it in the comments. More documentation about this process is available <a href="http://book.merbist.com/deployment/nginx">on the Merb Open Source Book</a></p>
+<p><img src="/images/merb_deploy.png" alt="" /></p>
+<p>Let&#8217;s suppose you all know how to use <a href="http://www.capify.org/">Capistrano</a>, and that your project is already deployed with it, you now want <a href="http://wiki.codemongers.com/">Nginx</a> to serve request to your merb app.</p>
+<h2>Nginx</h2>
+<p>First, you need to configure nginx to act as a proxy to send requests to your merb servers. In <em>/etc/nginx/conf.d/merb.conf</em>:</p>
+<pre>
+<code>
+upstream merb_app {
+  server 127.0.0.1:4000;
+  server 127.0.0.1:4001;
+}
+</code>
+</pre>
+<p>And in <em>/etc/nginx/sites-enabled/domain.conf</em>, the most important line is &#8220;<strong>proxy_pass http://merb_app;</strong>&#8221;:</p>
+<pre>
+<code>
+server {
+    listen 80;
+    server_name domain.com;
+
+    root /home/deploy/merb_app/current/public;
+
+    access_log /home/deploy/merb_app/shared/log/access.log;
+    error_log /home/deploy/merb_app/shared/log/error.log;
+
+    location / {
+
+      proxy_set_header  X-Real-IP       $remote_addr;
+      proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header  Host            $http_host;
+
+      proxy_redirect false;
+      proxy_max_temp_file_size 0;
+
+      if (-f $request_filename) {
+        break;
+      }
+
+      if (-f $request_filename.html) {
+        rewrite (.*) $1.html break;
+      }
+
+      if (!-f $request_filename) {
+        proxy_pass http://merb_app;
+        break;
+      }
+
+    } # location
+
+} # server
+
+</code>
+</pre>
+<p>We surely can merge this 2 files in the same configuration file, but it&#8217;s just working this way today, let&#8217;s change it later.</p>
+<h2>Monit and monit_merb_mpc</h2>
+<p>Thats the tricky part, you need to start a master merb that&#8217;ll monitor workers on your app ports.</p>
+<p>First, the <em>/etc/monit.d/domain.monit</em> file, that&#8217;ll be call to start/stop/restart all these processes:</p>
+<script src="http://gist.github.com/47691.js"></script><p>And the monit_merb_mpc script from &#8220;Engine Yard&#8221;:, the <a href="http://pastie.org/333352">original</a> was too buggy for our server, so here is a working version:</p>
+<script src="http://gist.github.com/46061.js"></script><p>It&#8217;s surely still buggy, and all this long configuration surely will be replaced by a lighter god script that&#8217;ll at the same time generate and monitor the master/workers processes.</p>
+<h2>Restart with Capistrano</h2>
+<p>The easiest part of all, you just need to tell your monit to start/stop/restart the group defined in the monit preferences:</p>
+<pre>
+<code>
+namespace :deploy do
+  # Redefine the application server controls to use monit.
+  %W(restart start stop).each do |event|
+    desc "#{event} using Monit"
+    task event, :except =&gt; { :no_release =&gt; true } do
+      sudo "/usr/sbin/monit -c /etc/monit/monitrc -g #{application} #{event} all"
+    end
+  end
+end
+</code>
+</pre>
+</div>
+
+<div id="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="/rss.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>
