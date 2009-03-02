@@ -4,11 +4,31 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-02-27T21:38:59+01:00</pubDate>
-    <lastBuildDate>2009-02-27T21:38:59+01:00</lastBuildDate>
+    <pubDate>2009-03-02T17:56:55+01:00</pubDate>
+    <lastBuildDate>2009-03-02T17:56:55+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>Google PowerMeter avec Arduino sur votre compteur EDF</title>
+   		<link>http://alexgirard.com/2009/03/02/edf-energy-saver-with-arduino.html</link>
+   		<guid>http://alexgirard.com/2009/03/02/edf-energy-saver-with-arduino</guid>
+   		<description>&lt;h1&gt;Google PowerMeter avec Arduino sur votre compteur &lt;span class="caps"&gt;EDF&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;C&amp;#8217;est en lisant ce matin &lt;a href="http://www.ecrans.fr/Le-fureteur-ecolo-de-Google,6525.html"&gt;un article d&amp;#8217;ecrans.fr&lt;/a&gt; sur le &lt;a href="http://www.google.org/powermeter/"&gt;Google PowerMeter&lt;/a&gt; que j&amp;#8217;ai eu cette soudaine envie de ne pas attendre 5 à 10 ans avant de voir cette technologie arrivée chez moi.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.google.org/powermeter/"&gt;&lt;img src="/images/powermeter.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Le concept est assez simple, du moins pour Google ou &lt;span class="caps"&gt;EDF&lt;/span&gt;, vu qu&amp;#8217;ils ont tous les chiffres de consommations de chaque foer sous les yeux. Vu qu&amp;#8217;ils ne nous donnent pas accès à ces chiffres, il nous faut un appareil pour lire en quasi-temps réel l&amp;#8217;activité du compteur électrique.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/energy-edf.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Rien de plus simple aujourd&amp;#8217;hui: en placant une photo-diode au dessus de la lumière d&amp;#8217;activité de ce compteur, et en ajoutant des modules xbee sur un arduino pour récupérer la consommation sur un pc distant, toute la consommation peut être suivie pour faire des graphique sûrement aussi jolie que chez Google, ou afin de prévoir les futures factures à venir (ce qui est déjà plus intéressant).&lt;/p&gt;
+&lt;p&gt;On peut aussi imaginer la comparaison de différents modèles de factures en appliquant les tarifications qu&amp;#8217;EDF peut offrir pour:  soit changer de forfait, soit sélectionner des options &lt;span class="caps"&gt;EDF&lt;/span&gt; qui peuvent faire gagner quelques euros chaque années.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.pachube.com/"&gt;&lt;img src="/images/pachube.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Et enfin, connectons ce système à &lt;a href="http://www.pachube.com/"&gt;Pachube&lt;/a&gt; afin de monter une grille globale de consommation électrique, en montant un espèce de jeu vidéo ou les gagnants sont ceux qui chaques jours réussissent à grignoter quelques kWh sur leur consommation (la limite à zéro, mitaines et bonnets non-fournis en plein hiver).&lt;/p&gt;
+&lt;p&gt;Le seul inconvénient: le prix de ce mécanisme&amp;#8230;&lt;br /&gt;
+En comptant 2 arduino avec chacun son shield et module Xbee, on arrive facilement autour des 80-100€. Si l&amp;#8217;économie finale est supérieur à 20€ par an, c&amp;#8217;est sûrement plus intéressant de vivre dans le futur dès ce soir!&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/xbee.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;L&amp;#8217;expérience sera sûrement intéressante pour une entreprise avec plusieurs compteur (ça existe?) ou un écologiste fortuné, et s&amp;#8217;il se reconnait et qu&amp;#8217;il à besoin d&amp;#8217;aider pour monter ce gadget, je serai bien sûr prêt à l&amp;#8217;aider en l&amp;#8217;échange d&amp;#8217;un kit pour mon usage personnel ;-)&lt;/p&gt;</description>
+   		<pubDate>2009-03-02T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>Deploying a Merb app with Capistrano, monit and nginx</title>
    		<link>http://alexgirard.com/2009/02/27/deploy-merb-nginx-capistrano.html</link>
@@ -180,19 +200,6 @@ cap deploy
  	</item>
  	
  	<item>
-   		<title>10 invites to Spotify.com</title>
-   		<link>http://alexgirard.com/2009/02/03/invites-to-spotify.html</link>
-   		<guid>http://alexgirard.com/2009/02/03/invites-to-spotify</guid>
-   		<description>&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
-&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
-&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
-&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
-If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;</description>
-   		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
    		<title>Merb et rangement de vos classes en sous-répertoire</title>
    		<link>http://alexgirard.com/2009/02/03/sous-repertoire-merb.html</link>
    		<guid>http://alexgirard.com/2009/02/03/sous-repertoire-merb</guid>
@@ -242,6 +249,19 @@ module Resource
 end
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Pour cette manipulation, il n&amp;#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</description>
+   		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
+ 	<item>
+   		<title>10 invites to Spotify.com</title>
+   		<link>http://alexgirard.com/2009/02/03/invites-to-spotify.html</link>
+   		<guid>http://alexgirard.com/2009/02/03/invites-to-spotify</guid>
+   		<description>&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
+&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
+&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
+&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
+If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;</description>
    		<pubDate>2009-02-03T00:00:00+01:00</pubDate>
  	</item>
  	
@@ -298,20 +318,6 @@ end
 &lt;p&gt;&lt;a href="http://alexgirard.com/git-book/"&gt;&lt;img src="/images/gitbook.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Vous y trouverez le &lt;a href="http://alexgirard.com/git-book/book_fr.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt; et aussi pleins d&amp;#8217;erreurs à corriger. Je vous invite à m&amp;#8217;envoyer un mail à &lt;a href="mailto:alx.girard@gmail.com"&gt;alx.girard@gmail.com&lt;/a&gt; avec vos corrections, suggestions, et commentaires; ou à participer au projet en le &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;forkant sur github&lt;/a&gt; et en travaillant dans la branche &lt;em&gt;french&lt;/em&gt; avant de m&amp;#8217;envoyer vos &lt;em&gt;pull-request&lt;/em&gt;.&lt;/p&gt;</description>
    		<pubDate>2008-12-28T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>Using Git submodules to publish jekyll blog on many hosts</title>
-   		<link>http://alexgirard.com/2008/12/27/git-public-websites.html</link>
-   		<guid>http://alexgirard.com/2008/12/27/git-public-websites</guid>
-   		<description>&lt;p&gt;Since GitHub has released the Pages features, it has become a bit of a chore to manage publications on various websites. For example, if you use Jekyll on an external site and on Github Pages, you&amp;#8217;ll need to change the links inside the rss feeds to take care the 2 domains.&lt;/p&gt;
-&lt;p&gt;To manage the publication of my 2 websites, which get the same content generated by Jekyll, I&amp;#8217;ve choose to only use git submodules and a rake task to publish new content. It might not be the best solution, I recognize it&amp;#8217;s a bit messy, but I least I just have to use this command to publish all content now: &lt;em&gt;rake publish&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/publish.png" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;The rake task and the organisation of the project is available on GitHub: &lt;a href="http://github.com/alx/hub/tree/master"&gt;Hub &amp;#8211; A central place for publications&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Inside, you&amp;#8217;ll just find git submodules in use on my publication ring: &lt;strong&gt;site-content&lt;/strong&gt; linking to my content, &lt;strong&gt;alexgirard.com&lt;/strong&gt; and &lt;strong&gt;alx.github.com&lt;/strong&gt; linking to 2 branches of my GitHub Page project (one branch for GitHub, one branch for &lt;a href="http://alexgirard.com"&gt;alexgirard.com&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;Inside the rakefile, you&amp;#8217;ll find the different processes in use to publish on each website. It uses the &lt;a href="http://github.com/schacon/ruby-git/tree/master"&gt;git gem from Scott Chacon&lt;/a&gt; and was a good exercice after translating the &lt;a href="http://github.com/alx/gitbook/tree/french"&gt;Git Book in french&lt;/a&gt; for a week.&lt;/p&gt;
-&lt;p&gt;You can easily imagine how to modify it, to simulate the new &lt;a href="http://github.com/blog/277-pages-generator"&gt;page generator&lt;/a&gt; for each of your project, or host the last version of the newly versions of various open book: &lt;a href="http://book.merbist.com/"&gt;Merb Book&lt;/a&gt;, &lt;a href="http://book.git-scm.com/"&gt;Git Community Book&lt;/a&gt; &amp;#8230;&lt;/p&gt;</description>
-   		<pubDate>2008-12-27T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>

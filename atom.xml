@@ -4,13 +4,33 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2009-02-27T21:38:59+01:00</updated>
+ <updated>2009-03-02T17:56:55+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Google PowerMeter avec Arduino sur votre compteur EDF</title>
+   <link href="http://alexgirard.com/2009/03/02/edf-energy-saver-with-arduino.html"/>
+   <updated>2009-03-02T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2009/03/02/edf-energy-saver-with-arduino</id>
+   <content type="html">&lt;h1&gt;Google PowerMeter avec Arduino sur votre compteur &lt;span class="caps"&gt;EDF&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;C&amp;#8217;est en lisant ce matin &lt;a href="http://www.ecrans.fr/Le-fureteur-ecolo-de-Google,6525.html"&gt;un article d&amp;#8217;ecrans.fr&lt;/a&gt; sur le &lt;a href="http://www.google.org/powermeter/"&gt;Google PowerMeter&lt;/a&gt; que j&amp;#8217;ai eu cette soudaine envie de ne pas attendre 5 à 10 ans avant de voir cette technologie arrivée chez moi.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.google.org/powermeter/"&gt;&lt;img src="/images/powermeter.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Le concept est assez simple, du moins pour Google ou &lt;span class="caps"&gt;EDF&lt;/span&gt;, vu qu&amp;#8217;ils ont tous les chiffres de consommations de chaque foer sous les yeux. Vu qu&amp;#8217;ils ne nous donnent pas accès à ces chiffres, il nous faut un appareil pour lire en quasi-temps réel l&amp;#8217;activité du compteur électrique.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/energy-edf.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Rien de plus simple aujourd&amp;#8217;hui: en placant une photo-diode au dessus de la lumière d&amp;#8217;activité de ce compteur, et en ajoutant des modules xbee sur un arduino pour récupérer la consommation sur un pc distant, toute la consommation peut être suivie pour faire des graphique sûrement aussi jolie que chez Google, ou afin de prévoir les futures factures à venir (ce qui est déjà plus intéressant).&lt;/p&gt;
+&lt;p&gt;On peut aussi imaginer la comparaison de différents modèles de factures en appliquant les tarifications qu&amp;#8217;EDF peut offrir pour:  soit changer de forfait, soit sélectionner des options &lt;span class="caps"&gt;EDF&lt;/span&gt; qui peuvent faire gagner quelques euros chaque années.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.pachube.com/"&gt;&lt;img src="/images/pachube.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Et enfin, connectons ce système à &lt;a href="http://www.pachube.com/"&gt;Pachube&lt;/a&gt; afin de monter une grille globale de consommation électrique, en montant un espèce de jeu vidéo ou les gagnants sont ceux qui chaques jours réussissent à grignoter quelques kWh sur leur consommation (la limite à zéro, mitaines et bonnets non-fournis en plein hiver).&lt;/p&gt;
+&lt;p&gt;Le seul inconvénient: le prix de ce mécanisme&amp;#8230;&lt;br /&gt;
+En comptant 2 arduino avec chacun son shield et module Xbee, on arrive facilement autour des 80-100€. Si l&amp;#8217;économie finale est supérieur à 20€ par an, c&amp;#8217;est sûrement plus intéressant de vivre dans le futur dès ce soir!&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/xbee.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;L&amp;#8217;expérience sera sûrement intéressante pour une entreprise avec plusieurs compteur (ça existe?) ou un écologiste fortuné, et s&amp;#8217;il se reconnait et qu&amp;#8217;il à besoin d&amp;#8217;aider pour monter ce gadget, je serai bien sûr prêt à l&amp;#8217;aider en l&amp;#8217;échange d&amp;#8217;un kit pour mon usage personnel ;-)&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Deploying a Merb app with Capistrano, monit and nginx</title>
@@ -183,19 +203,6 @@ cap deploy
  </entry>
  
  <entry>
-   <title>10 invites to Spotify.com</title>
-   <link href="http://alexgirard.com/2009/02/03/invites-to-spotify.html"/>
-   <updated>2009-02-03T00:00:00+01:00</updated>
-   <id>http://alexgirard.com/2009/02/03/invites-to-spotify</id>
-   <content type="html">&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
-&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
-&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
-&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
-If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;</content>
- </entry>
- 
- <entry>
    <title>Merb et rangement de vos classes en sous-répertoire</title>
    <link href="http://alexgirard.com/2009/02/03/sous-repertoire-merb.html"/>
    <updated>2009-02-03T00:00:00+01:00</updated>
@@ -246,6 +253,19 @@ module Resource
 end
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Pour cette manipulation, il n&amp;#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>10 invites to Spotify.com</title>
+   <link href="http://alexgirard.com/2009/02/03/invites-to-spotify.html"/>
+   <updated>2009-02-03T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2009/02/03/invites-to-spotify</id>
+   <content type="html">&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
+&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
+&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
+&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
+If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;</content>
  </entry>
  
  <entry>
