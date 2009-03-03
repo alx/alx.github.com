@@ -4,13 +4,24 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2009-03-02T18:26:05+01:00</updated>
+ <updated>2009-03-03T02:50:48+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Fabbing in 1944</title>
+   <link href="http://alexgirard.com/2009/03/03/fabbing-in-1944.html"/>
+   <updated>2009-03-03T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2009/03/03/fabbing-in-1944</id>
+   <content type="html">&lt;h1&gt;Fabbing in 1944&lt;/h1&gt;
+&lt;p&gt;Nothing new on the fabbing trends, it seems like Donald duck already got it in 1944:&lt;/p&gt;
+&lt;p&gt;&lt;object width="425" height="344"&gt;&lt;param name="movie" value="http://www.youtube.com/v/GVZzia3tByY&amp;hl=fr&amp;fs=1"&gt;&lt;/param&gt;&lt;param name="allowFullScreen" value="true"&gt;&lt;/param&gt;&lt;param name="allowscriptaccess" value="always"&gt;&lt;/param&gt;&lt;embed src="http://www.youtube.com/v/GVZzia3tByY&amp;hl=fr&amp;fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
+&lt;p&gt;Have a look at the fabrication process, it&amp;#8217;s really similar to what&amp;#8217;s we have today as fabbing process: a mold, a heater, a customized part to build.&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Google PowerMeter avec Arduino sur votre compteur EDF</title>
