@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alexgirard.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-03-03T05:41:59+01:00</pubDate>
-    <lastBuildDate>2009-03-03T05:41:59+01:00</lastBuildDate>
+    <pubDate>2009-03-03T15:19:41+01:00</pubDate>
+    <lastBuildDate>2009-03-03T15:19:41+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -26,20 +26,20 @@
    		<guid>http://alexgirard.com/2009/03/02/edf-energy-saver-with-arduino</guid>
    		<description>&lt;h1&gt;Google PowerMeter avec Arduino sur votre compteur &lt;span class="caps"&gt;EDF&lt;/span&gt;&lt;/h1&gt;
 &lt;h2&gt;Concept&lt;/h2&gt;
-&lt;p&gt;C&amp;#8217;est en lisant ce matin &lt;a href="http://www.ecrans.fr/Le-fureteur-ecolo-de-Google,6525.html"&gt;un article d&amp;#8217;ecrans.fr&lt;/a&gt; sur le &lt;a href="http://www.google.org/powermeter/"&gt;Google PowerMeter&lt;/a&gt; que j&amp;#8217;ai eu cette soudaine envie de ne pas attendre 5 à 10 ans avant de voir cette technologie arrivée chez moi.&lt;/p&gt;
+&lt;p&gt;C&amp;#8217;est en lisant ce matin &lt;a href="http://www.ecrans.fr/Le-fureteur-ecolo-de-Google,6525.html"&gt;un article d&amp;#8217;ecrans.fr&lt;/a&gt; sur le &lt;a href="http://www.google.org/powermeter/"&gt;Google PowerMeter&lt;/a&gt; que j&amp;#8217;ai eu cette soudaine envie de ne pas attendre 5 à 10 ans avant de voir cette technologie arriver chez moi.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.google.org/powermeter/"&gt;&lt;img src="/images/powermeter.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Le concept est assez simple, du moins pour Google ou &lt;span class="caps"&gt;EDF&lt;/span&gt;, vu qu&amp;#8217;ils ont tous les chiffres de consommations de chaque foer sous les yeux. Vu qu&amp;#8217;ils ne nous donnent pas accès à ces chiffres, il nous faut un appareil pour lire en quasi-temps réel l&amp;#8217;activité du compteur électrique.&lt;/p&gt;
+&lt;p&gt;Le concept est assez simple, du moins pour Google ou &lt;span class="caps"&gt;EDF&lt;/span&gt;, vu qu&amp;#8217;ils ont déjà tous les chiffres de consommation de chaque foyer. Étant donné qu&amp;#8217;ils ne nous donnent pas accès à ces chiffres, il nous faut un appareil pour lire en quasi-temps réel l&amp;#8217;activité du compteur électrique.&lt;/p&gt;
 &lt;h2&gt;Dès aujourd&amp;#8217;hui&lt;/h2&gt;
 &lt;p&gt;&lt;img src="/images/energy-edf.jpg" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;Rien de plus simple aujourd&amp;#8217;hui: en placant une photo-diode au dessus de la lumière d&amp;#8217;activité de ce compteur, et en ajoutant des modules xbee sur un arduino pour récupérer la consommation sur un pc distant, toute la consommation peut être suivie pour faire des graphique sûrement aussi jolie que chez Google, ou afin de prévoir les futures factures à venir (ce qui est déjà plus intéressant).&lt;/p&gt;
+&lt;p&gt;Rien de plus simple aujourd&amp;#8217;hui: en plaçant une photo-diode au dessus de la lumière d&amp;#8217;activité de ce compteur, et en ajoutant des modules xbee sur un arduino pour récupérer la consommation sur un pc distant, toute la consommation peut être suivie pour faire des graphique sûrement aussi jolie que chez Google, ou afin de prévoir les futures factures à venir (ce qui est déjà plus intéressant).&lt;/p&gt;
 &lt;p&gt;On peut aussi imaginer la comparaison de différents modèles de factures en appliquant les tarifications qu&amp;#8217;EDF peut offrir pour:  soit changer de forfait, soit sélectionner des options &lt;span class="caps"&gt;EDF&lt;/span&gt; qui peuvent faire gagner quelques euros chaque années.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.pachube.com/"&gt;&lt;img src="/images/pachube.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Et enfin, connectons ce système à &lt;a href="http://www.pachube.com/"&gt;Pachube&lt;/a&gt; afin de monter une grille globale de consommation électrique, en montant un espèce de jeu vidéo ou les gagnants sont ceux qui chaques jours réussissent à grignoter quelques kWh sur leur consommation (la limite à zéro, mitaines et bonnets non-fournis en plein hiver).&lt;/p&gt;
+&lt;p&gt;Et enfin, connectons ce système à &lt;a href="http://www.pachube.com/"&gt;Pachube&lt;/a&gt; afin de monter une grille globale de consommation électrique, en montant une sorte de jeu vidéo ou les gagnants sont ceux qui chaque jours réussissent à grignoter quelques kWh sur leur consommation (la limite à zéro, mitaines et bonnets non-fournis en plein hiver).&lt;/p&gt;
 &lt;h2&gt;Limitation&lt;/h2&gt;
 &lt;p&gt;Le seul inconvénient: le prix de ce mécanisme&amp;#8230;&lt;br /&gt;
 En comptant 2 arduino avec chacun son shield et module Xbee, on arrive facilement autour des 80-100€. Si l&amp;#8217;économie finale est supérieur à 20€ par an, c&amp;#8217;est sûrement plus intéressant de vivre dans le futur dès ce soir!&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/xbee.png" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;L&amp;#8217;expérience sera sûrement intéressante pour une entreprise avec plusieurs compteur (ça existe?) ou un écologiste fortuné, et s&amp;#8217;il se reconnait et qu&amp;#8217;il à besoin d&amp;#8217;aider pour monter ce gadget, je serai bien sûr prêt à l&amp;#8217;aider en l&amp;#8217;échange d&amp;#8217;un kit pour mon usage personnel ;-)&lt;/p&gt;
+&lt;p&gt;L&amp;#8217;expérience sera sûrement intéressante pour une entreprise avec plusieurs compteur (ça existe?) ou un écologiste fortuné, et s&amp;#8217;il se reconnaît et qu&amp;#8217;il à besoin d&amp;#8217;aider pour monter ce gadget, je serai bien sûr prêt à l&amp;#8217;aider en l&amp;#8217;échange d&amp;#8217;un kit pour mon usage personnel ;-)&lt;/p&gt;
 &lt;h2&gt;Subvention&lt;/h2&gt;
 &lt;p&gt;Si vous désirez voir ce projet avancer, vous pouvez participer cette petite collecte afin que je puisse récupérer le matériel nécessaire à sa fabrication:&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.pledgie.com/campaigns/3135"&gt;&lt;img src="http://www.pledgie.com/campaigns/3135.png?skin_name=chrome" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
