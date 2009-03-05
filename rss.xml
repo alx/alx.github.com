@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-03-05T02:30:49+01:00</pubDate>
-    <lastBuildDate>2009-03-05T02:30:49+01:00</lastBuildDate>
+    <pubDate>2009-03-05T02:34:46+01:00</pubDate>
+    <lastBuildDate>2009-03-05T02:34:46+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -19,7 +19,7 @@
 &lt;p&gt;The fund raising is going really well, already 50% of the needed funds are here, the first Arduino is virtually connected to the electricity counter!&lt;/p&gt;
 &lt;h2&gt;Teleinformation&lt;/h2&gt;
 &lt;p&gt;It appears that &lt;span class="caps"&gt;EDF&lt;/span&gt;, the historical french electricity distributor, has alreayd thought about people wanting to retrieve electronically information from their home control panel.&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/comtpeur_edf.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/compteur_edf.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;At the bottom right of this picture, you can see 2 holes named &amp;#8220;&lt;em&gt;Sortie de téléinformation client (unidirectionnelle)&lt;/em&gt;&amp;#8221; which is a serial port, with certain specifications, that sends a binary stream of the informations available on the &lt;span class="caps"&gt;LCD&lt;/span&gt; panel.&lt;/p&gt;
 &lt;p&gt;Then I found this wonderful &lt;a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF"&gt;wiki in vesta.homelinux.net&lt;/a&gt;, with all the code necessary to decrypt this stream, and some even more hard-core experiment connecting a linksys router and sending information on a remote mysql database. Until then, I&amp;#8217;m not the only one geekying my time :)&lt;/p&gt;
 &lt;p&gt;Now, it&amp;#8217;ll save me the photo-diode surely-complicated thing on my first design, and I&amp;#8217;ll just need to figure out how to demodulate the signal send by this port:&lt;/p&gt;
