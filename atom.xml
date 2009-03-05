@@ -4,7 +4,7 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2009-03-05T02:37:15+01:00</updated>
+ <updated>2009-03-05T02:41:07+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
@@ -27,7 +27,7 @@
 &lt;p&gt;At the bottom right of this picture, you can see 2 holes named &amp;#8220;&lt;em&gt;Sortie de téléinformation client (unidirectionnelle)&lt;/em&gt;&amp;#8221; which is a serial port, with certain specifications, that sends a binary stream of the informations available on the &lt;span class="caps"&gt;LCD&lt;/span&gt; panel.&lt;/p&gt;
 &lt;p&gt;Then I found this wonderful &lt;a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF"&gt;wiki in vesta.homelinux.net&lt;/a&gt;, with all the code necessary to decrypt this stream, and some even more hard-core experiment connecting a linksys router and sending information on a remote mysql database. Until then, I&amp;#8217;m not the only one geekying my time :)&lt;/p&gt;
 &lt;p&gt;Now, it&amp;#8217;ll save me the photo-diode surely-complicated thing on my first design, and I&amp;#8217;ll just need to figure out how to demodulate the signal send by this port:&lt;/p&gt;
-&lt;p&gt;&amp;#8220;Les infos sont transmises cycliquement sur la ligne, modulées en &lt;span class="caps"&gt;ASK&lt;/span&gt; à 50kHz, ce qui correspond en gros à : soit aucune tension présente, soit un signal à 50kHz de 10V CC environ. Le 0V équivaut à un 1 logique, le 50kHz à un 0 logique.&amp;#8221;&lt;/p&gt;
+&lt;p&gt;&amp;#8220;&lt;em&gt;Les infos sont transmises cycliquement sur la ligne, modulées en &lt;span class="caps"&gt;ASK&lt;/span&gt; à 50kHz, ce qui correspond en gros à : soit aucune tension présente, soit un signal à 50kHz de 10V CC environ. Le 0V équivaut à un 1 logique, le 50kHz à un 0 logique.&lt;/em&gt;&amp;#8221;&lt;/p&gt;
 &lt;p&gt;Thanks to &lt;a href="http://www.pobot.org/"&gt;Luj06&lt;/a&gt; on the &lt;a href="http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1236111738/0"&gt;french Arduino forum&lt;/a&gt; to have told me about this serial port.&lt;/p&gt;
 &lt;h2&gt;Displaying numbers&lt;/h2&gt;
 &lt;p&gt;What&amp;#8217;s the most versatile technology today to follow a counter during days and weeks?&lt;/p&gt;
