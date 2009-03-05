@@ -4,7 +4,7 @@
  <title>Alex Girard Feed</title>
  <link href="http://alx.github.com/atom.xml" rel="self"/>
  <link href="http://alx.github.com"/>
- <updated>2009-03-05T02:34:46+01:00</updated>
+ <updated>2009-03-05T02:37:28+01:00</updated>
  <id>http://alx.github.com</id>
  <author>
    <name>Alex Girard</name>
@@ -18,7 +18,7 @@
    <updated>2009-03-05T00:00:00+01:00</updated>
    <id>http://alx.github.com/2009/03/05/powermeter-more-info</id>
    <content type="html">&lt;h1&gt;Arduino PowerMeter, connect and display&lt;/h1&gt;
-&lt;p&gt;48h after the first post about the Arduino PowerMeter, here is a status about the project.&lt;/p&gt;
+&lt;p&gt;48h after the &lt;a href="http://alexgirard.com/2009/03/02/edf-energy-saver-with-arduino.html"&gt;first post about the Arduino PowerMeter&lt;/a&gt;, here is a status about the project.&lt;/p&gt;
 &lt;p&gt;&lt;a href='http://www.pledgie.com/campaigns/3135'&gt;&lt;img alt='Click here to lend your support to: Arduino PowerMeter and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/3135.png?skin_name=chrome' border='0' /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The fund raising is going really well, already 50% of the needed funds are here, the first Arduino is virtually connected to the electricity counter!&lt;/p&gt;
 &lt;h2&gt;Teleinformation&lt;/h2&gt;
