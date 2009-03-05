@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Arduino PowerMeter, connect and display</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<h1>Arduino PowerMeter, connect and display</h1>
+<p>48h after the first post about the Arduino PowerMeter, here is a status about the project.</p>
+<p><a href='http://www.pledgie.com/campaigns/3135'><img alt='Click here to lend your support to: Arduino PowerMeter and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/3135.png?skin_name=chrome' border='0' /></a></p>
+<p>The fund raising is going really well, already 50% of the needed funds are here, the first Arduino is virtually connected to the electricity counter!</p>
+<h2>Teleinformation</h2>
+<p>It appears that <span class="caps">EDF</span>, the historical french electricity distributor, has alreayd thought about people wanting to retrieve electronically information from their home control panel.</p>
+<p><img src="/images/comtpeur_edf.png" alt="" /></p>
+<p>At the bottom right of this picture, you can see 2 holes named &#8220;<em>Sortie de téléinformation client (unidirectionnelle)</em>&#8221; which is a serial port, with certain specifications, that sends a binary stream of the informations available on the <span class="caps">LCD</span> panel.</p>
+<p>Then I found this wonderful <a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF">wiki in vesta.homelinux.net</a>, with all the code necessary to decrypt this stream, and some even more hard-core experiment connecting a linksys router and sending information on a remote mysql database. Until then, I&#8217;m not the only one geekying my time :)</p>
+<p>Now, it&#8217;ll save me the photo-diode surely-complicated thing on my first design, and I&#8217;ll just need to figure out how to demodulate the signal send by this port:</p>
+<p>&#8220;Les infos sont transmises cycliquement sur la ligne, modulées en <span class="caps">ASK</span> à 50kHz, ce qui correspond en gros à : soit aucune tension présente, soit un signal à 50kHz de 10V CC environ. Le 0V équivaut à un 1 logique, le 50kHz à un 0 logique.&#8221;</p>
+<p>Thanks to <a href="http://www.pobot.org/">Luj06</a> on the <a href="http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1236111738/0">french Arduino forum</a> to have told me about this serial port.</p>
+<h2>Displaying numbers</h2>
+<p>What&#8217;s the most versatile technology today to follow a counter during days and weeks?</p>
+<p>My answer tonight would be: &#8220;<strong>web analytics</strong>&#8221;</p>
+<p>All the code is there, with <a href="http://piwik.org/">Piwik</a> as the flagship of the open-source tracking system.</p>
+<p><img src="/images/counter.jpg" alt="" /></p>
+<p>If we compare the counter we&#8217;ve got on our electricity panel, it&#8217;s like a counter on a webpage during the nineties: a suite of number without more meta information.<br />
+In today&#8217;s world, this counters has been replaced by web analytics portal: it&#8217;s far more simple to install it that the previous counter, it gives you a lot of information on a simple glance, and everybody can read it.</p>
+<p>So let&#8217;s experiment this way: <em>visit</em> would be replaced by <em>watt/hour</em> (the small led signal on the counter), and <em>navigator</em> field will serve to record the rate of the <em>visit</em> (full-rate, half-rate).</p>
+<p>Surely Piwik will look a bit empty with only the small part of informations, but it&#8217;ll be a nice framework to start working on, hopefully with easily understable code.</p>
+<p>On a side note, I&#8217;ve also got access to <a href="http://pachube.com">Pachube.com</a> beta, so I&#8217;ll need to send the information there, and retrieving information from it could add another layer in the &#8220;electricity analytics&#8221; portal: other people are running energy consumption nodes on Pachube, getting their geo-localisation and their energy feeds will bring a nice mix of information that could be shown.</p>
+</div>
+
+<div id="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="/rss.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>
