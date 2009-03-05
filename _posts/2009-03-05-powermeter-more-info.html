@@ -35,7 +35,7 @@
 <p>The fund raising is going really well, already 50% of the needed funds are here, the first Arduino is virtually connected to the electricity counter!</p>
 <h2>Teleinformation</h2>
 <p>It appears that <span class="caps">EDF</span>, the historical french electricity distributor, has alreayd thought about people wanting to retrieve electronically information from their home control panel.</p>
-<p><img src="/images/comtpeur_edf.png" alt="" /></p>
+<p><img src="/images/compteur_edf.png" alt="" /></p>
 <p>At the bottom right of this picture, you can see 2 holes named &#8220;<em>Sortie de téléinformation client (unidirectionnelle)</em>&#8221; which is a serial port, with certain specifications, that sends a binary stream of the informations available on the <span class="caps">LCD</span> panel.</p>
 <p>Then I found this wonderful <a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF">wiki in vesta.homelinux.net</a>, with all the code necessary to decrypt this stream, and some even more hard-core experiment connecting a linksys router and sending information on a remote mysql database. Until then, I&#8217;m not the only one geekying my time :)</p>
 <p>Now, it&#8217;ll save me the photo-diode surely-complicated thing on my first design, and I&#8217;ll just need to figure out how to demodulate the signal send by this port:</p>
