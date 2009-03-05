@@ -4,11 +4,40 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-03-03T15:20:15+01:00</pubDate>
-    <lastBuildDate>2009-03-03T15:20:15+01:00</lastBuildDate>
+    <pubDate>2009-03-05T02:30:49+01:00</pubDate>
+    <lastBuildDate>2009-03-05T02:30:49+01:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
+ 	<item>
+   		<title>Arduino PowerMeter, connect and display</title>
+   		<link>http://alx.github.com/2009/03/05/powermeter-more-info.html</link>
+   		<guid>http://alx.github.com/2009/03/05/powermeter-more-info</guid>
+   		<description>&lt;h1&gt;Arduino PowerMeter, connect and display&lt;/h1&gt;
+&lt;p&gt;48h after the first post about the Arduino PowerMeter, here is a status about the project.&lt;/p&gt;
+&lt;p&gt;&lt;a href='http://www.pledgie.com/campaigns/3135'&gt;&lt;img alt='Click here to lend your support to: Arduino PowerMeter and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/3135.png?skin_name=chrome' border='0' /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The fund raising is going really well, already 50% of the needed funds are here, the first Arduino is virtually connected to the electricity counter!&lt;/p&gt;
+&lt;h2&gt;Teleinformation&lt;/h2&gt;
+&lt;p&gt;It appears that &lt;span class="caps"&gt;EDF&lt;/span&gt;, the historical french electricity distributor, has alreayd thought about people wanting to retrieve electronically information from their home control panel.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/comtpeur_edf.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;At the bottom right of this picture, you can see 2 holes named &amp;#8220;&lt;em&gt;Sortie de téléinformation client (unidirectionnelle)&lt;/em&gt;&amp;#8221; which is a serial port, with certain specifications, that sends a binary stream of the informations available on the &lt;span class="caps"&gt;LCD&lt;/span&gt; panel.&lt;/p&gt;
+&lt;p&gt;Then I found this wonderful &lt;a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF"&gt;wiki in vesta.homelinux.net&lt;/a&gt;, with all the code necessary to decrypt this stream, and some even more hard-core experiment connecting a linksys router and sending information on a remote mysql database. Until then, I&amp;#8217;m not the only one geekying my time :)&lt;/p&gt;
+&lt;p&gt;Now, it&amp;#8217;ll save me the photo-diode surely-complicated thing on my first design, and I&amp;#8217;ll just need to figure out how to demodulate the signal send by this port:&lt;/p&gt;
+&lt;p&gt;&amp;#8220;Les infos sont transmises cycliquement sur la ligne, modulées en &lt;span class="caps"&gt;ASK&lt;/span&gt; à 50kHz, ce qui correspond en gros à : soit aucune tension présente, soit un signal à 50kHz de 10V CC environ. Le 0V équivaut à un 1 logique, le 50kHz à un 0 logique.&amp;#8221;&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href="http://www.pobot.org/"&gt;Luj06&lt;/a&gt; on the &lt;a href="http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1236111738/0"&gt;french Arduino forum&lt;/a&gt; to have told me about this serial port.&lt;/p&gt;
+&lt;h2&gt;Displaying numbers&lt;/h2&gt;
+&lt;p&gt;What&amp;#8217;s the most versatile technology today to follow a counter during days and weeks?&lt;/p&gt;
+&lt;p&gt;My answer tonight would be: &amp;#8220;&lt;strong&gt;web analytics&lt;/strong&gt;&amp;#8221;&lt;/p&gt;
+&lt;p&gt;All the code is there, with &lt;a href="http://piwik.org/"&gt;Piwik&lt;/a&gt; as the flagship of the open-source tracking system.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/counter.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;If we compare the counter we&amp;#8217;ve got on our electricity panel, it&amp;#8217;s like a counter on a webpage during the nineties: a suite of number without more meta information.&lt;br /&gt;
+In today&amp;#8217;s world, this counters has been replaced by web analytics portal: it&amp;#8217;s far more simple to install it that the previous counter, it gives you a lot of information on a simple glance, and everybody can read it.&lt;/p&gt;
+&lt;p&gt;So let&amp;#8217;s experiment this way: &lt;em&gt;visit&lt;/em&gt; would be replaced by &lt;em&gt;watt/hour&lt;/em&gt; (the small led signal on the counter), and &lt;em&gt;navigator&lt;/em&gt; field will serve to record the rate of the &lt;em&gt;visit&lt;/em&gt; (full-rate, half-rate).&lt;/p&gt;
+&lt;p&gt;Surely Piwik will look a bit empty with only the small part of informations, but it&amp;#8217;ll be a nice framework to start working on, hopefully with easily understable code.&lt;/p&gt;
+&lt;p&gt;On a side note, I&amp;#8217;ve also got access to &lt;a href="http://pachube.com"&gt;Pachube.com&lt;/a&gt; beta, so I&amp;#8217;ll need to send the information there, and retrieving information from it could add another layer in the &amp;#8220;electricity analytics&amp;#8221; portal: other people are running energy consumption nodes on Pachube, getting their geo-localisation and their energy feeds will bring a nice mix of information that could be shown.&lt;/p&gt;</description>
+   		<pubDate>2009-03-05T00:00:00+01:00</pubDate>
+ 	</item>
+ 	
  	<item>
    		<title>Fabbing in 1944</title>
    		<link>http://alx.github.com/2009/03/03/fabbing-in-1944.html</link>
@@ -289,42 +318,6 @@ If only there was a subscription (and a better music player) on last.fm, they&am
    		<description>&lt;p&gt;Sometimes, you&amp;#8217;ve to be strong enough to delete a &amp;#8220;&lt;em&gt;permission denied&lt;/em&gt;&amp;#8221; file under windows with ruby:&lt;/p&gt;
 &lt;script src="http://gist.github.com/53396.js"&gt;&lt;/script&gt;&lt;p&gt;It doesn&amp;#8217;t take too long, but that&amp;#8217;s the kind of stupid trick you can avoid if you choose another platform to make your code.&lt;/p&gt;</description>
    		<pubDate>2009-01-27T00:00:00+01:00</pubDate>
- 	</item>
- 	
- 	<item>
-   		<title>Politimap, les zones chaudes de l'Assemblée Nationale</title>
-   		<link>http://alx.github.com/2009/01/07/politimap-premiere.html</link>
-   		<guid>http://alx.github.com/2009/01/07/politimap-premiere</guid>
-   		<description>&lt;p&gt;Après quelques surprises lors du passage de Jérémie Zimmermann à &lt;a href="http://www.cinemas-utopia.org/toulouse/"&gt;Utopia Toulouse&lt;/a&gt; pour présenter le travail de &lt;a href="http://laquadrature.net"&gt;La Quadrature du Net&lt;/a&gt;, et après m&amp;#8217;être rapidement perdu dans une tentative de lecture des texte des sessions de l&amp;#8217;Assemblée Nationale, je me suis dit qu&amp;#8217;il serait plus marrant de visualiser l&amp;#8217;activité de ces sessions sous forme de &lt;a href="http://images.google.com/images?q=heatmap"&gt;heatmap&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Sachant que tous les textes, et le fiches de chaque député sont librement accessible sur le site de l&amp;#8217;Assemblée, il ne me manquait plus que quelques lignes pour analyser le nombre de prise de parole dans chaque séance. Ainsi, durant la première séance du 8 décembre 2008, évoquant la communication audiovisuelle et le nouveau service public de la télévision, voici le nombre de prise de parole:&lt;/p&gt;
-&lt;p&gt;58, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2045.asp'&gt;No&amp;#235;l Mam&amp;#232;re&lt;/a&gt; &amp;#8211; Place: 596&lt;br /&gt;
-45, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/543.asp'&gt;Patrick Bloche&lt;/a&gt; &amp;#8211; Place: 453&lt;br /&gt;
-34, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2603.asp'&gt;Marcel Rogemont&lt;/a&gt; &amp;#8211; Place: 479&lt;br /&gt;
-30, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267768.asp'&gt;Patrick Roy&lt;/a&gt; &amp;#8211; Place: 550&lt;br /&gt;
-24, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/333224.asp'&gt;Benoist Apparu&lt;/a&gt; &amp;#8211; Place: 138&lt;br /&gt;
-23, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2099.asp'&gt;Patrice Martin-Lalande&lt;/a&gt; &amp;#8211; Place: 125&lt;br /&gt;
-23, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/917.asp'&gt;Jean-Fran&amp;#231;ois Cop&amp;#233;&lt;/a&gt; &amp;#8211; Place: 99&lt;br /&gt;
-22, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/653.asp'&gt;Patrick Braouezec&lt;/a&gt; &amp;#8211; Place: 585&lt;br /&gt;
-21, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/346886.asp'&gt;Fr&amp;#233;d&amp;#233;ric Lefebvre&lt;/a&gt; &amp;#8211; Place: 358&lt;br /&gt;
-20, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1630.asp'&gt;Michel Herbillon&lt;/a&gt; &amp;#8211; Place: 259&lt;br /&gt;
-15, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1761.asp'&gt;Christian Kert&lt;/a&gt; &amp;#8211; Place: 343&lt;br /&gt;
-12, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/335319.asp'&gt;Sandrine Mazetier&lt;/a&gt; &amp;#8211; Place: 429&lt;br /&gt;
-7, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267266.asp'&gt;Yves Censi&lt;/a&gt; &amp;#8211; Place: 79&lt;br /&gt;
-6, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267087.asp'&gt;Jean Dionis du S&amp;#233;jour&lt;/a&gt; &amp;#8211; Place: 397&lt;br /&gt;
-5, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267429.asp'&gt;Dino Cinieri&lt;/a&gt; &amp;#8211; Place: 196&lt;br /&gt;
-4, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1058.asp'&gt;Richard Dell&amp;#39;Agnola&lt;/a&gt; &amp;#8211; Place: 357&lt;br /&gt;
-4, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/267719.asp'&gt;Richard Malli&amp;#233;&lt;/a&gt; &amp;#8211; Place: 76&lt;br /&gt;
-3, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/1886.asp'&gt;Bruno Le Roux&lt;/a&gt; &amp;#8211; Place: 421&lt;br /&gt;
-2, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/2319.asp'&gt;Fran&amp;#231;oise de Panafieu&lt;/a&gt; &amp;#8211; Place: 177&lt;br /&gt;
-2, &lt;a href='http://www.assemblee-nationale.fr/13/tribun/fiches_id/335054.asp'&gt;Marietta Karamanli&lt;/a&gt; &amp;#8211; Place: 559&lt;/p&gt;
-&lt;p&gt;Avec ces données, il ne me manquait plus qu&amp;#8217;a situé chacun des sièges. Heureusement, le &lt;a href="http://www.assemblee-nationale.fr/seance/hemicycle.asp"&gt;plan de l&amp;#8217;hémicycle&lt;/a&gt; est aussi disponible en ligne, et en ajoutant un peu d&amp;#8217;interaction grâce à &lt;a href="http://shoooes.net/"&gt;Shoes&lt;/a&gt;, j&amp;#8217;ai rapidement créé un fichier de coordonnées de tous les sièges. (&lt;em&gt;En passant, j&amp;#8217;aimerai maintenant avoir plus d&amp;#8217;information sur l&amp;#8217;histoire de l&amp;#8217;Assemblée, il manque des numéros de sièges, la curiosité me poussera sûrement à répondre à ces manques prochainement.&lt;/em&gt;)&lt;/p&gt;
-&lt;p&gt;Voici l&amp;#8217;application qui m&amp;#8217;a servie à situer chaque siège:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/seatmap.png" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;Et enfin, avec l&amp;#8217;aide du code de &lt;a href="http://blog.corunet.com/english/the-definitive-heatmap"&gt;clickmaps&lt;/a&gt;, idéalement disponible en ruby, j&amp;#8217;ai put le modifier un petit peu pour analyser cette séance:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/20090090.jpg" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;Ce n&amp;#8217;est qu&amp;#8217;un début, avec du code encore tout poussiéreux, et des idées d&amp;#8217;analyses qui peuvent être assez marrante, ou plus sérieusement poussées pour permettre une autre vision de la scène politique encore assez obscure à l&amp;#8217;Assemblée.&lt;/p&gt;
-&lt;p&gt;Vous pouvez télécharger et suivre le développement de cet outils sur &lt;a href="http://github.com/alx/politimap/"&gt;github.com/alx/politimap/&lt;/a&gt;&lt;/p&gt;</description>
-   		<pubDate>2009-01-07T00:00:00+01:00</pubDate>
  	</item>
  	
   </channel>

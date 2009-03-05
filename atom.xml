@@ -4,13 +4,42 @@
  <title>Alex Girard Feed</title>
  <link href="http://alx.github.com/atom.xml" rel="self"/>
  <link href="http://alx.github.com"/>
- <updated>2009-03-03T15:20:15+01:00</updated>
+ <updated>2009-03-05T02:30:49+01:00</updated>
  <id>http://alx.github.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Arduino PowerMeter, connect and display</title>
+   <link href="http://alx.github.com/2009/03/05/powermeter-more-info.html"/>
+   <updated>2009-03-05T00:00:00+01:00</updated>
+   <id>http://alx.github.com/2009/03/05/powermeter-more-info</id>
+   <content type="html">&lt;h1&gt;Arduino PowerMeter, connect and display&lt;/h1&gt;
+&lt;p&gt;48h after the first post about the Arduino PowerMeter, here is a status about the project.&lt;/p&gt;
+&lt;p&gt;&lt;a href='http://www.pledgie.com/campaigns/3135'&gt;&lt;img alt='Click here to lend your support to: Arduino PowerMeter and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/3135.png?skin_name=chrome' border='0' /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The fund raising is going really well, already 50% of the needed funds are here, the first Arduino is virtually connected to the electricity counter!&lt;/p&gt;
+&lt;h2&gt;Teleinformation&lt;/h2&gt;
+&lt;p&gt;It appears that &lt;span class="caps"&gt;EDF&lt;/span&gt;, the historical french electricity distributor, has alreayd thought about people wanting to retrieve electronically information from their home control panel.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/comtpeur_edf.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;At the bottom right of this picture, you can see 2 holes named &amp;#8220;&lt;em&gt;Sortie de téléinformation client (unidirectionnelle)&lt;/em&gt;&amp;#8221; which is a serial port, with certain specifications, that sends a binary stream of the informations available on the &lt;span class="caps"&gt;LCD&lt;/span&gt; panel.&lt;/p&gt;
+&lt;p&gt;Then I found this wonderful &lt;a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF"&gt;wiki in vesta.homelinux.net&lt;/a&gt;, with all the code necessary to decrypt this stream, and some even more hard-core experiment connecting a linksys router and sending information on a remote mysql database. Until then, I&amp;#8217;m not the only one geekying my time :)&lt;/p&gt;
+&lt;p&gt;Now, it&amp;#8217;ll save me the photo-diode surely-complicated thing on my first design, and I&amp;#8217;ll just need to figure out how to demodulate the signal send by this port:&lt;/p&gt;
+&lt;p&gt;&amp;#8220;Les infos sont transmises cycliquement sur la ligne, modulées en &lt;span class="caps"&gt;ASK&lt;/span&gt; à 50kHz, ce qui correspond en gros à : soit aucune tension présente, soit un signal à 50kHz de 10V CC environ. Le 0V équivaut à un 1 logique, le 50kHz à un 0 logique.&amp;#8221;&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href="http://www.pobot.org/"&gt;Luj06&lt;/a&gt; on the &lt;a href="http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1236111738/0"&gt;french Arduino forum&lt;/a&gt; to have told me about this serial port.&lt;/p&gt;
+&lt;h2&gt;Displaying numbers&lt;/h2&gt;
+&lt;p&gt;What&amp;#8217;s the most versatile technology today to follow a counter during days and weeks?&lt;/p&gt;
+&lt;p&gt;My answer tonight would be: &amp;#8220;&lt;strong&gt;web analytics&lt;/strong&gt;&amp;#8221;&lt;/p&gt;
+&lt;p&gt;All the code is there, with &lt;a href="http://piwik.org/"&gt;Piwik&lt;/a&gt; as the flagship of the open-source tracking system.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/counter.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;If we compare the counter we&amp;#8217;ve got on our electricity panel, it&amp;#8217;s like a counter on a webpage during the nineties: a suite of number without more meta information.&lt;br /&gt;
+In today&amp;#8217;s world, this counters has been replaced by web analytics portal: it&amp;#8217;s far more simple to install it that the previous counter, it gives you a lot of information on a simple glance, and everybody can read it.&lt;/p&gt;
+&lt;p&gt;So let&amp;#8217;s experiment this way: &lt;em&gt;visit&lt;/em&gt; would be replaced by &lt;em&gt;watt/hour&lt;/em&gt; (the small led signal on the counter), and &lt;em&gt;navigator&lt;/em&gt; field will serve to record the rate of the &lt;em&gt;visit&lt;/em&gt; (full-rate, half-rate).&lt;/p&gt;
+&lt;p&gt;Surely Piwik will look a bit empty with only the small part of informations, but it&amp;#8217;ll be a nice framework to start working on, hopefully with easily understable code.&lt;/p&gt;
+&lt;p&gt;On a side note, I&amp;#8217;ve also got access to &lt;a href="http://pachube.com"&gt;Pachube.com&lt;/a&gt; beta, so I&amp;#8217;ll need to send the information there, and retrieving information from it could add another layer in the &amp;#8220;electricity analytics&amp;#8221; portal: other people are running energy consumption nodes on Pachube, getting their geo-localisation and their energy feeds will bring a nice mix of information that could be shown.&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Fabbing in 1944</title>
@@ -665,6 +694,15 @@ La gestion distribuée de version de fichier est l&amp;#8217;un des concept logi
  </entry>
  
  <entry>
+   <title>Itinerant lifestyle</title>
+   <link href="http://alx.github.com/2008/11/21/itinerant-lifestyle.html"/>
+   <updated>2008-11-21T00:00:00+01:00</updated>
+   <id>http://alx.github.com/2008/11/21/itinerant-lifestyle</id>
+   <content type="html">&lt;p&gt;&lt;em&gt;Possessions meant little to Erdős; most of his belongings would fit in a suitcase, as dictated by his itinerant lifestyle. Awards and other earnings were in general donated to people in need and various worthy causes. He spent most of his life as a vagabond, travelling between scientific conferences and the homes of colleagues all over the world. He would typically show up at a colleague&amp;#8217;s doorstep and announce &amp;#8220;my brain is open&amp;#8221;, staying long enough to collaborate on a few papers before moving on a few days later. In many cases, he would ask the current collaborator about whom he (Erdős) should visit next. His working style has been humorously compared to traversing a linked list.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Paul_Erd%C5%91s"&gt;Wikipedia entry on Paul Erdős&lt;/a&gt;&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>DouceOffensive.org nouvel espoir</title>
    <link href="http://alx.github.com/2008/11/21/douce-offensive.html"/>
    <updated>2008-11-21T00:00:00+01:00</updated>
@@ -675,15 +713,6 @@ La gestion distribuée de version de fichier est l&amp;#8217;un des concept logi
 &lt;p&gt;&lt;img src="http://farm4.static.flickr.com/3003/3047257469_2155830e70.jpg" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;Gérer par Wordpress et le plugin PhotoQ, le site ne consiste qu&amp;#8217;en un thème minimaliste, alimenté par les photos de Guillaume Ajavon.&lt;/p&gt;
 &lt;p&gt;Comme d&amp;#8217;habitude, vous pouvez &lt;a href="http://github.com/alx/douce-offensive/"&gt;télécharger ce blog complet&lt;/a&gt; (inclut thème et plugins) sur github.com si vous voulez vous monter le même système pour votre photoblog.&lt;/p&gt;</content>
- </entry>
- 
- <entry>
-   <title>Itinerant lifestyle</title>
-   <link href="http://alx.github.com/2008/11/21/itinerant-lifestyle.html"/>
-   <updated>2008-11-21T00:00:00+01:00</updated>
-   <id>http://alx.github.com/2008/11/21/itinerant-lifestyle</id>
-   <content type="html">&lt;p&gt;&lt;em&gt;Possessions meant little to Erdős; most of his belongings would fit in a suitcase, as dictated by his itinerant lifestyle. Awards and other earnings were in general donated to people in need and various worthy causes. He spent most of his life as a vagabond, travelling between scientific conferences and the homes of colleagues all over the world. He would typically show up at a colleague&amp;#8217;s doorstep and announce &amp;#8220;my brain is open&amp;#8221;, staying long enough to collaborate on a few papers before moving on a few days later. In many cases, he would ask the current collaborator about whom he (Erdős) should visit next. His working style has been humorously compared to traversing a linked list.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Paul_Erd%C5%91s"&gt;Wikipedia entry on Paul Erdős&lt;/a&gt;&lt;/p&gt;</content>
  </entry>
  
  <entry>
