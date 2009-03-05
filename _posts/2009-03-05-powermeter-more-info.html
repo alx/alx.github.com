@@ -39,7 +39,7 @@
 <p>At the bottom right of this picture, you can see 2 holes named &#8220;<em>Sortie de téléinformation client (unidirectionnelle)</em>&#8221; which is a serial port, with certain specifications, that sends a binary stream of the informations available on the <span class="caps">LCD</span> panel.</p>
 <p>Then I found this wonderful <a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF">wiki in vesta.homelinux.net</a>, with all the code necessary to decrypt this stream, and some even more hard-core experiment connecting a linksys router and sending information on a remote mysql database. Until then, I&#8217;m not the only one geekying my time :)</p>
 <p>Now, it&#8217;ll save me the photo-diode surely-complicated thing on my first design, and I&#8217;ll just need to figure out how to demodulate the signal send by this port:</p>
-<p>&#8220;Les infos sont transmises cycliquement sur la ligne, modulées en <span class="caps">ASK</span> à 50kHz, ce qui correspond en gros à : soit aucune tension présente, soit un signal à 50kHz de 10V CC environ. Le 0V équivaut à un 1 logique, le 50kHz à un 0 logique.&#8221;</p>
+<p>&#8220;<em>Les infos sont transmises cycliquement sur la ligne, modulées en <span class="caps">ASK</span> à 50kHz, ce qui correspond en gros à : soit aucune tension présente, soit un signal à 50kHz de 10V CC environ. Le 0V équivaut à un 1 logique, le 50kHz à un 0 logique.</em>&#8221;</p>
 <p>Thanks to <a href="http://www.pobot.org/">Luj06</a> on the <a href="http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1236111738/0">french Arduino forum</a> to have told me about this serial port.</p>
 <h2>Displaying numbers</h2>
 <p>What&#8217;s the most versatile technology today to follow a counter during days and weeks?</p>
