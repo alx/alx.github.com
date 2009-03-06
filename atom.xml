@@ -4,13 +4,150 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2009-03-05T02:41:07+01:00</updated>
+ <updated>2009-03-06T03:22:50+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Merb deploy step by step</title>
+   <link href="http://alexgirard.com/2009/03/06/merb-deploy-step-by-step.html"/>
+   <updated>2009-03-06T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2009/03/06/merb-deploy-step-by-step</id>
+   <content type="html">&lt;h1&gt;Merb deploy step by step&lt;/h1&gt;
+&lt;p&gt;Deploying the second Merb app on our server in the same week, I&amp;#8217;ve made the history of various comand lines to enter on each side to have a fresh merb-app install.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;d also help to refactor the whole process thanks to this global view.&lt;/p&gt;
+&lt;h2&gt;App server&lt;/h2&gt;
+&lt;h3&gt;Monit Configuration&lt;/h3&gt;
+&lt;pre&gt;
+	&lt;code&gt;
+
+alx@MacBook ~$ ssh deploy@slice.legodata.com
+deploy@legodata:/etc/nginx$ cd /etc/monit.d/                     
+deploy@legodata:/etc/monit.d$ sudo cp slice2.monit slice3.monit
+deploy@legodata:/etc/monit.d$ sudo nano slice3.monit
+
+check process slice3_app_master
+  with pidfile /home/deploy/legodata/slice3/shared/pids/production-merb.main.pid
+  start program = "/home/deploy/bin/monit_merb_mpc slice3 start_master /home/deploy/legodata -c2 -n4004"
+  stop program = "/home/deploy/bin/monit_merb_mpc slice3 stop_master /home/deploy/legodata"
+  #if totalmem is greater than 80.0 MB for 2 cycles then restart       # eating up memory?
+  group slice3.legodata.com
+
+# Worker configuration (one for each worker port required)
+check process slice3_app_4004
+  with pidfile /home/deploy/legodata/slice3/shared/pids/production-merb.4004.pid
+  start program = "/home/deploy/bin/monit_merb_mpc slice3 register_worker /home/deploy/legodata 4004"
+  stop program = "/home/deploy/bin/monit_merb_mpc slice3 restart_worker /home/deploy/legodata 4004"
+  if totalmem is greater than 80.0 MB for 2 cycles then restart       # eating up memory?
+  group slice3.legodata.com
+
+check process slice3_app_4005
+  with pidfile /home/deploy/legodata/slice3/shared/pids/production-merb.4005.pid
+  start program = "/home/deploy/bin/monit_merb_mpc slice3 register_worker /home/deploy/legodata 4005"
+  stop program = "/home/deploy/bin/monit_merb_mpc slice3 restart_worker /home/deploy/legodata 4005"
+  if totalmem is greater than 80.0 MB for 2 cycles then restart       # eating up memory?
+  group slice3.legodata.com
+
+deploy@legodata:/etc/monit.d$ sudo /etc/init.d/monit restart
+deploy@legodata:/etc/monit.d$ sudo /usr/sbin/monit -c /etc/monit/monitrc status
+
+	&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;More info:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://mmonit.com/monit/"&gt;Monit&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="http://gist.github.com/46061"&gt;monit_merb_mpc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Nginx Configuration&lt;/h3&gt;
+&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
+	&lt;code&gt;&lt;/p&gt;
+&lt;p&gt;deploy@legodata:~$ cd /etc/nginx/&lt;br /&gt;
+deploy@legodata:/etc/nginx$ sudo cp sites-available/slices/slice3.legodata.com sites-enabled/&lt;br /&gt;
+deploy@legodata:/etc/nginx$ sudo nano sites-enabled/slice3.legodata.com&lt;/p&gt;
+&lt;p&gt;upstream slice3 {&lt;br /&gt;
+  server 127.0.0.1:4004;&lt;br /&gt;
+  server 127.0.0.1:4005;&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;server {&lt;br /&gt;
+  listen 80;&lt;br /&gt;
+  server_name slice3.legodata.com;&lt;/p&gt;
+root /home/deploy/legodata/slice3/current/public;
+access_log /home/deploy/legodata/slice3/shared/log/access.log;
+error_log /home/deploy/legodata/slice3/shared/log/error.log;
+location / {
+proxy_set_header  X-Real-IP       $remote_addr;
+proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header  Host            $http_host;
+proxy_redirect false;
+proxy_max_temp_file_size 0;
+if (-f $request_filename) {
+break;
+}
+if (-f $request_filename.html) {
+rewrite (.*) $1.html break;
+}
+if (!-f $request_filename) {
+proxy_pass http://slice3;
+break;
+}
+} # location
+&lt;p&gt;} # server&lt;/p&gt;
+&lt;p&gt;deploy@legodata:/etc/nginx$ sudo /etc/init.d/nginx restart&lt;/p&gt;
+&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h3&gt;Manual launch for debug&lt;/h3&gt;
+&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
+	&lt;code&gt;&lt;/p&gt;
+&lt;p&gt;deploy@legodata:/etc/monit.d$ sudo /usr/local/bin/merb &amp;#8212;name slice3_production -d -u deploy -G www-data -a mongrel -L /home/deploy/legodata/slice3/current/log/production.log -e production -m /home/deploy/legodata/slice3/current -c 2 -P &amp;#8216;/home/deploy/legodata/slice3/shared/pids/production-merb.%s.pid&amp;#8217; -p 4004 -N&lt;/p&gt;
+&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h3&gt;Git repository creation&lt;/h3&gt;
+&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
+	&lt;code&gt;&lt;/p&gt;
+&lt;p&gt;alx@MacBook &lt;sub&gt;$ ssh git@slice.legodata.com&lt;br /&gt;
+git@legodata:&lt;/sub&gt;$ mkdir cbon.git&lt;br /&gt;
+git@legodata:~$ cd cbon.git&lt;br /&gt;
+git@legodata:~/cbon.git$ git init&lt;br /&gt;
+Initialized empty Git repository in /home/git/cbon.git/.git/&lt;/p&gt;
+&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;Dev station&lt;/h2&gt;
+&lt;h3&gt;Git workspace creation&lt;/h3&gt;
+&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
+	&lt;code&gt;&lt;/p&gt;
+&lt;p&gt;alx@MacBook ~/Sites/cbon[master]$ mkdir cbon&lt;br /&gt;
+alx@MacBook ~/Sites/cbon[master]$ cd cbon/&lt;br /&gt;
+alx@MacBook ~/Sites/cbon[master]$ git init&lt;br /&gt;
+alx@MacBook ~/Sites/cbon[master]$ touch &lt;span class="caps"&gt;README&lt;/span&gt;&lt;br /&gt;
+alx@MacBook ~/Sites/cbon[master]$ git add .&lt;br /&gt;
+alx@MacBook ~/Sites/cbon[master]$ git commit -a -m &amp;#8220;first commit&amp;#8221;&lt;br /&gt;
+alx@MacBook ~/Sites/cbon[master]$ git remote add origin git@git.legodata.com:cbon.git&lt;br /&gt;
+alx@MacBook ~/Sites/cbon[master]$ git push origin master&lt;/p&gt;
+&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h3&gt;Merb app creation&lt;/h3&gt;
+&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
+	&lt;code&gt;&lt;/p&gt;
+&lt;p&gt;alx@MacBook ~/Sites/cbon[master]$ merb-gen app .&lt;br /&gt;
+alx@MacBook ~/Sites/cbon[master]$ capify .&lt;/p&gt;
+&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h3&gt;Deploy on app server&lt;/h3&gt;
+&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
+	&lt;code&gt;&lt;/p&gt;
+&lt;p&gt;alx@MacBook ~/Sites/cbon[master]$ more config/deploy.rb&lt;/p&gt;
+&lt;p&gt;set :application_name, &amp;#8216;cbon&amp;#8217;&lt;br /&gt;
+set :application, &amp;#8220;slice3.legodata.com&amp;#8221;&lt;br /&gt;
+set :deploy_to, &amp;#8220;/home/deploy/legodata/slice3&amp;#8221;&lt;/p&gt;
+&lt;p&gt;alx@MacBook ~/Sites/cbon[master]$ cap deploy:setup&lt;br /&gt;
+alx@MacBook ~/Sites/cbon[master]$ cap deploy:cold&lt;/p&gt;
+&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
+&lt;/pre&gt;&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Arduino PowerMeter, connect and display</title>
@@ -249,6 +386,19 @@ cap deploy
  </entry>
  
  <entry>
+   <title>10 invites to Spotify.com</title>
+   <link href="http://alexgirard.com/2009/02/03/invites-to-spotify.html"/>
+   <updated>2009-02-03T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2009/02/03/invites-to-spotify</id>
+   <content type="html">&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
+&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
+&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
+&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
+If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>Merb et rangement de vos classes en sous-répertoire</title>
    <link href="http://alexgirard.com/2009/02/03/sous-repertoire-merb.html"/>
    <updated>2009-02-03T00:00:00+01:00</updated>
@@ -299,19 +449,6 @@ module Resource
 end
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Pour cette manipulation, il n&amp;#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</content>
- </entry>
- 
- <entry>
-   <title>10 invites to Spotify.com</title>
-   <link href="http://alexgirard.com/2009/02/03/invites-to-spotify.html"/>
-   <updated>2009-02-03T00:00:00+01:00</updated>
-   <id>http://alexgirard.com/2009/02/03/invites-to-spotify</id>
-   <content type="html">&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
-&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
-&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
-&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
-If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;</content>
  </entry>
  
  <entry>
