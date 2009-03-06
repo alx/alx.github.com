@@ -2,12 +2,19 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>http://alx.github.com</loc>
-		<lastmod>2009-03-05T02:41:23+01:00</lastmod>
+		<lastmod>2009-03-06T03:23:14+01:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
 
 	
+ 	<url>
+   		<loc>http://alx.github.com/2009/03/06/merb-deploy-step-by-step.html</loc>
+   		<lastmod>2009-03-06T00:00:00+01:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
  	<url>
    		<loc>http://alx.github.com/2009/03/05/powermeter-more-info.html</loc>
    		<lastmod>2009-03-05T00:00:00+01:00</lastmod>
@@ -58,14 +65,14 @@
  	</url>
  	
  	<url>
-   		<loc>http://alx.github.com/2009/02/03/sous-repertoire-merb.html</loc>
+   		<loc>http://alx.github.com/2009/02/03/invites-to-spotify.html</loc>
    		<lastmod>2009-02-03T00:00:00+01:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
  	</url>
  	
  	<url>
-   		<loc>http://alx.github.com/2009/02/03/invites-to-spotify.html</loc>
+   		<loc>http://alx.github.com/2009/02/03/sous-repertoire-merb.html</loc>
    		<lastmod>2009-02-03T00:00:00+01:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>

@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Merb deploy step by step</title>
+   <meta name="author" content="Tom Preston-Werner" />
+   <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Sitewide RSS Feed" />
+
+	<!-- jquery -->
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Openid server -->
+   <link rel="openid.server" href="http://openid.alexgirard.com/index.php/serve" />
+   <link rel="openid.delegate" href="http://openid.alexgirard.com/?user=peeloo" />
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">Alex Girard</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/"><img src="/images/gb.png" alt="in English" with="16px" height="11px"></a>
+    <a class="extra" href="/index_fr.html"><img src="/images/fr.png" alt="en Francais" with="16px" height="11px"></a>
+  </div>
+  
+  <div id="post">
+<h1>Merb deploy step by step</h1>
+<p>Deploying the second Merb app on our server in the same week, I&#8217;ve made the history of various comand lines to enter on each side to have a fresh merb-app install.</p>
+<p>It&#8217;d also help to refactor the whole process thanks to this global view.</p>
+<h2>App server</h2>
+<h3>Monit Configuration</h3>
+<pre>
+	<code>
+
+alx@MacBook ~$ ssh deploy@slice.legodata.com
+deploy@legodata:/etc/nginx$ cd /etc/monit.d/                     
+deploy@legodata:/etc/monit.d$ sudo cp slice2.monit slice3.monit
+deploy@legodata:/etc/monit.d$ sudo nano slice3.monit
+
+check process slice3_app_master
+  with pidfile /home/deploy/legodata/slice3/shared/pids/production-merb.main.pid
+  start program = "/home/deploy/bin/monit_merb_mpc slice3 start_master /home/deploy/legodata -c2 -n4004"
+  stop program = "/home/deploy/bin/monit_merb_mpc slice3 stop_master /home/deploy/legodata"
+  #if totalmem is greater than 80.0 MB for 2 cycles then restart       # eating up memory?
+  group slice3.legodata.com
+
+# Worker configuration (one for each worker port required)
+check process slice3_app_4004
+  with pidfile /home/deploy/legodata/slice3/shared/pids/production-merb.4004.pid
+  start program = "/home/deploy/bin/monit_merb_mpc slice3 register_worker /home/deploy/legodata 4004"
+  stop program = "/home/deploy/bin/monit_merb_mpc slice3 restart_worker /home/deploy/legodata 4004"
+  if totalmem is greater than 80.0 MB for 2 cycles then restart       # eating up memory?
+  group slice3.legodata.com
+
+check process slice3_app_4005
+  with pidfile /home/deploy/legodata/slice3/shared/pids/production-merb.4005.pid
+  start program = "/home/deploy/bin/monit_merb_mpc slice3 register_worker /home/deploy/legodata 4005"
+  stop program = "/home/deploy/bin/monit_merb_mpc slice3 restart_worker /home/deploy/legodata 4005"
+  if totalmem is greater than 80.0 MB for 2 cycles then restart       # eating up memory?
+  group slice3.legodata.com
+
+deploy@legodata:/etc/monit.d$ sudo /etc/init.d/monit restart
+deploy@legodata:/etc/monit.d$ sudo /usr/sbin/monit -c /etc/monit/monitrc status
+
+	</code>
+</pre>
+<p>More info:</p>
+<ul>
+	<li><a href="http://mmonit.com/monit/">Monit</a></li>
+	<li><a href="http://gist.github.com/46061">monit_merb_mpc</a></li>
+</ul>
+<h3>Nginx Configuration</h3>
+<p> <pre><br />
+	<code></p>
+<p>deploy@legodata:~$ cd /etc/nginx/<br />
+deploy@legodata:/etc/nginx$ sudo cp sites-available/slices/slice3.legodata.com sites-enabled/<br />
+deploy@legodata:/etc/nginx$ sudo nano sites-enabled/slice3.legodata.com</p>
+<p>upstream slice3 {<br />
+  server 127.0.0.1:4004;<br />
+  server 127.0.0.1:4005;<br />
+}</p>
+<p>server {<br />
+  listen 80;<br />
+  server_name slice3.legodata.com;</p>
+root /home/deploy/legodata/slice3/current/public;
+access_log /home/deploy/legodata/slice3/shared/log/access.log;
+error_log /home/deploy/legodata/slice3/shared/log/error.log;
+location / {
+proxy_set_header  X-Real-IP       $remote_addr;
+proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header  Host            $http_host;
+proxy_redirect false;
+proxy_max_temp_file_size 0;
+if (-f $request_filename) {
+break;
+}
+if (-f $request_filename.html) {
+rewrite (.*) $1.html break;
+}
+if (!-f $request_filename) {
+proxy_pass http://slice3;
+break;
+}
+} # location
+<p>} # server</p>
+<p>deploy@legodata:/etc/nginx$ sudo /etc/init.d/nginx restart</p>
+<p></code><br />
+</pre></p>
+<h3>Manual launch for debug</h3>
+<p> <pre><br />
+	<code></p>
+<p>deploy@legodata:/etc/monit.d$ sudo /usr/local/bin/merb &#8212;name slice3_production -d -u deploy -G www-data -a mongrel -L /home/deploy/legodata/slice3/current/log/production.log -e production -m /home/deploy/legodata/slice3/current -c 2 -P &#8216;/home/deploy/legodata/slice3/shared/pids/production-merb.%s.pid&#8217; -p 4004 -N</p>
+<p></code><br />
+</pre></p>
+<h3>Git repository creation</h3>
+<p> <pre><br />
+	<code></p>
+<p>alx@MacBook <sub>$ ssh git@slice.legodata.com<br />
+git@legodata:</sub>$ mkdir cbon.git<br />
+git@legodata:~$ cd cbon.git<br />
+git@legodata:~/cbon.git$ git init<br />
+Initialized empty Git repository in /home/git/cbon.git/.git/</p>
+<p></code><br />
+</pre></p>
+<h2>Dev station</h2>
+<h3>Git workspace creation</h3>
+<p> <pre><br />
+	<code></p>
+<p>alx@MacBook ~/Sites/cbon[master]$ mkdir cbon<br />
+alx@MacBook ~/Sites/cbon[master]$ cd cbon/<br />
+alx@MacBook ~/Sites/cbon[master]$ git init<br />
+alx@MacBook ~/Sites/cbon[master]$ touch <span class="caps">README</span><br />
+alx@MacBook ~/Sites/cbon[master]$ git add .<br />
+alx@MacBook ~/Sites/cbon[master]$ git commit -a -m &#8220;first commit&#8221;<br />
+alx@MacBook ~/Sites/cbon[master]$ git remote add origin git@git.legodata.com:cbon.git<br />
+alx@MacBook ~/Sites/cbon[master]$ git push origin master</p>
+<p></code><br />
+</pre></p>
+<h3>Merb app creation</h3>
+<p> <pre><br />
+	<code></p>
+<p>alx@MacBook ~/Sites/cbon[master]$ merb-gen app .<br />
+alx@MacBook ~/Sites/cbon[master]$ capify .</p>
+<p></code><br />
+</pre></p>
+<h3>Deploy on app server</h3>
+<p> <pre><br />
+	<code></p>
+<p>alx@MacBook ~/Sites/cbon[master]$ more config/deploy.rb</p>
+<p>set :application_name, &#8216;cbon&#8217;<br />
+set :application, &#8220;slice3.legodata.com&#8221;<br />
+set :deploy_to, &#8220;/home/deploy/legodata/slice3&#8221;</p>
+<p>alx@MacBook ~/Sites/cbon[master]$ cap deploy:setup<br />
+alx@MacBook ~/Sites/cbon[master]$ cap deploy:cold</p>
+<p></code><br />
+</pre></p>
+</div>
+
+<div id="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript" src="http://disqus.com/forums/alexgirard/embed.js"></script>
+	<noscript><a href="http://alexgirard.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+  </ul>
+</div>
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        Alex Girard<br />
+        Web developer - Geek - Hacker<br />
+        alx.girard@gmail.com
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/alx/">github.com/alx</a><br />
+        <a href="http://twitter.com/alx/">twitter.com/alx</a><br />
+        <a href="http://flickr.com/photos/alx/">flickr.com/photos/alx</a>
+      </p>
+    </div>
+    <div class="rss">
+      <a href="/rss.xml">
+        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-56877-9");
+pageTracker._trackPageview();
+
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/alexgirard/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+
+</body>
+</html>
