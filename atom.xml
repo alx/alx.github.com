@@ -4,7 +4,7 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2009-03-06T03:22:50+01:00</updated>
+ <updated>2009-03-06T03:27:46+01:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
@@ -23,13 +23,16 @@
 &lt;h2&gt;App server&lt;/h2&gt;
 &lt;h3&gt;Monit Configuration&lt;/h3&gt;
 &lt;pre&gt;
-	&lt;code&gt;
-
+&lt;code&gt;
 alx@MacBook ~$ ssh deploy@slice.legodata.com
 deploy@legodata:/etc/nginx$ cd /etc/monit.d/                     
 deploy@legodata:/etc/monit.d$ sudo cp slice2.monit slice3.monit
 deploy@legodata:/etc/monit.d$ sudo nano slice3.monit
+&lt;/code&gt;
+&lt;/pre&gt;
 
+&lt;pre&gt;
+&lt;code&gt;
 check process slice3_app_master
   with pidfile /home/deploy/legodata/slice3/shared/pids/production-merb.main.pid
   start program = "/home/deploy/bin/monit_merb_mpc slice3 start_master /home/deploy/legodata -c2 -n4004"
@@ -51,11 +54,14 @@ check process slice3_app_4005
   stop program = "/home/deploy/bin/monit_merb_mpc slice3 restart_worker /home/deploy/legodata 4005"
   if totalmem is greater than 80.0 MB for 2 cycles then restart       # eating up memory?
   group slice3.legodata.com
+&lt;/code&gt;
+&lt;/pre&gt;
 
+&lt;pre&gt;
+&lt;code&gt;
 deploy@legodata:/etc/monit.d$ sudo /etc/init.d/monit restart
 deploy@legodata:/etc/monit.d$ sudo /usr/sbin/monit -c /etc/monit/monitrc status
-
-	&lt;/code&gt;
+&lt;/code&gt;
 &lt;/pre&gt;
 &lt;p&gt;More info:&lt;/p&gt;
 &lt;ul&gt;
@@ -63,90 +69,121 @@ deploy@legodata:/etc/monit.d$ sudo /usr/sbin/monit -c /etc/monit/monitrc status
 	&lt;li&gt;&lt;a href="http://gist.github.com/46061"&gt;monit_merb_mpc&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Nginx Configuration&lt;/h3&gt;
-&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
-	&lt;code&gt;&lt;/p&gt;
-&lt;p&gt;deploy@legodata:~$ cd /etc/nginx/&lt;br /&gt;
-deploy@legodata:/etc/nginx$ sudo cp sites-available/slices/slice3.legodata.com sites-enabled/&lt;br /&gt;
-deploy@legodata:/etc/nginx$ sudo nano sites-enabled/slice3.legodata.com&lt;/p&gt;
-&lt;p&gt;upstream slice3 {&lt;br /&gt;
-  server 127.0.0.1:4004;&lt;br /&gt;
-  server 127.0.0.1:4005;&lt;br /&gt;
-}&lt;/p&gt;
-&lt;p&gt;server {&lt;br /&gt;
-  listen 80;&lt;br /&gt;
-  server_name slice3.legodata.com;&lt;/p&gt;
-root /home/deploy/legodata/slice3/current/public;
-access_log /home/deploy/legodata/slice3/shared/log/access.log;
-error_log /home/deploy/legodata/slice3/shared/log/error.log;
-location / {
-proxy_set_header  X-Real-IP       $remote_addr;
-proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header  Host            $http_host;
-proxy_redirect false;
-proxy_max_temp_file_size 0;
-if (-f $request_filename) {
-break;
+&lt;pre&gt;
+&lt;code&gt;
+deploy@legodata:~$ cd /etc/nginx/
+deploy@legodata:/etc/nginx$ sudo cp sites-available/slices/slice3.legodata.com sites-enabled/
+deploy@legodata:/etc/nginx$ sudo nano sites-enabled/slice3.legodata.com
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+upstream slice3 {
+  server 127.0.0.1:4004;
+  server 127.0.0.1:4005;
 }
-if (-f $request_filename.html) {
-rewrite (.*) $1.html break;
-}
-if (!-f $request_filename) {
-proxy_pass http://slice3;
-break;
-}
-} # location
-&lt;p&gt;} # server&lt;/p&gt;
-&lt;p&gt;deploy@legodata:/etc/nginx$ sudo /etc/init.d/nginx restart&lt;/p&gt;
-&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
-&lt;/pre&gt;&lt;/p&gt;
+
+server {
+  listen 80;
+  server_name slice3.legodata.com;
+
+  root /home/deploy/legodata/slice3/current/public;
+
+  access_log /home/deploy/legodata/slice3/shared/log/access.log;
+  error_log /home/deploy/legodata/slice3/shared/log/error.log;
+
+  location / {
+
+    proxy_set_header  X-Real-IP       $remote_addr;
+    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header  Host            $http_host;
+
+    proxy_redirect false;
+    proxy_max_temp_file_size 0;
+
+    if (-f $request_filename) {
+      break;
+    }
+
+    if (-f $request_filename.html) {
+      rewrite (.*) $1.html break;
+    }
+
+    if (!-f $request_filename) {
+      proxy_pass http://slice3;
+      break;
+    }
+
+  } # location
+
+} # server
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+deploy@legodata:/etc/nginx$ sudo /etc/init.d/nginx restart
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;More info:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://wiki.codemongers.com/"&gt;Nginx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3&gt;Manual launch for debug&lt;/h3&gt;
-&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
-	&lt;code&gt;&lt;/p&gt;
-&lt;p&gt;deploy@legodata:/etc/monit.d$ sudo /usr/local/bin/merb &amp;#8212;name slice3_production -d -u deploy -G www-data -a mongrel -L /home/deploy/legodata/slice3/current/log/production.log -e production -m /home/deploy/legodata/slice3/current -c 2 -P &amp;#8216;/home/deploy/legodata/slice3/shared/pids/production-merb.%s.pid&amp;#8217; -p 4004 -N&lt;/p&gt;
-&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
-&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;
+&lt;code&gt;
+deploy@legodata:/etc/monit.d$ sudo /usr/local/bin/merb --name slice3_production -d -u deploy -G www-data -a mongrel -L /home/deploy/legodata/slice3/current/log/production.log -e production -m /home/deploy/legodata/slice3/current -c 2 -P '/home/deploy/legodata/slice3/shared/pids/production-merb.%s.pid' -p 4004 -N
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;More info:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://github.com/wycats/merb/blob/master/merb-core/lib/merb-core/config.rb#L181-181"&gt;merb-core/config.rb&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3&gt;Git repository creation&lt;/h3&gt;
-&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
-	&lt;code&gt;&lt;/p&gt;
-&lt;p&gt;alx@MacBook &lt;sub&gt;$ ssh git@slice.legodata.com&lt;br /&gt;
-git@legodata:&lt;/sub&gt;$ mkdir cbon.git&lt;br /&gt;
-git@legodata:~$ cd cbon.git&lt;br /&gt;
-git@legodata:~/cbon.git$ git init&lt;br /&gt;
-Initialized empty Git repository in /home/git/cbon.git/.git/&lt;/p&gt;
-&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
-&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;
+&lt;code&gt;
+alx@MacBook ~$ ssh git@slice.legodata.com
+git@legodata:~$ mkdir cbon.git
+git@legodata:~$ cd cbon.git
+git@legodata:~/cbon.git$ git init
+Initialized empty Git repository in /home/git/cbon.git/.git/
+&lt;/code&gt;
+&lt;/pre&gt;
 &lt;h2&gt;Dev station&lt;/h2&gt;
 &lt;h3&gt;Git workspace creation&lt;/h3&gt;
-&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
-	&lt;code&gt;&lt;/p&gt;
-&lt;p&gt;alx@MacBook ~/Sites/cbon[master]$ mkdir cbon&lt;br /&gt;
-alx@MacBook ~/Sites/cbon[master]$ cd cbon/&lt;br /&gt;
-alx@MacBook ~/Sites/cbon[master]$ git init&lt;br /&gt;
-alx@MacBook ~/Sites/cbon[master]$ touch &lt;span class="caps"&gt;README&lt;/span&gt;&lt;br /&gt;
-alx@MacBook ~/Sites/cbon[master]$ git add .&lt;br /&gt;
-alx@MacBook ~/Sites/cbon[master]$ git commit -a -m &amp;#8220;first commit&amp;#8221;&lt;br /&gt;
-alx@MacBook ~/Sites/cbon[master]$ git remote add origin git@git.legodata.com:cbon.git&lt;br /&gt;
-alx@MacBook ~/Sites/cbon[master]$ git push origin master&lt;/p&gt;
-&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
-&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;
+&lt;code&gt;
+alx@MacBook ~/Sites/cbon[master]$ mkdir cbon
+alx@MacBook ~/Sites/cbon[master]$ cd cbon/
+alx@MacBook ~/Sites/cbon[master]$ git init
+alx@MacBook ~/Sites/cbon[master]$ touch README
+alx@MacBook ~/Sites/cbon[master]$ git add .
+alx@MacBook ~/Sites/cbon[master]$ git commit -a -m "first commit"
+alx@MacBook ~/Sites/cbon[master]$ git remote add origin git@git.legodata.com:cbon.git
+alx@MacBook ~/Sites/cbon[master]$ git push origin master
+&lt;/code&gt;
+&lt;/pre&gt;
 &lt;h3&gt;Merb app creation&lt;/h3&gt;
-&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
-	&lt;code&gt;&lt;/p&gt;
-&lt;p&gt;alx@MacBook ~/Sites/cbon[master]$ merb-gen app .&lt;br /&gt;
-alx@MacBook ~/Sites/cbon[master]$ capify .&lt;/p&gt;
-&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
-&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;
+&lt;code&gt;
+alx@MacBook ~/Sites/cbon[master]$ merb-gen app .
+alx@MacBook ~/Sites/cbon[master]$ capify .
+&lt;/code&gt;
+&lt;/pre&gt;
 &lt;h3&gt;Deploy on app server&lt;/h3&gt;
-&lt;p&gt; &lt;pre&gt;&lt;br /&gt;
-	&lt;code&gt;&lt;/p&gt;
-&lt;p&gt;alx@MacBook ~/Sites/cbon[master]$ more config/deploy.rb&lt;/p&gt;
-&lt;p&gt;set :application_name, &amp;#8216;cbon&amp;#8217;&lt;br /&gt;
-set :application, &amp;#8220;slice3.legodata.com&amp;#8221;&lt;br /&gt;
-set :deploy_to, &amp;#8220;/home/deploy/legodata/slice3&amp;#8221;&lt;/p&gt;
-&lt;p&gt;alx@MacBook ~/Sites/cbon[master]$ cap deploy:setup&lt;br /&gt;
-alx@MacBook ~/Sites/cbon[master]$ cap deploy:cold&lt;/p&gt;
-&lt;p&gt;&lt;/code&gt;&lt;br /&gt;
-&lt;/pre&gt;&lt;/p&gt;</content>
+&lt;pre&gt;
+&lt;code&gt;
+alx@MacBook ~/Sites/cbon[master]$ more config/deploy.rb 
+
+set :application_name, 'cbon'
+set :application, "slice3.legodata.com"
+set :deploy_to, "/home/deploy/legodata/slice3"
+
+alx@MacBook ~/Sites/cbon[master]$ cap deploy:setup
+alx@MacBook ~/Sites/cbon[master]$ cap deploy:cold
+&lt;/code&gt;
+&lt;/pre&gt;</content>
  </entry>
  
  <entry>
