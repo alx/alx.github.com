@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-04-13T21:25:33+02:00</pubDate>
-    <lastBuildDate>2009-04-13T21:25:33+02:00</lastBuildDate>
+    <pubDate>2009-04-13T21:27:29+02:00</pubDate>
+    <lastBuildDate>2009-04-13T21:27:29+02:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -13,7 +13,7 @@
    		<title>Interface for a new Electricity Panel</title>
    		<link>http://alx.github.com/2009/04/13/electricity-panel-interface.html</link>
    		<guid>http://alx.github.com/2009/04/13/electricity-panel-interface</guid>
-   		<description>&lt;p&gt;Continuing my research to build a real-time powermeter, from the idea, to the hardware part, let&amp;#8217;s move and look what could be done on the interface site.&lt;/p&gt;
+   		<description>&lt;p&gt;Continuing my research to build a real-time powermeter, from &lt;a href="/2009/03/05/powermeter-more-info.html"&gt;the idea&lt;/a&gt;, to &lt;a href="/2009/03/02/edf-energy-saver-with-arduino.html"&gt;the hardware part&lt;/a&gt;, let&amp;#8217;s move and look what could be done on the interface site.&lt;/p&gt;
 &lt;p&gt;Some people have already begun to build these interface, some others have dreamt about it, here is a small survey about some of them:&lt;/p&gt;
 &lt;h2&gt;&lt;a href="http://www.flickr.com/photos/alx/2679463771/"&gt;Telefonica in Madrid&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;img src="http://farm4.static.flickr.com/3120/2679463771_81ce8f8ac0.jpg" alt="" /&gt;&lt;/p&gt;
@@ -38,7 +38,8 @@ Apart from the whitish look, and the static electricity problem, it&amp;#8217;s 
 &lt;p&gt;The hacker view of energy consumption, sometimes that&amp;#8217;s all you need, and it can be done really quickly.&lt;/p&gt;
 &lt;h2&gt;&lt;a href="http://twitter.com/tweetawatt"&gt;Tweet-a-Watt&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;img src="/images/elec-interface/tweetawatt.png" alt="" /&gt;&lt;/p&gt;
-&lt;p&gt;An experiement from &lt;a href="http://www.adafruit.com"&gt;Adafruit&lt;/a&gt; that connect &lt;span class="caps"&gt;LCD&lt;/span&gt; appliance, that count watts on a plug, to twitter, throwing a hook for anybody wh&amp;#8217;s got some idea about how to expand it with a social mean.&lt;/p&gt;</description>
+&lt;p&gt;An experiement from &lt;a href="http://www.adafruit.com"&gt;Adafruit&lt;/a&gt; that connect &lt;span class="caps"&gt;LCD&lt;/span&gt; appliance, that count watts on a plug, to twitter, throwing a hook for anybody wh&amp;#8217;s got some idea about how to expand it with a social mean.&lt;/p&gt;
+&lt;p&gt;On a sidenote, that&amp;#8217;s probably the hardware solution I&amp;#8217;ll use to have a remote access to the electricity counter in our flat.&lt;/p&gt;</description>
    		<pubDate>2009-04-13T00:00:00+02:00</pubDate>
  	</item>
  	
