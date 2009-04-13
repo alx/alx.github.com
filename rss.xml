@@ -4,8 +4,8 @@
     <title>Alex Girard Feed</title>
     <link>http://alx.github.com</link>
     <description>Alex Girard</description>
-    <pubDate>2009-04-13T21:03:49+02:00</pubDate>
-    <lastBuildDate>2009-04-13T21:03:49+02:00</lastBuildDate>
+    <pubDate>2009-04-13T21:25:33+02:00</pubDate>
+    <lastBuildDate>2009-04-13T21:25:33+02:00</lastBuildDate>
     <webMaster>alx.girard@gmail.com</webMaster>
 	
 	
@@ -15,26 +15,30 @@
    		<guid>http://alx.github.com/2009/04/13/electricity-panel-interface</guid>
    		<description>&lt;p&gt;Continuing my research to build a real-time powermeter, from the idea, to the hardware part, let&amp;#8217;s move and look what could be done on the interface site.&lt;/p&gt;
 &lt;p&gt;Some people have already begun to build these interface, some others have dreamt about it, here is a small survey about some of them:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;&lt;a href="http://www.flickr.com/photos/alx/2679463771/"&gt;Telefonica in Madrid&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2&gt;&lt;a href="http://www.flickr.com/photos/alx/2679463771/"&gt;Telefonica in Madrid&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;img src="http://farm4.static.flickr.com/3120/2679463771_81ce8f8ac0.jpg" alt="" /&gt;&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;&lt;a href="http://www.currentcost.com/product-cc128.html"&gt;CurrentCost CC128&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Telefonica has got a kind of Apple Store on Madrid biggest avenue (Gran Via).&lt;br /&gt;
+Apart from the whitish look, and the static electricity problem, it&amp;#8217;s got a domotic showroom with various technologies, from the tactil mirror that speak to you about the weather forecast, to the eye-toy TV to play with.&lt;/p&gt;
+&lt;p&gt;A small corner is dedicated to this energy screen, you can set the light, open/close a windows blind, and follow the electricity cunsomption on this screen.&lt;/p&gt;
+&lt;p&gt;The graph, that shows the KwH consumme each second, is not really clear at first look What it shows is 2 lines: bottom one is your consumption with &amp;#8220;&lt;em&gt;Hogar Solucion&lt;/em&gt;&amp;#8221; merchandsing, showing you the difference with the top one that puts you in the red zone of &amp;#8220;&lt;strong&gt;you consumme too much!&lt;/strong&gt;&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;The rest of the interface is pretty clean, with big number you just need to follow by curiosity. The bad part is you need to read a manual to understand any of these numbers.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="http://www.currentcost.com/product-cc128.html"&gt;CurrentCost CC128&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;img src="/images/elec-interface/currentcost.png" alt="" /&gt;&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;&lt;a href="http://ohhello.tv/index.php/work/view/microsoft_sustainability/"&gt;Microsoft Sustainability&lt;/a&gt; by &lt;a href="http://ohhello.tv"&gt;Oh, Hello&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;That&amp;#8217;s the interface a harware piece you plug on your circuit to follow your consumption.&lt;/p&gt;
+&lt;p&gt;Same here, it requires a manual, ad it&amp;#8217;s pretty messy. The designer probably got a clue by copying these popular weather stations.&lt;/p&gt;
+&lt;p&gt;But there&amp;#8217;s something realy innovative in this design compare to the others: it&amp;#8217;s really cost effective, you don&amp;#8217;t need to have your computer or a Plasma screen switch on all the time, so you might feel like you reduce your energy consumption by this mean.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="http://ohhello.tv/index.php/work/view/microsoft_sustainability/"&gt;Microsoft Sustainability&lt;/a&gt; by &lt;a href="http://ohhello.tv"&gt;Oh, Hello&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;img src="/images/elec-interface/sustainability.png" alt="" /&gt;&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;&lt;a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF"&gt;HomeLinux&lt;/a&gt; interface&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;I really invite you to watch the whole video, there&amp;#8217;re a lot of ideas and details on this futuristic interface research.&lt;/p&gt;
+&lt;p&gt;This panel is interesting too, really clean, big numbers, comprehensive colors, and a lot of informations in one read.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ll need your help to understand the color gradients in the graph, and the model might not be appliable to my research: this example show a hybrid use of electricity, like in hybrid cars, switching from the solar panels to the national electricity grid.&lt;/p&gt;
+&lt;p&gt;The house map is quite interesting to have an idea of which part of the house is consumming.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF"&gt;HomeLinux&lt;/a&gt; interface&lt;/h2&gt;
 &lt;p&gt;&lt;img src="/images/elec-interface/homelinux.png" alt="" /&gt;&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;&lt;a href="http://twitter.com/tweetawatt"&gt;Tweet-a-Watt&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src="/images/elec-interface/tweetawatt.png" alt="" /&gt;&lt;/p&gt;</description>
+&lt;p&gt;The hacker view of energy consumption, sometimes that&amp;#8217;s all you need, and it can be done really quickly.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="http://twitter.com/tweetawatt"&gt;Tweet-a-Watt&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="/images/elec-interface/tweetawatt.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;An experiement from &lt;a href="http://www.adafruit.com"&gt;Adafruit&lt;/a&gt; that connect &lt;span class="caps"&gt;LCD&lt;/span&gt; appliance, that count watts on a plug, to twitter, throwing a hook for anybody wh&amp;#8217;s got some idea about how to expand it with a social mean.&lt;/p&gt;</description>
    		<pubDate>2009-04-13T00:00:00+02:00</pubDate>
  	</item>
  	
