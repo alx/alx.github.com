@@ -2,12 +2,19 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>http://alexgirard.com</loc>
-		<lastmod>2009-03-17T02:00:24+01:00</lastmod>
+		<lastmod>2009-04-13T21:02:31+02:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
 
 	
+ 	<url>
+   		<loc>http://alexgirard.com/2009/04/13/electricity-panel-interface.html</loc>
+   		<lastmod>2009-04-13T00:00:00+02:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+ 	</url>
+ 	
  	<url>
    		<loc>http://alexgirard.com/2009/03/06/merb-deploy-step-by-step.html</loc>
    		<lastmod>2009-03-06T00:00:00+01:00</lastmod>
@@ -65,14 +72,14 @@
  	</url>
  	
  	<url>
-   		<loc>http://alexgirard.com/2009/02/03/invites-to-spotify.html</loc>
+   		<loc>http://alexgirard.com/2009/02/03/sous-repertoire-merb.html</loc>
    		<lastmod>2009-02-03T00:00:00+01:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
  	</url>
  	
  	<url>
-   		<loc>http://alexgirard.com/2009/02/03/sous-repertoire-merb.html</loc>
+   		<loc>http://alexgirard.com/2009/02/03/invites-to-spotify.html</loc>
    		<lastmod>2009-02-03T00:00:00+01:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
@@ -184,14 +191,14 @@
  	</url>
  	
  	<url>
-   		<loc>http://alexgirard.com/2008/11/21/itinerant-lifestyle.html</loc>
+   		<loc>http://alexgirard.com/2008/11/21/douce-offensive.html</loc>
    		<lastmod>2008-11-21T00:00:00+01:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
  	</url>
  	
  	<url>
-   		<loc>http://alexgirard.com/2008/11/21/douce-offensive.html</loc>
+   		<loc>http://alexgirard.com/2008/11/21/itinerant-lifestyle.html</loc>
    		<lastmod>2008-11-21T00:00:00+01:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>

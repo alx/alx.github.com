@@ -4,13 +4,42 @@
  <title>Alex Girard Feed</title>
  <link href="http://alexgirard.com/atom.xml" rel="self"/>
  <link href="http://alexgirard.com"/>
- <updated>2009-03-17T02:00:24+01:00</updated>
+ <updated>2009-04-13T21:02:30+02:00</updated>
  <id>http://alexgirard.com</id>
  <author>
    <name>Alex Girard</name>
    <email>alx.girard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Interface for a new Electricity Panel</title>
+   <link href="http://alexgirard.com/2009/04/13/electricity-panel-interface.html"/>
+   <updated>2009-04-13T00:00:00+02:00</updated>
+   <id>http://alexgirard.com/2009/04/13/electricity-panel-interface</id>
+   <content type="html">&lt;p&gt;Continuing my research to build a real-time powermeter, from the idea, to the hardware part, let&amp;#8217;s move and look what could be done on the interface site.&lt;/p&gt;
+&lt;p&gt;Some people have already begun to build these interface, some others have dreamt about it, here is a small survey about some of them:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://www.flickr.com/photos/alx/2679463771/"&gt;Telefonica in Madrid&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="http://farm4.static.flickr.com/3120/2679463771_81ce8f8ac0.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://www.currentcost.com/product-cc128.html"&gt;CurrentCost CC128&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="/images/elec-interface/currentcost.png" alt="" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://ohhello.tv/index.php/work/view/microsoft_sustainability/"&gt;Microsoft Sustainability&lt;/a&gt; by &lt;a href="http://ohhello.tv"&gt;Oh, Hello&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="/images/elec-interface/sustainability.png" alt="" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://vesta.homelinux.net/mediawiki/index.php/Demodulateur_teleinformation_EDF"&gt;HomeLinux&lt;/a&gt; interface&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="/images/elec-interface/homelinux.png" alt="" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://twitter.com/tweetawatt"&gt;Tweet-a-Watt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="/images/elec-interface/tweetawatt.png" alt="" /&gt;&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Merb deploy step by step</title>
@@ -423,20 +452,6 @@ cap deploy
  </entry>
  
  <entry>
-   <title>10 invites to Spotify.com</title>
-   <link href="http://alexgirard.com/2009/02/03/invites-to-spotify.html"/>
-   <updated>2009-02-03T00:00:00+01:00</updated>
-   <id>http://alexgirard.com/2009/02/03/invites-to-spotify</id>
-   <content type="html">&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
-&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
-&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
-&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
-If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;No more invitations&lt;/strong&gt;: the 5 last were sent to the &lt;a href="http://despotify.se/"&gt;despotify.se project&lt;/a&gt; to help developers create an open-source spotify client.&lt;/p&gt;</content>
- </entry>
- 
- <entry>
    <title>Merb et rangement de vos classes en sous-répertoire</title>
    <link href="http://alexgirard.com/2009/02/03/sous-repertoire-merb.html"/>
    <updated>2009-02-03T00:00:00+01:00</updated>
@@ -487,6 +502,20 @@ module Resource
 end
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Pour cette manipulation, il n&amp;#8217;y a aucune modifications à apporter au modèle, il vous suffit de le mettre dans son sous-répertoire et il devrait être reconnu.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>10 invites to Spotify.com</title>
+   <link href="http://alexgirard.com/2009/02/03/invites-to-spotify.html"/>
+   <updated>2009-02-03T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2009/02/03/invites-to-spotify</id>
+   <content type="html">&lt;h1&gt;10 invites to Spotify.com&lt;/h1&gt;
+&lt;p&gt;For those interested, please leave a comment to get an invite on &lt;a href="http://spotify.com"&gt;Spotify.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s nothing particular, just a simple iTunes, with a monthly subscription for those who wants to pay, an old music-business concept that some guys have finally put in place.&lt;/p&gt;
+&lt;p&gt;Thanks to years of music industry battle, we&amp;#8217;ve got this old technology quietly moving in, and it worries me a bit that it&amp;#8217;ll stll be controlled more by business-spirit than creating a sharing community. On their blog, they&amp;#8217;ve already announced they plan to block some tracks depending on the geographic region, nice way to crash.&lt;/p&gt;
+&lt;p&gt;Test it, it&amp;#8217;s simple, you might like it, but it&amp;#8217;s nothing compared to something like &lt;a href="http://last.fm"&gt;last.fm&lt;/a&gt;.&lt;br /&gt;
+If only there was a subscription (and a better music player) on last.fm, they&amp;#8217;d win them all.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;No more invitations&lt;/strong&gt;: the 5 last were sent to the &lt;a href="http://despotify.se/"&gt;despotify.se project&lt;/a&gt; to help developers create an open-source spotify client.&lt;/p&gt;</content>
  </entry>
  
  <entry>
@@ -869,15 +898,6 @@ La gestion distribuée de version de fichier est l&amp;#8217;un des concept logi
  </entry>
  
  <entry>
-   <title>Itinerant lifestyle</title>
-   <link href="http://alexgirard.com/2008/11/21/itinerant-lifestyle.html"/>
-   <updated>2008-11-21T00:00:00+01:00</updated>
-   <id>http://alexgirard.com/2008/11/21/itinerant-lifestyle</id>
-   <content type="html">&lt;p&gt;&lt;em&gt;Possessions meant little to Erdős; most of his belongings would fit in a suitcase, as dictated by his itinerant lifestyle. Awards and other earnings were in general donated to people in need and various worthy causes. He spent most of his life as a vagabond, travelling between scientific conferences and the homes of colleagues all over the world. He would typically show up at a colleague&amp;#8217;s doorstep and announce &amp;#8220;my brain is open&amp;#8221;, staying long enough to collaborate on a few papers before moving on a few days later. In many cases, he would ask the current collaborator about whom he (Erdős) should visit next. His working style has been humorously compared to traversing a linked list.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Paul_Erd%C5%91s"&gt;Wikipedia entry on Paul Erdős&lt;/a&gt;&lt;/p&gt;</content>
- </entry>
- 
- <entry>
    <title>DouceOffensive.org nouvel espoir</title>
    <link href="http://alexgirard.com/2008/11/21/douce-offensive.html"/>
    <updated>2008-11-21T00:00:00+01:00</updated>
@@ -888,6 +908,15 @@ La gestion distribuée de version de fichier est l&amp;#8217;un des concept logi
 &lt;p&gt;&lt;img src="http://farm4.static.flickr.com/3003/3047257469_2155830e70.jpg" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;Gérer par Wordpress et le plugin PhotoQ, le site ne consiste qu&amp;#8217;en un thème minimaliste, alimenté par les photos de Guillaume Ajavon.&lt;/p&gt;
 &lt;p&gt;Comme d&amp;#8217;habitude, vous pouvez &lt;a href="http://github.com/alx/douce-offensive/"&gt;télécharger ce blog complet&lt;/a&gt; (inclut thème et plugins) sur github.com si vous voulez vous monter le même système pour votre photoblog.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Itinerant lifestyle</title>
+   <link href="http://alexgirard.com/2008/11/21/itinerant-lifestyle.html"/>
+   <updated>2008-11-21T00:00:00+01:00</updated>
+   <id>http://alexgirard.com/2008/11/21/itinerant-lifestyle</id>
+   <content type="html">&lt;p&gt;&lt;em&gt;Possessions meant little to Erdős; most of his belongings would fit in a suitcase, as dictated by his itinerant lifestyle. Awards and other earnings were in general donated to people in need and various worthy causes. He spent most of his life as a vagabond, travelling between scientific conferences and the homes of colleagues all over the world. He would typically show up at a colleague&amp;#8217;s doorstep and announce &amp;#8220;my brain is open&amp;#8221;, staying long enough to collaborate on a few papers before moving on a few days later. In many cases, he would ask the current collaborator about whom he (Erdős) should visit next. His working style has been humorously compared to traversing a linked list.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Paul_Erd%C5%91s"&gt;Wikipedia entry on Paul Erdős&lt;/a&gt;&lt;/p&gt;</content>
  </entry>
  
  <entry>
